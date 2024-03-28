@@ -1,7 +1,7 @@
 databases:
   - name: proyecto-grupo-64
-    databaseName: proyecto-grupo-64
-    user: proyecto-grupo-64
+    databaseName: proyecto_grupo_64_development
+    user: endless
     plan: free
 
 services:
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: proyecto-grupo-64
+          name: proyecto_grupo_64_development
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
