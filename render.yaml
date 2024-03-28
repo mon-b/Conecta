@@ -1,5 +1,5 @@
 databases:
-  - name: proyecto-grupo-64
+  - name: proyecto_grupo_64_development
     databaseName: proyecto_grupo_64_development
     user: endless
     plan: free
