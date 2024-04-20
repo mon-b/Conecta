@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }
+  validates :birth_date, presence: true
+
 end
