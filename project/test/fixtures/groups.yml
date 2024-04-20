@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  user: one
+  name: MyString
+  rating: 9.99
+  description: MyString
+
+two:
+  category: two
+  user: two
+  name: MyString
+  rating: 9.99
+  description: MyString
