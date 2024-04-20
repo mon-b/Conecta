@@ -7,21 +7,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :name, "Nombre de usuario" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birth_date, "Fecha de nacimiento" %><br />
-    <%= f.date_field :birth_date %>
-  </div>
-
-  <div class="field">
     <%= f.label :password, "Contraseña" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
-
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
