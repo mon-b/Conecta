@@ -2,8 +2,18 @@
 <p>Find me in app/views/groups/new.html.erb</p> %>
 <h1>Crear grupo</h1>
 
-<%= form_with(model: @article) do |f| %>
 
+<%# code from https://stackoverflow.com/a/52470594 %>
+<% flash.each do |name, messages| %>
+  <div class="alert alert-<%= name %>">
+    <ul>
+    <% messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @group, local: true) do |f| %>
   <%# a %>
   <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
   
