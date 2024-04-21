@@ -7,8 +7,10 @@
 <% flash.each do |name, messages| %>
   <div class="alert alert-<%= name %>">
     <ul>
-    <% messages.each do |message| %>
-      <li><%= message %></li>
+    <% if messages.is_a?(Array) %>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     <% end %>
     </ul>
   </div>
