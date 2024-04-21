@@ -27,3 +27,4 @@ otakus.save!
 foodies.save!
 otros.save!
 
+Group.create(category_id: 6, user_id: 1, name: "Grupo otaku de ejemplo", rating: 4.5, description: "Un grupo de ejemplo.")
