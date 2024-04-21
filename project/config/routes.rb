@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # get 'groups/new'
   # get 'groups/edit'
   resources :groups
+  post 'groups/new', to: 'groups#new_post'
   get 'home/index'
   devise_for :users
   #get 'hello_world/index'

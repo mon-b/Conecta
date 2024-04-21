@@ -1,2 +1,27 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<%# <h1>Groups#new</h1>
+<p>Find me in app/views/groups/new.html.erb</p> %>
+<h1>Crear grupo</h1>
+
+<%= form_with(model: @article) do |f| %>
+
+  <%# a %>
+  <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
+  
+  <div class="field">
+    <%= f.label :name, "Nombre de grupo" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="field">
+    <%= f.label :description, "Descripción" %><br />
+    <%= f.text_field :description %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Crear grupo" %>
+  </div>
+<% end %>
+
