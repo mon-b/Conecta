@@ -1,0 +1,31 @@
+body {
+    background: linear-gradient(to bottom, #fbf5de, #a3e4f3);
+    background-repeat: no-repeat;
+    height: 90vh;
+    
+}
+
+.unsigned-user {
+    text-align: center;
+    margin-top: 10vh;
+}
+.custom-image {
+    width: 20vh; /* Adjust the percentage as needed */
+    height: auto; /* This ensures the aspect ratio is maintained */
+    min-width: 100px;
+}
+
+.description {
+    text-align: center;
+}
+
+.slogan {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+}
+
+.light-green-button {
+    background-color: #21be33; /* Lighter green color */
+}

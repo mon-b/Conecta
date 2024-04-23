@@ -9,7 +9,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-    <%= render "/navbar" %>
+  <% if user_signed_in? %>
+      <%= render "/navbar" %>
+  <% end %>
   <body>
     <%= yield %>
   </body>
