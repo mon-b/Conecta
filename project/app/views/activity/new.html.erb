@@ -1,2 +1,41 @@
-<h1>Activity#new</h1>
-<p>Find me in app/views/activity/new.html.erb</p>
+<%#<h1>Activity#new</h1>
+<p>Find me in app/views/activity/new.html.erb</p> %>
+
+<h1>crear Actividad<h1>
+
+<%# code from https://stackoverflow.com/a/52470594 %>
+<% flash.each do |name, messages| %>
+  <div class="alert alert-<%= name %>">
+    <ul>
+    <% if messages.is_a?(Array) %>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @activity, local: true) do |f| %>
+  <%# a %>
+  <%#= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
+  
+  <div class="field">
+    <%= f.label :name, "Nombre de la actividad" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%#= f.hidden_field :group_id, value: @activity.group_id%>
+
+
+  <div class="field">
+    <%= f.label :description, "Descripción" %><br />
+    <%= f.text_field :description %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Crear actividad" %>
+  </div>
+<% end %>
+
