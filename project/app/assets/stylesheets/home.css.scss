@@ -1,5 +1,5 @@
 body {
-    background: rgb(202, 202, 236);
+    background: rgb(211, 242, 249);
     background-repeat: repeat;
     background-size: cover;
     place-content: center;
@@ -8,10 +8,9 @@ body {
 
 body.unsigned-view {
     height: 90vh;
-    margin-top: 6vh; /* AND YOU GUYS CAN JUDGE ME ALL YOU WANT */
-    margin-bottom: 6vh; /* BUT I'VE NEVER EVER BEEN HAPPIER */
-}
+    background: rgb(211, 242, 249);
 
+}
 
 .logo-and-brand {
     font-size: 2.25rem;
@@ -21,6 +20,9 @@ body.unsigned-view {
 .unsigned-user {
     text-align: center;
 }
+.full-width-form {
+    width: 100%;
+  }
 
 .custom-image {
     width: 20vh; 
@@ -45,19 +47,39 @@ body.unsigned-view {
 }
 
 .sign-in-view {
-    text-align: center;
+    text-align: left;
 
 }
 
 .login-container {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #f2f2f2;
-    margin-left: 30%;
-    margin-right: 30%;
-    border-radius: 2rem;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 0.7rem;
+    padding: 2%;
+    min-width: 300px;
+    height: 70vh;
+    margin-top: 10vh;
 
-    height: 80vh;
-    margin-top: 4%;
+}
 
+.login-container .full-width-form{
+    margin-bottom: 2%;
+}
 
+.login-container h2{
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 5vh;
+}
+
+.login-container .actions{
+    margin-top: 6vh;
+}
+
+.no-account-text {
+    text-align: center;
+    margin-top: 2vh;    
+    margin-bottom: 5vh;
 }

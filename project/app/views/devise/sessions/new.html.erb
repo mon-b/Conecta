@@ -13,15 +13,30 @@
     <div class="login-container">
     
       <h2>Iniciar sesión</h2>
+      <div class="no-account-text">
+          ¿Aún no tienes una cuenta? <%= link_to "Regístrate", new_user_registration_path %>
+      </div>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control full-width-form", placeholder: "Email" %>
+          </div>
       </div>
-      
+
       <div class="field">
-        <%= f.label :password, "Contraseña" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">🔒</span>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control full-width-form", placeholder: "Password"  %>
+        </div>
+        <small class="text-muted">
+          Debe tener un máximo de 16 caracteres.
+        </small>
       </div>
       
         <% if devise_mapping.rememberable? %>
@@ -31,11 +46,10 @@
           </div>
         <% end %>
         <div class="actions">
-          <%= f.submit "Iniciar sesión" %>
+          <%= f.submit "Iniciar sesión", class: "btn btn-primary full-width-form" %>
         </div>
   
         <% end %>
-      <%= render "devise/shared/links" %>
   
     </div>
   
