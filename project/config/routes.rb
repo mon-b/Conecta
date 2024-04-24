@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  #get 'activity/index'
+  #get 'activity/show'
+  #get 'activity/new'
+  #get 'activity/edit'
+  resources :activity
   # get 'groups/index'
   # get 'groups/show'
   # get 'groups/new'
