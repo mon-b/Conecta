@@ -32,26 +32,31 @@
           <div class="input-group-prepend">
             <span class="input-group-text">🔒</span>
           </div>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control full-width-form", placeholder: "Password"  %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control full-width-form", placeholder: "Contraseña"  %>
         </div>
         <small class="text-muted">
           Debe tener un máximo de 16 caracteres.
         </small>
       </div>
-      
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, "Recordar sesión" %>
-          </div>
-        <% end %>
+        <div class="extra-login">
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "Recordar sesión" %>
+            </div>
+          <% end %>
+        </div>
+
         <div class="actions">
           <%= f.submit "Iniciar sesión", class: "btn btn-primary full-width-form" %>
         </div>
   
         <% end %>
-  
+        <div class="no-account-text">
+          <%= link_to "¿Olvidaste tu contraseña?", new_user_password_path %>
+        </div>
     </div>
+    
   
   </div>
 </body>

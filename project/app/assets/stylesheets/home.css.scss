@@ -59,6 +59,7 @@ body.unsigned-view {
     border-radius: 0.7rem;
     padding: 2%;
     min-width: 300px;
+    min-height: 400px;
     height: 70vh;
     margin-top: 10vh;
 
@@ -82,4 +83,8 @@ body.unsigned-view {
     text-align: center;
     margin-top: 2vh;    
     margin-bottom: 5vh;
+}
+
+.extra-login .field a{
+    text-align: right;
 }
