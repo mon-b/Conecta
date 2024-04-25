@@ -4,7 +4,6 @@
     <p>Estás logueado como <%= current_user.email %></p>
     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
     <%= link_to "Crear grupo", new_group_path %>
-    <%= link_to "Crear actividad", new_activity_path %>
     <%= link_to "Ver grupos", groups_path %>
 
 
