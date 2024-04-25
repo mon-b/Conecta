@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
                    user_id: params[:user_id],
                    description: params[:description])
     if @group.save
+      @group.users << current_user
       redirect_to @group
     else
       flash[:errors] = @group.errors.full_messages
