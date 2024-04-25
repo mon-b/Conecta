@@ -1,7 +1,7 @@
 <%#<h1>Activity#new</h1>
 <p>Find me in app/views/activity/new.html.erb</p> %>
 
-<h1>crear Actividad<h1>
+<h1>Crear Actividad<h1>
 
 <%# code from https://stackoverflow.com/a/52470594 %>
 <% flash.each do |name, messages| %>
@@ -16,26 +16,48 @@
   </div>
 <% end %>
 <%= form_with(model: @activity, local: true) do |f| %>
-  <%# a %>
-  <%#= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
+    <%# a %>
+    <%= f.select :group_id, current_user.groups.map { |g| [g.name, g.id] }, { include_blank: 'Seleccione un grupo' } %>
+    <!-- Por hacer: Tabla relacion entre Grupos y Users-->
+    <%#Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
   
-  <div class="field">
-    <%= f.label :name, "Nombre de la actividad" %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name, "Nombre de la actividad" %><br />
+      <%= f.text_field :name %>
+    </div>
 
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%#= f.hidden_field :group_id, value: @activity.group_id%>
-
-
-  <div class="field">
-    <%= f.label :description, "Descripción" %><br />
-    <%= f.text_field :description %>
-  </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%#= f.hidden_field :group_id, value: @activity.group_id%>
 
 
-  <div class="actions">
-    <%= f.submit "Crear actividad" %>
-  </div>
+    <div class="field">
+      <%= f.label :description, "Descripción" %><br />
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="field">
+        <%= f.label :date, "Fecha" %><br />
+        <%= f.date_field :date %>
+    </div>
+
+    <div class="field">
+        <%= f.label :location, "Ubicación" %><br />
+        <%= f.text_field :location %>
+    </div>
+
+    <div class="field">
+        <%= f.label :people, "Personas" %><br />
+        <%= f.number_field :people %>
+    </div>
+
+    <div class="field">
+        <%= f.label :cost, "Costo" %><br />
+        <%= f.number_field :cost %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "Crear actividad" %>
+    </div>
 <% end %>
 
