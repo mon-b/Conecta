@@ -4,9 +4,11 @@
 <h1><%= @activity.name %><h1>
 <h2>Grupo: <%= Activity.find(@activity.group_id).name %><h2>
 <%#<h2>Categoría: <%= Activity.find(@activity.group_id.category_id).name %>
-<h2>Creador: <%= User.find(Group.find(@activity.group_id).id).name %><h2>
+<%#<h2>Creador: <%= User.find(Group.find(@activity.group_id).id).name %>
 <h2>Descripción: <%= @activity.description %><h2>
 <h2>Fecha: <%= @activity.date %><h2>
 <h2>Ubicación: <%= @activity.location %><h2>
 <h2>Personas: <%= @activity.people %><h2>
 <h2>Costo: <%= @activity.cost %><h2>
+<h2>Keywords: <%= @activity.keywords %><h2>
+    
