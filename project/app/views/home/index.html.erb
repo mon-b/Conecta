@@ -3,6 +3,12 @@
 <%if user_signed_in? %>
     <p>Estás logueado como <%= current_user.email %></p>
     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+    <%= link_to "Crear grupo", new_group_path %>
+    <%= link_to "Crear actividad", new_activity_path %>
+    <%= link_to "Ver grupos", groups_path %>
+
+
+
 <% else %>
     <%= link_to "Iniciar sesión", new_user_session_path %>
     <%= link_to "Registrarse", new_user_registration_path %>
