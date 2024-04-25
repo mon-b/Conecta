@@ -15,12 +15,14 @@
     </ul>
   </div>
 <% end %>
-<%= form_with(model: @activity, local: true) do |f| %>
+<%= form_with(model: @activity, local: true,  url: '/activity/') do |f| %>
     <%# a %>
-    <%= f.select :group_id, current_user.groups.map { |g| [g.name, g.id] }, { include_blank: 'Seleccione un grupo' } %>
+    <%# <%= f.select :group_id, current_user.groups.map { |g| [g.name, g.id] }, { include_blank: 'Seleccione un grupo' } %> <%# %>
     <!-- Por hacer: Tabla relacion entre Grupos y Users-->
     <%#Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
-  
+
+    <%= f.hidden_field :group_id, value: params[:group_id] %>
+
     <div class="field">
       <%= f.label :name, "Nombre de la actividad" %><br />
       <%= f.text_field :name %>

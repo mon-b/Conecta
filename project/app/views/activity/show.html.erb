@@ -2,7 +2,7 @@
 <p>Find me in app/views/activity/show.html.erb</p> %>
 
 <h1><%= @activity.name %><h1>
-<h2>Grupo: <%= Activity.find(@activity.group_id).name %><h2>
+<h2>Grupo: <%= Group.find(@activity.group_id).name %><h2>
 <%#<h2>Categoría: <%= Activity.find(@activity.group_id.category_id).name %>
 <%#<h2>Creador: <%= User.find(Group.find(@activity.group_id).id).name %>
 <h2>Descripción: <%= @activity.description %><h2>
