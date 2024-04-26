@@ -1,2 +1,43 @@
-<h1>Groups#edit</h1>
-<p>Find me in app/views/groups/edit.html.erb</p>
+<h1>Administrar grupo</h1>
+<h2>Editar grupo</h2>
+
+<%# code from https://stackoverflow.com/a/52470594 %>
+<% flash.each do |name, messages| %>
+  <div class="alert alert-<%= name %>">
+    <ul>
+    <% if messages.is_a?(Array) %>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @group, local: true) do |f| %>
+  <%# a %>
+  <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
+  
+  <div class="field">
+    <%= f.label :name, "Nombre de grupo" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="field">
+    <%= f.label :description, "Descripción" %><br />
+    <%= f.text_field :description %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Editar grupo" %>
+  </div>
+<% end %>
+
+<h2>Actividades del grupo</h2>
+<% Activity.where(:group_id == @group.id).each do |activity| %>
+  Actividad: <%= activity.name %><br>
+  <%= link_to "Abrir actividad", activity %>
+  <%# opciones de admin aqui, quizas crear tarjeta reutilizable %>
+<% end %>

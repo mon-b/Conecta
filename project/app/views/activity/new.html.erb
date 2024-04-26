@@ -1,7 +1,7 @@
 <%#<h1>Activity#new</h1>
 <p>Find me in app/views/activity/new.html.erb</p> %>
 
-<h1>Crear Actividad<h1>
+<h1>Crear Actividad</h1>
 
 <%# code from https://stackoverflow.com/a/52470594 %>
 <% flash.each do |name, messages| %>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="field">
-        <%= f.label :cost, "Costo" %><br />
+        <%= f.label :cost, "Precio" %><br />
         <%= f.number_field :cost, min: 0%>
     </div>
 

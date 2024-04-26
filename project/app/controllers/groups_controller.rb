@@ -36,6 +36,19 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @group = Group.find(params[:id])
+
+    if @group.update(group_params)
+      redirect_to @group
+    else
+      # mostrar errores aqui
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def group_params
@@ -44,4 +57,12 @@ class GroupsController < ApplicationController
   # def group_params
   #   params.require(:group).permit(:category_id, :name, :user_id, :description)
   # end
+  def is_group_admin
+    if current_user.id == @group.user_id
+      return true
+    else
+      return false
+    end
+  end
+  helper_method :is_group_admin
 end

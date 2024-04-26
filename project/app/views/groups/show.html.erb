@@ -1,8 +1,10 @@
-<%# <h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p> %>
-
-<h1><%= @group.name %><h1>
-<h2>Categoría: <%= Category.find(@group.category_id).name %><h2>
-<h2>Creador: <%= User.find(@group.user_id).name %><h2>
-<h2>Descripción: <%= @group.description %><h2>
-<h2>Rating: <%= @group.rating %><h2>
+<h1><%= @group.name %></h1>
+<h2>Categoría: <%= Category.find(@group.category_id).name %></h2>
+<h2>Creador: <%= User.find(@group.user_id).name %></h2>
+<h2>Descripción: <%= @group.description %></h2>
+<h2>Rating: <%= @group.rating %></h2>
+<% if is_group_admin %>
+    <h2>Opciones de administrador de grupo</h2>
+    <%= link_to "Administrar grupo", edit_group_path %>
+    <%= link_to "Crear actividad", controller: "activity", action: "new", group_id: @group.id %>
+<% end %>
