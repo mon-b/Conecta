@@ -2,6 +2,7 @@
 
 <%if user_signed_in? %>
     <p>Estás logueado como <%= current_user.email %></p>
+    <%= image_tag current_user.profile_picture.variant(:small) %>
     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
     <%= link_to "Crear grupo", new_group_path %>
     <%= link_to "Ver grupos", groups_path %>

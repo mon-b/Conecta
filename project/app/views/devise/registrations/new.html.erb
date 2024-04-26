@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :profile_picture, "Foto de perfil (opcional)" %><br />
+    <%= f.file_field :profile_picture %>
+  </div>
+
+  <div class="field">
     <%= f.label :birth_date, "Fecha de nacimiento" %><br />
     <%= f.date_field :birth_date %>
   </div>
