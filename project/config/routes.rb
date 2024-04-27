@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  #get 'request/index'
+  #get 'request/show'
+  #get 'request/new'
+  #get 'request/edit'
+  resources :request
   #get 'activity/index'
   #get 'activity/show'
   #get 'activity/new'
