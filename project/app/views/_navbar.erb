@@ -20,15 +20,20 @@
         <ul class="navbar-nav ml-auto justify-content-end mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Nombreusuario/imagen de perfil
+              <%= current_user.name %>
+              <% if current_user.profile_picture.attached? %>
+                <%= image_tag current_user.profile_picture.representation(resize_to_limit: [30, 30]), alt: "#{current_user.name}", style: "border-radius: 50%;"%>
+              <% else %>
+                  <%= image_tag "default_profile.png", size: "30x30", alt: "#{current_user.name}", style: "border-radius: 50%;" %>
+              <% end %>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mis solicitudes</a></li>
-              <li><a class="dropdown-item" href="#">Editar perfil</a></li>
+              <li><%= link_to "Mis solicitudes", request_index_path, class:"dropdown-item" %></li>
+              <li><%= link_to "Editar perfil", edit_user_registration_path, class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">Mis grupos</a></li>
               <li><a class="dropdown-item" href="#">Mis actividades</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><%= link_to "Cerrar sesión", destroy_user_session_path, class:"dropdown-item", method: :delete %></li>
             </ul>
           </li>
         </ul>
