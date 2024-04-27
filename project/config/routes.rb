@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #get 'request/index'
+  get 'request/index'
   #get 'request/show'
   #get 'request/new'
   #get 'request/edit'

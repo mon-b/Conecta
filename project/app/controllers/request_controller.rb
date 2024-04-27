@@ -1,5 +1,10 @@
 class RequestController < ApplicationController
   def index
+    if user_signed_in?
+      @requests = Request.where(user_id: current_user.id)
+    else
+      redirect_to '/users/sign_in'
+    end
   end
 
   def show
@@ -40,6 +45,12 @@ class RequestController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to '/request'
   end
 
   # Metodo para saber si desplegar o no boton de Solicitud
