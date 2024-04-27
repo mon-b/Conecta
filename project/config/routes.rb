@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   #get 'request/show'
   #get 'request/new'
   #get 'request/edit'
-  resources :request
+  resources :request, except: [:new, :create]
+  get 'groups/:group_id/new_request', to: 'request#new'
+  post 'request', to: 'request#new_request'
   #get 'activity/index'
   #get 'activity/show'
   #get 'activity/new'
