@@ -13,15 +13,17 @@ class ActivityController < ApplicationController
   end
 
   def new_activity
-    @activity = Activity.new(group_id: params[:group_id],
-                    name: params[:name],
-                    location: params[:location],
-                    date: params[:date],
-                    description: params[:description],
-                    picture: params[:picture],
-                    keywords: params[:keywords],
-                    cost: params[:cost],
-                    people: params[:people])
+    # @activity = Activity.new(group_id: params[:group_id],
+    #                 name: params[:name],
+    #                 pictures: params[:pictures],
+    #                 location: params[:location],
+    #                 date: params[:date],
+    #                 description: params[:description],
+    #                 picture: params[:picture],
+    #                 keywords: params[:keywords],
+    #                 cost: params[:cost],
+    #                 people: params[:people])
+    @activity = Activity.new(activity_params)
     if @activity.save
       redirect_to @activity
     else
@@ -30,11 +32,12 @@ class ActivityController < ApplicationController
     end
   end
 
-            
-  def activity_params
-    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost, :people)
-  end
+
 
   def edit
+  end
+  private
+  def activity_params
+    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost, :people , pictures: [])
   end
 end

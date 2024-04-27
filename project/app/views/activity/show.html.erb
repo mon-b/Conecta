@@ -5,6 +5,15 @@
 <h2>Grupo: <%= Group.find(@activity.group_id).name %><h2>
 <%#<h2>Categoría: <%= Activity.find(@activity.group_id.category_id).name %>
 <%#<h2>Creador: <%= User.find(Group.find(@activity.group_id).id).name %>
+
+<% if @activity.pictures.attached? %>
+    <% @activity.pictures.each do |picture| %>
+        <%= image_tag picture %>
+    <% end %>
+<% end %>
+    
+
+
 <h2>Descripción: <%= @activity.description %><h2>
 <h2>Fecha: <%= @activity.date %><h2>
 <h2>Ubicación: <%= @activity.location %><h2>

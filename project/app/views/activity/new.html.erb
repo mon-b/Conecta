@@ -15,7 +15,7 @@
     </ul>
   </div>
 <% end %>
-<%= form_with(model: @activity, local: true,  url: '/activity/') do |f| %>
+<%= form_with(model: @activity, local: true, scope: :activity,  url: '/activity/') do |f| %>
     <%# a %>
     <%# <%= f.select :group_id, current_user.groups.map { |g| [g.name, g.id] }, { include_blank: 'Seleccione un grupo' } %> <%# %>
     <!-- Por hacer: Tabla relacion entre Grupos y Users-->
@@ -28,12 +28,16 @@
       <%= f.text_field :name %>
     </div>
 
+
+    <%= f.file_field :pictures, multiple: true %>
+
+
     <div class="field">
       <%= f.label :name, "Keywords"%><br />
       <%= f.text_field :keywords %>
     </div>
 
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%# <%= f.hidden_field :user_id, value: current_user.id %>
     <%#= f.hidden_field :group_id, value: @activity.group_id%>
 
 
