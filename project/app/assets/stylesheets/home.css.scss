@@ -1,0 +1,122 @@
+body {
+    background: rgb(211, 242, 249);
+    background-repeat: repeat;
+    background-size: cover;
+    place-content: center;
+    
+}
+
+body.unsigned-view {
+    height: 90vh;
+    background: rgb(211, 242, 249);
+
+}
+
+.logo-and-brand {
+    font-size: 2.25rem;
+    
+}
+
+.unsigned-user {
+    text-align: center;
+}
+.full-width-form {
+    width: 100%;
+  }
+
+.custom-image {
+    width: 20vh; 
+    height: auto; 
+    min-width: 100px;
+
+}
+
+.description {
+    text-align: center;
+}
+
+.slogan {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+}
+
+.light-green-button {
+    background-color: #21be33; 
+}
+
+.sign-in-view {
+    text-align: left;
+
+}
+
+.login-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f2f2f2;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 0.7rem;
+    padding: 2%;
+    min-width: 300px;
+    min-height: 400px;
+    height: 80vh;
+    margin-top: 8vh;
+
+}
+
+.login-container .full-width-form{
+    margin-bottom: 2%;
+}
+
+.login-container h2{
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+}
+
+.login-container .actions{
+    margin-top: 8vh;
+}
+
+.no-account-text {
+    text-align: center;
+    margin-top: 2vh;    
+    margin-bottom: 10vh;
+}
+
+.extra-login .field a{
+    text-align: right;
+}
+
+
+.reg-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f2f2f2;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 0.7rem;
+    padding: 2%;
+    min-width: 300px;
+    min-height: 400px;
+    height: 80vh;
+    margin-top: 7vh;
+}
+
+.reg-container h2 {
+    text-align: center;
+}   
+
+.reg-container .full-width-form{
+    margin-bottom: 2%;
+}
+
+.already-have-account-text {
+    text-align: center;
+    margin-top: 2vh;    
+    margin-bottom: 3vh;
+}
+
+.reg-container .actions{
+    margin-top: 4vh;
+}

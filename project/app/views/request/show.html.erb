@@ -1,0 +1,5 @@
+
+<h1>Grupo: <%= Group.find(@request.group_id).name %><h1>
+<h2>Usuario: <%= User.find(@request.user_id).name %><h2>
+<h2>Descripción: <%= @request.description %><h2>
+<h2>Estado: <%= @request.status %><h2>

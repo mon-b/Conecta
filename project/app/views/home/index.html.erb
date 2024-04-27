@@ -1,19 +1,36 @@
-<h1>Bienvenido a DCColonizacion</h1>
-
 <%if user_signed_in? %>
-    <p>Estás logueado como <%= current_user.email %></p>
+    <p>Bienvenido <%= current_user.name %></p>
     <% if current_user.profile_picture.attached? %>
        <%= image_tag current_user.profile_picture.variant(:small) %>
     <% else %>
         <%= image_tag "default_profile.png", size: "100x100", alt: "Default Picture"%>
     <% end %>
     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
-    <%= link_to "Crear grupo", new_group_path %>
-    <%= link_to "Ver grupos", groups_path %>
-
-
 
 <% else %>
-    <%= link_to "Iniciar sesión", new_user_session_path %>
-    <%= link_to "Registrarse", new_user_registration_path %>
+    <body class="unsigned-view">
+        <div class="unsigned-user">
+
+            <div class="logo-and-brand">
+                <%= image_tag asset_path("logo.png"), alt: "Example Image", class: "custom-image" %>
+                CONECTA
+            </div>
+
+            <h1>Bienvenido a Conecta</h1>
+
+            <div class="description">
+                <div class="slogan">
+                    <i> Un lugar para todos.</i>
+                </div>
+                <p> 
+                    Únete a grupos con intereses similares y conecta con personas como tú.
+                    <br>
+                    ¡Descubre y participa de todas las actividades disponibles para ti! 
+                </p>
+            </div>
+
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %>
+            <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button" %>
+        </div>
+    </body>
 <% end %>
