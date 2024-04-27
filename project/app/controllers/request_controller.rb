@@ -20,15 +20,22 @@ class RequestController < ApplicationController
   end
 
   def new_request
-    @request = Request.new(group_id: params[:group_id],
-                    user_id: params[:user_id],
-                    status: params[:status],
-                    description: params[:description],)
-    if @request.save
-      redirect_to @request
+    exist = Request.find_by(group_id: params[:group_id], user_id: params[:user_id])
+    if exist
+      flash[:errors] = ['Ya tienes una solicitud pendiente para este grupo']
+      redirect_to '/new'
     else
-      flash[:errors] = @request.errors.full_messages
-      redirect_to '/new', locals: { request: @request }
+
+      @request = Request.new(group_id: params[:group_id],
+                      user_id: params[:user_id],
+                      status: params[:status],
+                      description: params[:description],)
+      if @request.save
+        redirect_to @request
+      else
+        flash[:errors] = @request.errors.full_messages
+        redirect_to '/new', locals: { request: @request }
+      end
     end
   end
 
