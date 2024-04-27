@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 16 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }
   validates :birth_date, presence: true
 
+  has_and_belongs_to_many :groups
+
 end

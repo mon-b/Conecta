@@ -18,6 +18,9 @@ module ProyectoGrupo64
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    # config.i18n.default_locale = :es
+    # I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+    config.time_zone = 'America/Santiago'
+    config.i18n.available_locales = :es
+    config.i18n.default_locale = :es
   end
 end
