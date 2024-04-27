@@ -1,14 +1,41 @@
-<%# <h1>Activity#show</h1>
-<p>Find me in app/views/activity/show.html.erb</p> %>
 
-<h1><%= @activity.name %><h1>
-<h2>Grupo: <%= Group.find(@activity.group_id).name %><h2>
-<%#<h2>Categoría: <%= Activity.find(@activity.group_id.category_id).name %>
-<%#<h2>Creador: <%= User.find(Group.find(@activity.group_id).id).name %>
-<h2>Descripción: <%= @activity.description %><h2>
-<h2>Fecha: <%= @activity.date %><h2>
-<h2>Ubicación: <%= @activity.location %><h2>
-<h2>Personas: <%= @activity.people %><h2>
-<h2>Costo: <%= @activity.cost %><h2>
-<h2>Keywords: <%= @activity.keywords %><h2>
+<div class="container">
+    <h1><%= @activity.name %></h1>
+    <h3>Grupo: <%= Group.find(@activity.group_id).name %></h3>
+
+    <%# https://stackoverflow.com/questions/4283443/exclude-first-or-last-in-rails-each %>
+    <% if @activity.pictures.attached? %>
+        <div id="carousel-activity-pictures" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" style="height: 400px;">
+                <% @activity.pictures.each_with_index do |picture, i| %>
+                    <% if i == 0 %>
+                    <div class="carousel-item active w-100 h-100">
+                    <% else %>
+                    <div class="carousel-item w-100 h-100">
+                    <% end %>
+                        <%= image_tag picture.variant(resize_to_limit: [300, 300]), size: "300x300", class:"d-block w-100 h-100", alt:"foto" %>
+                    </div>
+                <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-activity-pictures" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-activity-pictures" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    <% end %>
+        
+
+    <h3>Descripción: <%= @activity.description %></h3>
+    <h3>Fecha: <%= @activity.date %></h3>
+    <h3>Ubicación: <%= @activity.location %></h3>
+    <h3>Personas: <%= @activity.people %></h3>
+    <h3>Costo: <%= @activity.cost %></h3>
+    <h3>Keywords: <%= @activity.keywords %></h3>
+
+</div>
+
     
