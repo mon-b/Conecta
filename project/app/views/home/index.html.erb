@@ -1,5 +1,5 @@
 <%if user_signed_in? %>
-    <p>Estás logueado como <%= current_user.email %></p>
+    <p>Bienvenido <%= current_user.name %></p>
     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
 
 <% else %>
