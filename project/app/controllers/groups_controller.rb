@@ -2,6 +2,11 @@ class GroupsController < ApplicationController
   def index
   end
 
+  def my_groups
+    @groups = current_user.groups
+    render :my_groups
+  end
+
   def show
     @group = Group.find(params[:id])
   end
