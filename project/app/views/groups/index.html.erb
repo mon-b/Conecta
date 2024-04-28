@@ -1,5 +1,6 @@
 <div class="groups-index">
   <h2>Todos los grupos</h2>
+  <small>¿El grupo de tus sueños aún no existe? <%= link_to "¡Créalo tú mismo!", "/groups/new" %> </small>
 
   <div class="card-grid">
     <% @groups.each do |group| %>
