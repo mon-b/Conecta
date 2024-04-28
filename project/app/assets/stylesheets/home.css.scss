@@ -1,19 +1,6 @@
-body {
-    background: rgb(211, 242, 249);
-    background-repeat: repeat;
-    background-size: cover;
-    place-content: center;
-    
-}
-
-body.unsigned-view {
-    height: 90vh;
-    background: rgb(211, 242, 249);
-
-}
-
 .logo-and-brand {
     font-size: 2.25rem;
+    margin-top: 7vh;
     
 }
 
@@ -60,7 +47,6 @@ body.unsigned-view {
     padding: 2%;
     min-width: 300px;
     min-height: 400px;
-    height: 80vh;
     margin-top: 8vh;
 
 }
@@ -99,7 +85,6 @@ body.unsigned-view {
     padding: 2%;
     min-width: 300px;
     min-height: 600px;
-    height: 80vh;
     margin-top: 7vh;
 }
 
@@ -120,3 +105,14 @@ body.unsigned-view {
 .reg-container .actions{
     margin-top: 4vh;
 }
+
+.welcome {
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.welcome h2 {
+    margin-top: 2vh;
+}
+
+
