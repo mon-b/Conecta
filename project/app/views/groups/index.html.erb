@@ -1,9 +1,23 @@
 <div class="groups-index">
-  <h1>Grupos</h1>
+  <h2>Todos los grupos</h2>
 
-  <% @groups.each do |group| %>
-    <div class="group">
-      <h2><%= group.name %></h2>
-    </div>
-  <% end %>
+  <div class="card-grid">
+    <% @groups.each do |group| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= group.name %></h5>
+          <p class="card-text"><%= group.description %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary full-width-form" %>
+        </div>        
+
+      </div>
+    <% end %>
+  </div>
 </div>
+
+
+
+
+
