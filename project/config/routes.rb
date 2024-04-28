@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #get 'request/show'
   #get 'request/new'
   #get 'request/edit'
+  get 'groups/mine', to: 'groups#my_groups'
   resources :request, except: [:new, :create]
   get 'groups/:group_id/new_request', to: 'request#new'
   post 'request', to: 'request#new_request'
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
   post 'groups/new', to: 'groups#new_post'
   post 'activity/new', to: 'activity#new_activity'
   get 'groups/', to: 'groups#index'
-
   get 'home/index'
 
   devise_for :users

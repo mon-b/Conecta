@@ -151,17 +151,32 @@
 }
 
 .card-grid {
-    display: grid;
-    grid-template-columns: 32% 32% 32%;
+    display: flex;
     gap: 2%; 
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.card-grid .card {
+
+.card {
     margin-top: 2vh;
+    width: 32%;
 
 }
+
 
 .card-footer .btn{
     margin-top: 1vh;
     margin-bottom: 1vh;
+}
+
+.groups {
+    text-align: center;
+    margin-top: 3vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.half-width-form {
+    width: 49%;
 }
