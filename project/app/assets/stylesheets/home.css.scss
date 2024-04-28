@@ -141,3 +141,27 @@
     margin-left: 35%;
     margin-right: 35%;
 }
+
+
+.groups-index {
+    text-align: center;
+    margin-top: 3vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    gap: 2%; 
+}
+
+.card-grid .card {
+    margin-top: 2vh;
+
+}
+
+.card-footer .btn{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}

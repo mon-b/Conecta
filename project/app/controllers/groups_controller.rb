@@ -35,6 +35,13 @@ class GroupsController < ApplicationController
     end
   end
 
+
+
+  def index
+    @groups = Group.all
+    render :index
+  end
+
   def edit
     @group = Group.find(params[:id])
     render :edit
