@@ -27,7 +27,7 @@
                   <%= image_tag "default_profile.png", size: "30x30", alt: "#{current_user.name}", style: "border-radius: 50%;" %>
               <% end %>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu"  style="right: 0; left: auto;">
               <li><%= link_to "Mis solicitudes", request_index_path, class:"dropdown-item" %></li>
               <li><%= link_to "Editar perfil", edit_user_registration_path, class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">Mis grupos</a></li>
