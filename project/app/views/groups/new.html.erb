@@ -31,6 +31,10 @@
     <%= f.text_field :description %>
   </div>
 
+  <div class="field">
+    <%= f.label :profile_picture, "Foto del grupo (opcional)" %><br />
+    <%= f.file_field :profile_picture %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Crear grupo" %>
