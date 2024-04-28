@@ -1,13 +1,38 @@
-<h1>Request#index</h1>
 
-<p>Find me in app/views/request/index.html.erb</p>
+<div class="container mt-3">
+    <% flash.each do |name, messages| %>
+    <div class="alert alert-<%= name %>">
+        <ul>
+        <% if messages.is_a?(Array) %>
+        <% messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
 
-<% request_user = @requests.where(user_id: current_user.id)%>
-<% request_user.each do |request| %>
-    <h2>Grupo: <%= Group.find(request.group_id).name %></h2>
-    <h2>Usuario: <%= User.find(request.user_id).name %></h2>
-    <h2>Estado: <%= request.status %></h2>
-    <h2>Descripción: <%= request.description %></h2>
-    <%= button_to "Cancelar solicitud", request, method: :delete %>
-    <% end%>
 
+    <h1>Mis Solicitudes</h1>
+    <% request_user = @requests.where(user_id: current_user.id)%>
+    <% request_user.each do |request| %>
+        <h3>Grupo: <%= Group.find(request.group_id).name %></h3>
+        <h3>Usuario: <%= User.find(request.user_id).name %></h3>
+        <h3>Estado: <%= request.status %></h3>
+        <h3>Descripción: <%= request.description %></h3>
+        <%= button_to "Cancelar solicitud", request, method: :delete %>
+    <% end %>
+    </br>
+    <h1>Solicitudes de mis grupos</h1>
+    <% groups_user = Group.where(user_id: current_user.id).select("id") %>
+    <% requests_groups_user = Request.where(group_id: groups_user) %>
+    <% requests_groups_user.each do |request| %>
+        <h3>Grupo: <%= Group.find(request.group_id).name %></h3>
+        <h3>Usuario: <%= User.find(request.user_id).name %></h3>
+        <h3>Estado: <%= request.status %></h3>
+        <h3>Descripción: <%= request.description %></h3>
+        <%= button_to "Aceptar solicitud", request, method: :patch, params:{ status:"accepted"} %>
+        <%= button_to "Rechazar solicitud", request, method: :patch, params:{ status:"rejected"} %>
+        <%= button_to "Cancelar solicitud", request, method: :delete %>
+    <% end %>
+</div>
