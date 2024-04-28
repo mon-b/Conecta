@@ -1,38 +1,139 @@
 
-<div class="container mt-3">
+<div class="check-requests">
     <% flash.each do |name, messages| %>
-    <div class="alert alert-<%= name %>">
-        <ul>
-        <% if messages.is_a?(Array) %>
-        <% messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-        <% end %>
-        </ul>
-    </div>
+      <div class="alert alert"- <%= name %>>
+          <ul>
+          <% if messages.is_a?(Array) %>
+          <% messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+          <% end %>
+          </ul>
+      </div>
     <% end %>
+ 
 
-
-    <h1>Mis Solicitudes</h1>
+    <h2>Mis Solicitudes</h2>
+    <div class="card-grid">
     <% request_user = @requests.where(user_id: current_user.id)%>
-    <% request_user.each do |request| %>
-        <h3>Grupo: <%= Group.find(request.group_id).name %></h3>
-        <h3>Usuario: <%= User.find(request.user_id).name %></h3>
-        <h3>Estado: <%= request.status %></h3>
-        <h3>Descripción: <%= request.description %></h3>
-        <%= button_to "Cancelar solicitud", request, method: :delete %>
+    <% request_user.reverse_each do |request| %>
+      <% if request.status == "pending" %>
+          <div class="card">
+            <div class="card-body" style="background-color: #fcf3d7" >
+              <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+              <div class="request-card-items">
+                <b> Status: </b> pendiente<br>
+                <hr>
+                  <div align="center"><%= request.description %> </div>
+              </div>
+            </div>
+            <div class="card-footer" style="background-color: #fae8af">
+              <%= link_to "Ver grupo", "/groups/#{request.group_id}", class: "btn btn-primary special-width-form1" %>
+              <%= button_to "Cancelar solicitud", request, method: :delete, class: "btn btn-danger special-width-form2"  %>
+            </div>
+        
+          </div>
+
+      <% elsif request.status == "accepted" %>
+        <div class="card">
+          <div class="card-body" style="background-color: #d9fac0">
+            <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+            <div class="request-card-items">
+              <b> Status: </b>  aceptado <br>
+              <hr>
+                <div align="center"><%= request.description %> </div>
+            </div>
+          </div>
+          <div class="card-footer" style="background-color: #cae8b5">
+            <%= link_to "Ver grupo", "/groups/#{request.group_id}", class: "btn btn-primary full-width-form" %>
+          </div>
+  
+        </div>
+
+
+      <% elsif request.status == "rejected" %>
+        <div class="card">
+          <div class="card-body" style="background-color: #fad1cf">
+            <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+            <div class="request-card-items">
+              <b> Status: </b> rechazado<br>
+              <hr>
+              <div align="center"><%= request.description %> </div>
+            </div>
+          </div>
+          <div class="card-footer" style="background-color: #edaca8">
+            <%= link_to "Ver grupo", "/groups/#{request.group_id}", class: "btn btn-primary special-width-form3" %>
+            <%= link_to "Enviar otra solicitud", "/groups/#{request.group_id}/new_request" , class: "btn btn-secondary half-width-form4"%>
+          </div>
+    
+        </div>
+      <% end %>
     <% end %>
-    </br>
-    <h1>Solicitudes de mis grupos</h1>
+    </div>
+
+
+    <hr>
+    <h2>Solicitudes de mis grupos</h2>
+    <div class="card-grid">
     <% groups_user = Group.where(user_id: current_user.id).select("id") %>
     <% requests_groups_user = Request.where(group_id: groups_user) %>
-    <% requests_groups_user.each do |request| %>
-        <h3>Grupo: <%= Group.find(request.group_id).name %></h3>
-        <h3>Usuario: <%= User.find(request.user_id).name %></h3>
-        <h3>Estado: <%= request.status %></h3>
-        <h3>Descripción: <%= request.description %></h3>
-        <%= button_to "Aceptar solicitud", request, method: :patch, params:{ status:"accepted"} %>
-        <%= button_to "Rechazar solicitud", request, method: :patch, params:{ status:"rejected"} %>
-        <%= button_to "Cancelar solicitud", request, method: :delete %>
+    <% requests_groups_user.reverse_each do |request| %>
+      <% if request.status == "pending" %>
+          <div class="card">
+            <div class="card-body" style="background-color: #fcf3d7" >
+              <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+              <div class="request-card-items">
+                <b> Usuario: </b> <%= User.find(request.user_id).name %> <br>
+                <b> Estado: </b> pendiente<br>
+                <hr>
+                  <div align="center"><%= request.description %> </div>
+              </div>
+            </div>
+            <div class="card-footer" style="background-color: #fae8af">
+            <%= button_to "Aceptar", request, method: :patch, params:{ status:"accepted"}, class: "btn btn-success half-width-form" %>
+            <%= button_to "Rechazar", request, method: :patch, params:{ status:"rejected"}, class: "btn btn-danger half-width-form" %>
+            </div>
+        
+          </div>
+
+      <% elsif request.status == "accepted" %>
+        <div class="card">
+          <div class="card-body" style="background-color: #d9fac0">
+            <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+            <div class="request-card-items">
+              <b> Usuario: </b> <%= User.find(request.user_id).name %> <br>
+              <b> Estado: </b>  aceptado <br>
+              <hr>
+                <div align="center"><%= request.description %> </div>
+            </div>
+          </div>
+          <div class="card-footer" style="background-color: #cae8b5">
+            <%= link_to "Ver grupo", "/groups/#{request.group_id}", class: "btn btn-primary full-width-form" %>
+          </div>
+  
+        </div>
+
+
+      <% elsif request.status == "rejected" %>
+        <div class="card">
+          <div class="card-body" style="background-color: #fad1cf">
+            <h5 class="card-title"> <%= Group.find(request.group_id).name %></h5>
+            <div class="request-card-items">
+              <b> Usuario: </b> <%= User.find(request.user_id).name %> <br>
+              <b> Estado: </b> rechazado<br>
+
+              <hr>
+              <div align="center"><%= request.description %> </div>
+            </div>
+          </div>
+          <div class="card-footer" style="background-color: #edaca8">
+          <%= link_to "Ver grupo", "/groups/#{request.group_id}", class: "btn btn-primary full-width-form" %>
+          </div>
+    
+        </div>
+      <% end %>
     <% end %>
+    </div>
+
+
 </div>

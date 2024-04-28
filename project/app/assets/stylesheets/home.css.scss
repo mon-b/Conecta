@@ -151,6 +151,14 @@
 }
 
 
+.check-requests {
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 6vh;
+    margin-left: 15%;
+    margin-right: 15%; 
+}
+
 .card-grid {
     display: flex;
     gap: 2%; 
@@ -159,6 +167,14 @@
     margin-top: 4vh;
 }
 
+
+.pending-req {
+    display: flex;
+    gap: 2%; 
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4vh;
+}
 
 .card {
     margin-top: 2vh;
@@ -182,3 +198,34 @@
 .half-width-form {
     width: 49%;
 }
+
+
+.request-card-items {
+    text-align: left;
+    
+}
+
+.special-width-form2 {
+    width:55%;
+}
+
+.special-width-form1 {
+    width: 40%;
+}
+
+
+.special-width-form4 {
+    width: 56%;
+}
+
+.special-width-form3 {
+    width: 39%;
+}
+
+.button_to {
+    display: inline;
+  }
+  
+  .button_to div {
+    display: inline;
+  }
