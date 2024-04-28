@@ -12,4 +12,5 @@ class User < ApplicationRecord
     attachable.variant :small, resize_to_limit: [100, 100]
   end
 
+
 end
