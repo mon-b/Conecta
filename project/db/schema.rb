@@ -80,8 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_27_042014) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
+    t.bigint "user_id"
+    t.bigint "group_id"
     t.string "status"
     t.string "description"
     t.datetime "created_at", null: false

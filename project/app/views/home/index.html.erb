@@ -1,36 +1,39 @@
 <%if user_signed_in? %>
-    <p>Bienvenido <%= current_user.name %></p>
-    <% if current_user.profile_picture.attached? %>
-       <%= image_tag current_user.profile_picture.variant(:small) %>
-    <% else %>
-        <%= image_tag "default_profile.png", size: "100x100", alt: "Default Picture"%>
-    <% end %>
-    <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
 
+    <div class="welcome">
+        <% if current_user.profile_picture.attached? %>
+           <%= image_tag current_user.profile_picture.variant(:small) %>
+        <% else %>
+            <%= image_tag "default_profile.png", size: "100x100", alt: "Default Picture"%>
+        <% end %>
+        <h2>¡Bienvenido/a <%= current_user.name %>!</h2>
+        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> <br>
+        
+
+    </div>
+
+
+
+    
 <% else %>
-    <body class="unsigned-view">
-        <div class="unsigned-user">
-
-            <div class="logo-and-brand">
-                <%= image_tag asset_path("logo.png"), alt: "Example Image", class: "custom-image" %>
-                CONECTA
-            </div>
-
-            <h1>Bienvenido a Conecta</h1>
-
-            <div class="description">
-                <div class="slogan">
-                    <i> Un lugar para todos.</i>
-                </div>
-                <p> 
-                    Únete a grupos con intereses similares y conecta con personas como tú.
-                    <br>
-                    ¡Descubre y participa de todas las actividades disponibles para ti! 
-                </p>
-            </div>
-
-            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %>
-            <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button" %>
+    <div class="unsigned-user">
+        <div class="logo-and-brand">
+            <%= image_tag asset_path("logo.png"), alt: "Example Image", class: "custom-image" %>
+            CONECTA
         </div>
-    </body>
+        <h1>Bienvenido a Conecta</h1>
+        <div class="description">
+            <div class="slogan">
+                <i> Un lugar para todos.</i>
+            </div>
+            <p> 
+                Únete a grupos con intereses similares y conecta con personas como tú.
+                <br>
+                ¡Descubre y participa de todas las actividades disponibles para ti! 
+            </p>
+        </div>
+        <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button" %>
+    </div>
+
 <% end %>
