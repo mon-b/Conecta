@@ -1,0 +1,54 @@
+<div class="edit-user-data">
+  <h4>Editar información personal</h4>
+  
+  
+  <div class="edit-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "full-width-form" %>
+      </div>
+      <hr>
+    
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    
+      <div class="field">
+        <%= f.label :password %> nueva<br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "full-width-form" %>
+        <% if @minimum_password_length %>
+          <br />
+          <small>Mínimo <%= @minimum_password_length %> caracteres </small>
+        <% end %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "full-width-form" %>
+      </div>
+      <hr>
+      <div class="field">
+        <%= f.label :current_password %>. <br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "full-width-form" %>
+        <br> <small>Se requiere tu contraseña para efectuar cambios. </small>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Actualizar", class: "btn btn-primary full-width-form-marg" %>
+      </div>
+    <% end %>
+    <hr>
+  </div>
+  <h4>Eliminar cuenta</h4>
+    
+  <div class="cancel-account">
+    ¿Estás seguro? Esta acción no se puede deshacer.
+    <%= button_to "Eliminar mi cuenta", registration_path(resource_name),
+    form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger full-width-form-marg" %>
+  </div>
+    
+</div>

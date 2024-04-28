@@ -1,0 +1,24 @@
+<div class="groups-index">
+  <h2>Todos los grupos</h2>
+  <small>¿El grupo de tus sueños aún no existe? <%= link_to "¡Créalo tú mismo!", "/groups/new" %> </small>
+
+  <div class="card-grid">
+    <% @groups.each do |group| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= group.name %></h5>
+          <p class="card-text"><%= group.description %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary full-width-form" %>
+        </div>        
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+

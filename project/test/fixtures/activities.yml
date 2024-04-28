@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: one
+  name: MyString
+  location: MyString
+  date: 2024-04-22 14:01:18
+  description: MyString
+  picture: MyString
+  keywords: MyString
+  cost: 9.99
+  people: 1
+
+two:
+  group: two
+  name: MyString
+  location: MyString
+  date: 2024-04-22 14:01:18
+  description: MyString
+  picture: MyString
+  keywords: MyString
+  cost: 9.99
+  people: 1

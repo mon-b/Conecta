@@ -1,0 +1,18 @@
+<h1><%= @group.name %></h1>
+<% if @group.profile_picture.attached? %>
+    <%= image_tag @group.profile_picture.variant(:small) %>
+<% else %>
+    <%= image_tag "default_group.png", size: "100x100", alt: "Default Picture"%>
+<% end %>
+<h2>Categoría: <%= Category.find(@group.category_id).name %></h2>
+<h2>Creador: <%= User.find(@group.user_id).name %></h2>
+<h2>Descripción: <%= @group.description %></h2>
+<h2>Rating: <%= @group.rating %></h2>
+<% if is_group_admin %>
+    <h2>Opciones de administrador de grupo</h2>
+    <%= link_to "Administrar grupo", edit_group_path %>
+    <%= link_to "Crear actividad", controller: "activity", action: "new", group_id: @group.id %>
+<% else %>
+    <h2>Solicitar Unirse</h2>
+    <%= link_to "Unirse al grupo", controller: "request", action: "new", group_id: @group.id %>
+<% end %>

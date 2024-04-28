@@ -1,0 +1,52 @@
+<body class="unsigned-view">
+  <div class="reg-container">
+    <h2>Registro</h2>
+    <div class="already-have-account-text">
+          ¿Ya tienes una cuenta? <%= link_to "Iniciar sesión", new_user_session_path %>
+    </div>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "full-width-form" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :name, "Nombre de usuario" %><br />
+        <%= f.text_field :name,  class: "full-width-form"%>
+      </div>
+    
+       <div class="field">
+        <%= f.label :profile_picture, "Foto de perfil (opcional)" %><br />
+        <%= f.file_field :profile_picture, class: "full-width-form" %>
+       </div>
+    
+      <div class="field">
+        <%= f.label :birth_date, "Fecha de nacimiento" %><br />
+        <%= f.date_field :birth_date, class: "full-width-form" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :password, "Contraseña" %>
+        <br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "full-width-form" %>
+      </div>
+      <% if @minimum_password_length %>
+            <small class="text-muted">
+                Debe tener un máximo de <%= @minimum_password_length %> caracteres.
+            </small>
+        <% end %>
+    
+      <div class="field">
+        <%= f.label :password_confirmation,"Confirmar Contraseña" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "full-width-form" %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Crear cuenta", class: "btn btn-primary full-width-form" %>
+      </div>
+    <% end %>
+  </div>
+
+</body>

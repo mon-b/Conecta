@@ -1,0 +1,231 @@
+.logo-and-brand {
+    font-size: 2.25rem;
+    margin-top: 7vh;
+    
+}
+
+.unsigned-user {
+    text-align: center;
+}
+.full-width-form {
+    width: 100%;
+  }
+
+.full-width-form-marg {
+    width: 100%;
+    margin-top: 3vh;
+}
+
+.custom-image {
+    width: 20vh; 
+    height: auto; 
+    min-width: 100px;
+
+}
+
+.description {
+    text-align: center;
+}
+
+.slogan {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+}
+
+.light-green-button {
+    background-color: #21be33; 
+}
+
+.sign-in-view {
+    text-align: left;
+
+}
+
+.login-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f2f2f2;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 0.7rem;
+    padding: 2%;
+    min-width: 300px;
+    min-height: 400px;
+    margin-top: 8vh;
+
+}
+
+.login-container .full-width-form{
+    margin-bottom: 2%;
+}
+
+.login-container h2{
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+}
+
+.login-container .actions{
+    margin-top: 8vh;
+}
+
+.no-account-text {
+    text-align: center;
+    margin-top: 2vh;    
+    margin-bottom: 10vh;
+}
+
+.extra-login .field a{
+    text-align: right;
+}
+
+
+.reg-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f2f2f2;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 0.7rem;
+    padding: 2%;
+    min-width: 300px;
+    min-height: 600px;
+    margin-top: 7vh;
+}
+
+.reg-container h2 {
+    text-align: center;
+}   
+
+.reg-container .full-width-form{
+    margin-bottom: 2%;
+}
+
+.already-have-account-text {
+    text-align: center;
+    margin-top: 2vh;    
+    margin-bottom: 3vh;
+}
+
+.reg-container .actions{
+    margin-top: 4vh;
+}
+
+.welcome {
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.welcome h2 {
+    margin-top: 2vh;
+}
+
+
+.edit-user-data {
+    text-align: center;
+    margin-top: 2vh
+}
+
+.edit-user-data h4 {
+    margin-bottom: 2vh;
+}
+
+.edit-body {
+    text-align: left;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.cancel-account {
+    text-align: left;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+
+.groups-index {
+    text-align: center;
+    margin-top: 3vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+
+.check-requests {
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 6vh;
+    margin-left: 15%;
+    margin-right: 15%; 
+}
+
+.card-grid {
+    display: flex;
+    gap: 2%; 
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4vh;
+}
+
+
+.pending-req {
+    display: flex;
+    gap: 2%; 
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4vh;
+}
+
+.card {
+    margin-top: 2vh;
+    width: 32%;
+
+}
+
+
+.card-footer .btn{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.groups {
+    text-align: center;
+    margin-top: 3vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.half-width-form {
+    width: 49%;
+}
+
+
+.request-card-items {
+    text-align: left;
+    
+}
+
+.special-width-form2 {
+    width:55%;
+}
+
+.special-width-form1 {
+    width: 40%;
+}
+
+
+.special-width-form4 {
+    width: 56%;
+}
+
+.special-width-form3 {
+    width: 39%;
+}
+
+.button_to {
+    display: inline;
+  }
+  
+  .button_to div {
+    display: inline;
+  }
