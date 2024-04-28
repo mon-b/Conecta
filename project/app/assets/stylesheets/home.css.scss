@@ -226,6 +226,12 @@
     display: inline;
   }
   
-  .button_to div {
+.button_to div {
     display: inline;
   }
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
