@@ -5,6 +5,11 @@
   <div class="card-grid">
     <% @groups.each do |group| %>
       <div class="card">
+      <% if group.profile_picture.attached? %>
+        <%= image_tag group.profile_picture, class: "card-img-top" %>
+      <% else %>
+        <%= image_tag "default_group.png", size: "100x100", alt: "Default Picture",  class: "card-img-top"%>
+      <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= group.name %></h5>
           <p class="card-text"><%= group.description %></p>
