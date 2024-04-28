@@ -7,4 +7,7 @@ class Group < ApplicationRecord
   validates :category_id, presence: true
   validates :user_id, presence: true
   validates :description, presence: true, allow_blank: false
+  has_one_attached :profile_picture do |attachable|
+    attachable.variant :small, resize_to_limit: [100, 100]
+  end
 end

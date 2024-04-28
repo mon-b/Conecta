@@ -31,6 +31,11 @@ class GroupsController < ApplicationController
                    name: params[:name],
                    user_id: params[:user_id],
                    description: params[:description])
+
+    if params[:profile_picture].present?
+      @group.profile_picture.attach(params[:profile_picture])
+    end
+
     if @group.save
       @group.users << current_user
       redirect_to @group
