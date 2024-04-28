@@ -1,2 +1,26 @@
-<h1>Activity#index</h1>
-<p>Find me in app/views/activity/index.html.erb</p>
+
+
+  <div class="groups-index">
+    <h2>Todas las actividades</h2>
+    <small>¿Quieres crear una actividad? ¡Puedes crearla en tus grupos! <%= link_to "¡Crea una nueva!", "/groups/mine" %> </small>
+  </div>
+
+  <div class="card-grid">
+    <% activities = Activity.all %> 
+    <% activities.each do |activity| %> 
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= activity.name %></h5>
+          <p class="card-text">Grupo: <%= activity.group.name %> <br>
+            Descripción: <%= activity.description %> <br>
+            Fecha: <%= activity.date %> <br> 
+        </div>
+        <div class="card-footer">
+          <%= link_to "Ver actividad", "/activity/#{activity.id}", class: "btn btn-primary half-width-form" %>
+          <%= link_to "Ver grupo", "/groups/#{activity.group.id}", class: "btn btn-secondary half-width-form" %>
+        </div>        
+
+      </div>
+    <% end %>
+  </div>
+</div>
