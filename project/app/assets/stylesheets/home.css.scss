@@ -11,6 +11,11 @@
     width: 100%;
   }
 
+.full-width-form-marg {
+    width: 100%;
+    margin-top: 3vh;
+}
+
 .custom-image {
     width: 20vh; 
     height: auto; 
@@ -116,3 +121,23 @@
 }
 
 
+.edit-user-data {
+    text-align: center;
+    margin-top: 2vh
+}
+
+.edit-user-data h4 {
+    margin-bottom: 2vh;
+}
+
+.edit-body {
+    text-align: left;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.cancel-account {
+    text-align: left;
+    margin-left: 35%;
+    margin-right: 35%;
+}
