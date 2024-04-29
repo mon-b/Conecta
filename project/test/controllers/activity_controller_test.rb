@@ -1,7 +1,9 @@
 require "test_helper"
 
 class ActivityControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers # <-- Include helpers
   test "should get index" do
+    sign_in users(:esteban12)
     get activity_index_url
     assert_response :success
   end
