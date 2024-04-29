@@ -1,6 +1,4 @@
 class GroupsController < ApplicationController
-  def index
-  end
 
   def my_groups
     @groups = current_user.groups
@@ -69,9 +67,7 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:category_id, :name, :description, :user_id)
   end
-  # def group_params
-  #   params.require(:group).permit(:category_id, :name, :user_id, :description)
-  # end
+
   def is_group_admin
     if current_user.id == @group.user_id
       return true
