@@ -57,4 +57,4 @@ jobs:
           ruby-version: 3.1.0
       # Add or replace any other lints here
       - name: Lint Ruby files
-        run: cd ./project && rubocop --parallel
+        run: cd ./project && bundle exec rubocop --parallel
