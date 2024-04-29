@@ -1,23 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  group: one
-  name: MyString
-  location: MyString
-  date: 2024-04-22 14:01:18
-  description: MyString
-  picture: MyString
-  keywords: MyString
+one_activity:
+  group_id: 1
+  name: Programar en Rails
+  location: Santiago
+  date: 2025-04-22 14:01:18
+  description: Lorem ipsum
+  keywords: aaaaaa
   cost: 9.99
   people: 1
 
-two:
-  group: two
-  name: MyString
-  location: MyString
+two_activity:
+  group_id: 2
+  name: Ver anime
+  location: Ovalle
   date: 2024-04-22 14:01:18
-  description: MyString
-  picture: MyString
-  keywords: MyString
+  description: Lorem ipsum et
+  keywords: bbbbbb
   cost: 9.99
   people: 1
