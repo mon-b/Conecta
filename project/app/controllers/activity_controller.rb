@@ -38,6 +38,7 @@ class ActivityController < ApplicationController
   end
   private
   def activity_params
-    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost, :people , pictures: [])
+    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost, 
+                                     :people , pictures: [])
   end
 end

@@ -20,17 +20,15 @@ class GroupsController < ApplicationController
     # else
     #   redirect_to '/users/sign_in'
     # end
-
-
   end
 
 
   def new_post
     # def create
     @group = Group.new(category_id: params[:category_id],
-                   name: params[:name],
-                   user_id: params[:user_id],
-                   description: params[:description])
+                       name: params[:name],
+                       user_id: params[:user_id],
+                       description: params[:description])
 
     if params[:profile_picture].present?
       @group.profile_picture.attach(params[:profile_picture])

@@ -45,9 +45,9 @@ class RequestController < ApplicationController
     else
 
       @request = Request.new(group_id: params[:group_id],
-                      user_id: params[:user_id],
-                      status: params[:status],
-                      description: params[:description],)
+                             user_id: params[:user_id],
+                             status: params[:status],
+                             description: params[:description],)
       if @request.save
         redirect_to @request
       else
@@ -60,7 +60,7 @@ class RequestController < ApplicationController
 
   def update
   # Esta ruta permite aceptar una request
-  @request = Request.find(params[:id])
+    @request = Request.find(params[:id])
   @group = @request.group
   if current_user.id != @group.user_id
     head :forbidden
