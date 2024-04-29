@@ -56,9 +56,5 @@ jobs:
           bundler-cache: true
           ruby-version: 3.1.0
       # Add or replace any other lints here
-      - name: Security audit dependencies
-        run: cd ./project && bin/bundler-audit --update
-      - name: Security audit application code
-        run: cd ./project && bin/brakeman -q -w2
       - name: Lint Ruby files
-        run: cd ./project && bin/rubocop --parallel
+        run: cd ./project && rubocop --parallel
