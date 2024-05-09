@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: one
-  user: one
-  name: MyString
-  rating: 9.99
-  description: MyString
+animalesaaa:
+  category: animales
+  id: 1
+  name: Grupo Animalesaaa
+  rating: 5.0
+  description: Grupo 1
 
-two:
-  category: two
-  user: two
-  name: MyString
-  rating: 9.99
-  description: MyString
+otakusaaa:
+  category: otakus
+  id: 2
+  name: Grupo Otakusaaa
+  rating: 3.95
+  description: Grupo 2

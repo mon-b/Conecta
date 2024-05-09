@@ -30,6 +30,5 @@ otros.save!
 grupo_1 = Group.new(category_id: 6, user_id: 1, name: "Grupootaku7", rating: 4.5, description: "Un grupo de ejemplo.")
 grupo_1.save!
 
-actividad_1 = Activity.new(group_id: 1, name: "Actividaddeejemplo", description: "Una actividad de ejemplo.", location: "Calle de ejemplo", date: "2024-04-22 18:01:18.000000000 +0000", picture: "https://www.google.com", keywords: "ejemplo", cost: 1.0, people: 1)
+actividad_1 = Activity.new(group_id: 1, name: "Actividaddeejemplo", description: "Una actividad de ejemplo.", location: "Calle de ejemplo", date: "2024-04-22 18:01:18.000000000 +0000", keywords: "ejemplo", cost: 1.0, people: 1)
 actividad_1.save!
-

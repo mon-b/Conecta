@@ -1,6 +1,4 @@
 class GroupsController < ApplicationController
-  def index
-  end
 
   def my_groups
     @groups = current_user.groups
@@ -20,17 +18,15 @@ class GroupsController < ApplicationController
     # else
     #   redirect_to '/users/sign_in'
     # end
-
-
   end
 
 
   def new_post
     # def create
     @group = Group.new(category_id: params[:category_id],
-                   name: params[:name],
-                   user_id: params[:user_id],
-                   description: params[:description])
+                       name: params[:name],
+                       user_id: params[:user_id],
+                       description: params[:description])
 
     if params[:profile_picture].present?
       @group.profile_picture.attach(params[:profile_picture])
@@ -71,9 +67,7 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:category_id, :name, :description, :user_id)
   end
-  # def group_params
-  #   params.require(:group).permit(:category_id, :name, :user_id, :description)
-  # end
+
   def is_group_admin
     if current_user.id == @group.user_id
       return true

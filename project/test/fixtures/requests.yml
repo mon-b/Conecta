@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  group: one
-  status: MyString
-  description: MyString
+one_request:
+  user_id: 1
+  group_id: 1
+  status: accepted
+  description: Quiero unirme por...
 
-two:
-  user: two
-  group: two
-  status: MyString
-  description: MyString
+two_request:
+  user_id: 2
+  group_id: 2
+  status: rejected
+  description: Quiero unirme por2...

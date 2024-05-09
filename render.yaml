@@ -9,6 +9,7 @@ services:
     name: proyecto-grupo-64
     runtime: ruby
     plan: free
+    rootDir: project
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
