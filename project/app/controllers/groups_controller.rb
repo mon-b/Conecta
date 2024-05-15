@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def my_groups
     @groups = current_user.groups
     render :my_groups
@@ -10,14 +12,6 @@ class GroupsController < ApplicationController
   end
 
   def new
-    if !user_signed_in?
-      redirect_to '/users/sign_in'
-    end
-    # if user_signed_in?
-    #   @group = Group.new
-    # else
-    #   redirect_to '/users/sign_in'
-    # end
   end
 
 
