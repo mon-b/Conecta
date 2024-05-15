@@ -3,6 +3,7 @@
 animalesaaa:
   category: animales
   id: 1
+  user_id: 1
   name: Grupo Animalesaaa
   rating: 5.0
   description: Grupo 1
@@ -10,6 +11,7 @@ animalesaaa:
 otakusaaa:
   category: otakus
   id: 2
+  user_id: 1
   name: Grupo Otakusaaa
   rating: 3.95
   description: Grupo 2
