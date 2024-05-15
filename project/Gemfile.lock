@@ -106,7 +106,6 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
-    docile (1.4.0)
     erubi (1.12.0)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
@@ -280,12 +279,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simplecov (0.22.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.12.3)
-    simplecov_json_formatter (0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -345,7 +338,6 @@ DEPENDENCIES
   sass-rails
   sassc-rails
   selenium-webdriver
-  simplecov
   sprockets-rails
   stimulus-rails
   turbo-rails
