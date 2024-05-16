@@ -1,27 +1,20 @@
 class RequestController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
-    if user_signed_in?
-      @requests = Request.where(user_id: current_user.id)
-    else
-      redirect_to '/users/sign_in'
-    end
+    @requests = Request.where(user_id: current_user.id)
   end
 
   def show
-    if user_signed_in?
-      @request = Request.find(params[:id])
-      if (current_user.id != @request.user_id) && (current_user.id != Group.find(@request.group_id).user_id)
-        render html: helpers.tag.h1('No autorizado'), status: :forbidden
-      end
-    else
-      redirect_to '/users/sign_in'
+    @request = Request.find(params[:id])
+    if (current_user.id != @request.user_id) && (current_user.id != Group.find(@request.group_id).user_id)
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
     end
   end
 
   def new
-    if !user_signed_in?
-      redirect_to '/users/sign_in'
-    end
+    # new request view
   end
 
   def new_request
