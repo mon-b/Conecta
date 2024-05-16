@@ -2,23 +2,13 @@ require "test_helper"
 
 class RequestControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers # <-- Include helpers
-  # test "should get index" do
-  #   get request_index_url
-  #   assert_response :success
-  # end
 
-  # test "should get show" do
-  #   get request_show_url
-  #   assert_response :success
-  # end
+  test "should get user requests index" do
+    sign_in users(:esteban12)
+    get '/request'
+    assert_response :success
+    assert_select 'h2', 'Mis Solicitudes'
+    assert_select 'div', 'request_esteban12' # fixture user_two_request_1
+  end
 
-  # # test "should get new" do
-  # #   get request_new_url
-  # #   assert_response :success
-  # # end
-
-  # test "should get edit" do
-  #   get request_edit_url
-  #   assert_response :success
-  # end
 end
