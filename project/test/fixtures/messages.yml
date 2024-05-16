@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyString
+  user: one
+  group: one
+  time: 2024-05-16 12:39:45
+
+two:
+  content: MyString
+  user: two
+  group: two
+  time: 2024-05-16 12:39:45
