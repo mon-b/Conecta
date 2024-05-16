@@ -90,3 +90,10 @@ gem 'devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'cloudinary'
+
+
+# Gem for AWS
+gem "aws-sdk-s3", require: false
+
+# Gem for image validations
+gem "active_storage_validations"
