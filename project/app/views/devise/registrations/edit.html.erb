@@ -16,6 +16,16 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
     
+       <div class="field">
+        <%= f.label :profile_picture, "Foto de perfil (opcional)" %><br />
+        <%= f.file_field :profile_picture, class: "full-width-form" %>
+       </div>
+
+       <div class="field">
+        <%= f.label :description, "Biografia (opcional)" %><br />
+        <%= f.text_area :description, class: "full-width-form", size: "70x5" %>
+       </div>
+      <hr>
       <div class="field">
         <%= f.label :password %> nueva<br />
         <%= f.password_field :password, autocomplete: "new-password", class: "full-width-form" %>
@@ -38,8 +48,12 @@
 
 
       <div class="actions">
-        <%= f.submit "Actualizar", class: "btn btn-primary full-width-form-marg" %>
+        <%= f.submit "Actualizar", class: "btn btn-primary full-width-form-marg", notice: "Se actualizo el perfil de usuario" %>
       </div>
+      <div class="btn btn-danger full-width-form-marg">
+        <%= link_to "Cancelar", home_index_path, class: "btn btn-danger" %>
+      </div>
+
     <% end %>
     <hr>
   </div>

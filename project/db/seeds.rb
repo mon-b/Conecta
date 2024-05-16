@@ -10,6 +10,9 @@
 a = User.new(name: "Esteban11", email: "esteban@hacker.com", password: "uwu232", password_confirmation: "uwu232", birth_date: "2006-11-16 00:00:00.000000000 +0000")
 a.save!
 
+admin_test = User.new(name: "Admin", email: "admin@supersafedomain.io", password: "safety", password_confirmation: "safety", birth_date: "2006-11-16 00:00:00.000000000 +0000", superuser: true)
+admin_test.save!
+
 deportes = Category.new(name: "Deportes")
 musica = Category.new(name: "Musica")
 libros = Category.new(name: "Libros")
