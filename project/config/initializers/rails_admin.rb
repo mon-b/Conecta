@@ -3,9 +3,9 @@ RailsAdmin.config do |config|
   
   config.authenticate_with do |controller|
     if current_user.nil?
-        redirect_to main_app.new_user_session_path, flash: {error: "You must be logged in to access this page."}
+      redirect_to main_app.new_user_session_path, flash: {error: "You must be logged in to access this page."}
     elsif !current_user.superuser
-        redirect_to main_app.root_path, flash: {error: "You are not authorized to access this page."}
+      redirect_to main_app.root_path, flash: {error: "You are not authorized to access this page."}
     end
   end
   ### Popular gems integration
