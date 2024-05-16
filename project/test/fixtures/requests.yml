@@ -21,5 +21,5 @@ user_two_request_1:
 user_two_request_2:
   user_id: 2
   group_id: 2
-  status: rejected
+  status: pending
   description: Quiero unirme por2...
