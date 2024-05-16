@@ -95,14 +95,4 @@ class RequestController < ApplicationController
       # head :bad_request
     end
   end
-
-  # Metodo para saber si desplegar o no boton de Solicitud
-  def is_group_admin
-    if current_user.id == @group.user_id
-      return true
-    else
-      return false
-    end
-  end
-  helper_method :is_group_admin
 end
