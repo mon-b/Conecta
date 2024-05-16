@@ -16,6 +16,11 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
     
+       <div class="field">
+        <%= f.label :profile_picture, "Foto de perfil (opcional)" %><br />
+        <%= f.file_field :profile_picture, class: "full-width-form" %>
+       </div>
+
       <div class="field">
         <%= f.label :password %> nueva<br />
         <%= f.password_field :password, autocomplete: "new-password", class: "full-width-form" %>
