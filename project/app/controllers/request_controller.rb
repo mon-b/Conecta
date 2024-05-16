@@ -87,13 +87,17 @@ class RequestController < ApplicationController
   def destroy
     # The user can destroy his own requests, if the admin destroys it then it is rejected!
     @request = Request.find(params[:id])
+
+    if @request.user_id != current_user.id
+      head :forbidden
+      return
+    end
     if @request.status == "pending"
       @request.destroy
       head :ok
     else
       flash[:warning] = ['No puedes destruir una request aceptada/denegada']
       redirect_to request_index_path
-      # head :bad_request
     end
   end
 end
