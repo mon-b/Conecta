@@ -22,7 +22,7 @@ body {
 }
 .full-width-form-marg2 {
     width: 98%;
-    margin-top: 5vh;
+    margin-top: 3vh;
 
 
 }
@@ -262,6 +262,10 @@ body {
 .new-groups h1 {
     margin: 8vh;
 }
+
+.new-groups h2 {
+    margin: 4vh;
+}
 .new-groups .fields {
     text-align: left;
     vertical-align: center;
@@ -288,4 +292,16 @@ body {
 
     margin-top: auto;
 
+}
+
+.group-profile h3 {
+    margin-top: 2.5vh;
+}
+.group-profile p {
+    text-align: justify;
+}
+
+.container-profile-cols {
+    display: flex;
+    margin: 1.5%;
 }

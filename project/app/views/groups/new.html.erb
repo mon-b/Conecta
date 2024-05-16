@@ -1,6 +1,6 @@
 
 <div class="new-groups">
-  <h1>Crear grupo</h1>
+  <h2>Crear grupo</h2>
 
   
   
@@ -24,7 +24,7 @@
       <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' }, {class: "special-width-form5"} %>
     </div>
     
-      <div class="group-form">
+    <div class="group-form">
       <div class="field">
         <%= f.label :name, "Nombre", class: "special-width-form6" %>
         <%= f.text_field :name, class: "special-width-form5", placeholder: " Ingresa el nombre de tu grupo" %>
