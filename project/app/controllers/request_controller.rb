@@ -85,6 +85,7 @@ class RequestController < ApplicationController
   end
 
   def destroy
+    # The user can destroy his own requests, if the admin destroys it then it is rejected!
     @request = Request.find(params[:id])
     if @request.status == "pending"
       @request.destroy
