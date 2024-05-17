@@ -40,15 +40,27 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", {count: 0, text: "Opciones de administrador de grupo"}, "Should not have admin options"
   end
 
-  # test "should get new" do
-  #   sign_in users(:esteban12)
-  #   get groups_new_url
-  #   assert_response :success
-  # end
-
-  # test "should get edit" do
-  #   sign_in users(:esteban12)
-  #   get groups_edit_url
-  #   assert_response :success
-  # end
+  test "should get my groups" do
+    sign_in users(:esteban12)
+    get groups_mine_url
+    assert_response :success
+    assert_select 'h2', 'Grupos creados por mí'
+    assert_select 'h2', 'Grupos a los que pertenezco'
+  end
+  test "should show the groups i created" do
+    sign_in users(:esteban11)
+    get groups_mine_url
+    assert_response :success
+    assert_select 'h2', 'Grupos creados por mí'
+    assert_select 'h2', 'Grupos a los que pertenezco'
+    assert_select 'h5', 'Grupo Animalesaaa'
+  end
+  test "should show the groups i belong to" do
+    sign_in users(:esteban11)
+    get groups_mine_url
+    assert_response :success
+    assert_select 'h2', 'Grupos creados por mí'
+    assert_select 'h2', 'Grupos a los que pertenezco'
+    assert_select 'h5', 'Grupo Otakusaaa'
+  end
 end
