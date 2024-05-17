@@ -35,18 +35,17 @@ class RequestController < ApplicationController
     if exist
       flash[:danger] = ['Ya tienes una solicitud pendiente para este grupo']
       redirect_to '/new'
+      return
+    end
+    @request = Request.new(group_id: params[:group_id],
+                           user_id: params[:user_id],
+                           status: params[:status],
+                           description: params[:description],)
+    if @request.save
+      redirect_to @request
     else
-
-      @request = Request.new(group_id: params[:group_id],
-                             user_id: params[:user_id],
-                             status: params[:status],
-                             description: params[:description],)
-      if @request.save
-        redirect_to @request
-      else
-        flash[:errors] = @request.errors.full_messages
-        redirect_to '/new', locals: { request: @request }
-      end
+      flash[:errors] = @request.errors.full_messages
+      redirect_to '/new', locals: { request: @request }
     end
   end
 
