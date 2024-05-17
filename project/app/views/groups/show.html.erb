@@ -47,17 +47,20 @@
               <%= button_tag "Crear actividad", class: "btn btn-primary btn-sm" %>
             <% end %>
           <% end %>
-        </div>
 
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-            The current link item
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-          <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-          <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
         </div>
+        <% if @activities.any? %>
+          <% @activities.each do |activity| %>
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action">
+                <%= activity.name  %> - <%= activity.date.strftime("%d/%m/%y %H:%M") %>
+                <small class="text-muted"> Hace <%= time_ago_in_words(activity.created_at) %> </small>
+              </a>
+            </div>
+          <% end %>
+
+        <% end %>
+
       </div>
     </div>
   </div>
