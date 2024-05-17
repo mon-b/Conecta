@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:category_id, :name, :description, :user_id)
+    params.require(:group).permit(:category_id, :user_id, :name, :rating, :description)
   end
 
   def is_group_admin
