@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @activities = @group.activities.order(date: :desc).limit(6)
+    @activities = @group.activities.order(date: :desc).limit(4)
   end
 
   def new
