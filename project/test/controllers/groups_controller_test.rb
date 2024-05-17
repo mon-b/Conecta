@@ -94,5 +94,26 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h5', 'Grupo Otakusaaa'
   end
 
+  # tests related to edit
+  test "should update group for a group that i created" do
+    sign_in users(:esteban11)
+    group = groups(:animalesaaa)
+
+    patch group_url(group), params: { group: { name: "updatedname" } }
+
+    assert_redirected_to group_path(group)
+    # Reload association to fetch updated data and assert that title is updated.
+    group.reload
+    assert_equal "updatedname", group.name
+  end
+
+  test "should not update group for a group that i did not create" do
+    sign_in users(:esteban11)
+    group = groups(:animalesaaa)
+
+    patch group_url(group), params: { group: { name: "updatedname" } }
+    assert_response :forbidden
+  end
+
 
 end
