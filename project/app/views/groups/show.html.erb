@@ -11,6 +11,11 @@
           <h4 class="flex-grow-1">
             <%= @group.name %>
           </h4>
+          <% if is_group_admin %>
+            <%= form_with(url: { controller: "groups", action: "edit", group_id: @group.id }, method: :get, class: "d-inline") do %>
+              <%= button_tag "Editar grupo", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
           
 
         </div>
@@ -62,7 +67,8 @@
               </a>
             </div>
           <% end %>
-
+        <% else %>
+          Aún no hay actividades para mostrar
         <% end %>
 
       </div>
