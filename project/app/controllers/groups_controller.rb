@@ -53,6 +53,10 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
+    if !is_group_admin
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
 
     if @group.update(group_params)
       redirect_to @group
