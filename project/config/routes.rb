@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'request/index'
   #get 'request/show'
