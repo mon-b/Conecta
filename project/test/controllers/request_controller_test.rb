@@ -12,13 +12,15 @@ class RequestControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should get request destroy if user owns the request and request is pending" do
+  test "should destroy request if user owns the request and request is pending" do
     sign_in users(:esteban12)
-    delete request_path(requests(:user_two_request_2))
+    assert_difference("Request.count", -1) do
+      delete request_path(requests(:user_two_request_2))
+    end
     assert_response :ok
   end
 
-  test "should not destroy destroy if user owns the request and request is not pending" do
+  test "should not destroy if user owns the request and request is not pending" do
     sign_in users(:esteban12)
     delete request_path(requests(:user_two_request_1))
     assert_redirected_to request_index_path
