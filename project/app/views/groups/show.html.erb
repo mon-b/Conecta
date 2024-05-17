@@ -1,5 +1,5 @@
 <div class="container-profile-cols">
-  <div class="card" style="width: 45rem;">
+  <div class="card" style="width: 60%;">
     <div class="group-profile">
       <div class="card-body">
         <% if @group.profile_picture.attached? %>
@@ -26,34 +26,44 @@
     </div>
   </div>
 
-  <div class="card" style="width: 35rem;">
+
+  <div class="card" style="width: 45%;">
     <div class="group-reviews">
       <div class="card-body">
+        <!--
         <% if @group.profile_picture.attached? %>
           <%= image_tag @group.profile_picture, class: "card-img-top", style: "height: 30vh;"%>
         <% else %>
           <%= image_tag "default_group.png", alt: "Default Picture",  class: "card-img-top", style: "height: 30vh;"%>
         <% end %>
-        <h3>
-          <%= @group.name %>
-        </h3>
-        <b> 
-          Sobre nosotros 
-        </b>
-        <br>
-        <p class="card-text">
-          <%= @group.description %>
-        </p>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        -->
+
+        <div class="next-activities d-flex align-items-center">
+          <h4 class="flex-grow-1">
+            Próximas Actividades
+          </h4>
+          <% if current_user.id == @group.user_id %>
+            <%= form_with(url: { controller: "activity", action: "new", group_id: @group.id }, method: :get, class: "d-inline") do %>
+              <%= button_tag "Crear actividad", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            The current link item
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+          <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+          <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<!--
 <h2>Categoría: <%= Category.find(@group.category_id).name %></h2>
 <h2>Creador: <%= User.find(@group.user_id).name %></h2>
 <h2>Descripción: <%= @group.description %></h2>
@@ -65,4 +75,5 @@
 <% else %>
     <h2>Solicitar Unirse</h2>
     <%= link_to "Unirse al grupo", controller: "request", action: "new", group_id: @group.id %>
-<% end %>
+<% end %> 
+-->
