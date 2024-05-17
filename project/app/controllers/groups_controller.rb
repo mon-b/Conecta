@@ -63,11 +63,7 @@ class GroupsController < ApplicationController
   end
 
   def is_group_admin
-    if current_user.id == @group.user_id
-      return true
-    else
-      return false
-    end
+    current_user.id == @group.user_id
   end
   helper_method :is_group_admin
 end
