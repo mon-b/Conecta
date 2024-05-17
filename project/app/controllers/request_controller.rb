@@ -24,17 +24,19 @@ class RequestController < ApplicationController
     user = User.find(params[:user_id])
     if group.user_id == current_user.id
       flash[:danger] = ['Eres admin de este grupo, no te puedes unir']
-      redirect_to '/new'
+      # redirect_back_or_to ({ action: "new" })
+      # redirect_to controller: :request, action: :new
+      redirect_to '/'
       return
     end
     if group.users.include?(user)
       flash[:danger] = ['El usuario ya es miembro de este grupo']
-      redirect_to '/new'
+      redirect_back_or_to '/'
       return
     end
     if exist
       flash[:danger] = ['Ya tienes una solicitud pendiente para este grupo']
-      redirect_to '/new'
+      redirect_back_or_to '/'
       return
     end
     @request = Request.new(group_id: params[:group_id],
@@ -45,7 +47,7 @@ class RequestController < ApplicationController
       redirect_to @request
     else
       flash[:errors] = @request.errors.full_messages
-      redirect_to '/new', locals: { request: @request }
+      redirect_back_or_to '/', locals: { request: @request }
     end
   end
 
