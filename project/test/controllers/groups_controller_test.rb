@@ -115,5 +115,16 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
+  test "should not update group with invalid parameters" do
+    sign_in users(:esteban11)
+    group = groups(:animalesaaa)
+
+    patch group_url(group), params: { group: { rating: "string rating" } }
+
+    assert_response :unprocessable_entity
+    # group.reload
+    # puts group.rating
+  end
+
 
 end
