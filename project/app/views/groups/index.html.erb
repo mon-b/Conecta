@@ -12,15 +12,17 @@
       <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= group.name %></h5>
-          <p class="card-text"><%= group.description %></p>
+          <p class="card-text" align="left"><%= group.description %></p>
         </div>
         <% if group.user_id == current_user.id %>
           <div class="card-footer">
-            <%= link_to "Editar", "/groups/#{group.id}/edit", class: "btn btn-primary full-width-form" %>
+            <%= link_to "Editar", "/groups/#{group.id}/edit", class: "btn btn-primary half-width-form" %>
+            <%= link_to "Ver grupo", "/groups/#{group.id}", class: "btn btn-secondary half-width-form" %>
           </div>
         <%else%>
           <div class="card-footer">
-            <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary full-width-form" %>
+            <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary half-width-form" %>
+            <%= link_to "Ver grupo", "/groups/#{group.id}", class: "btn btn-secondary half-width-form" %>
           </div>        
         <%end%>
       </div>
