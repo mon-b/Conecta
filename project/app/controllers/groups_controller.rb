@@ -17,10 +17,7 @@ class GroupsController < ApplicationController
 
   def new_post
     # def create
-    @group = Group.new(category_id: params[:category_id],
-                       name: params[:name],
-                       user_id: params[:user_id],
-                       description: params[:description])
+    @group = Group.new(group_params)
 
     if params[:profile_picture].present?
       @group.profile_picture.attach(params[:profile_picture])
@@ -67,7 +64,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:category_id, :user_id, :name, :rating, :description)
+    params.require(:group).permit(:category_id, :user_id, :name, :description, :profile_picture, :rating)
   end
 
   def is_group_admin
