@@ -44,7 +44,11 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-    render :edit
+    if !is_group_admin
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+      render :edit
   end
 
   def update
