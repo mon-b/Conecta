@@ -108,7 +108,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update group for a group that i did not create" do
-    sign_in users(:esteban11)
+    sign_in users(:esteban12)
     group = groups(:animalesaaa)
 
     patch group_url(group), params: { group: { name: "updatedname" } }
