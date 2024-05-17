@@ -4,6 +4,8 @@ class Group < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :activities, dependent: :destroy
   has_many :requests, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
 
   validates :name, presence: true, length: { maximum: 32 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
   validates :category_id, presence: true
