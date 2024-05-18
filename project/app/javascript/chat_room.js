@@ -4,7 +4,6 @@
 const apiUrl = 'http://localhost:3000'
 const webSocketUrl = 'ws://localhost:3000/cable'
 const chatRoomListDiv = document.getElementById('chat-rooms-list');
-// const newMessageForm = document.getElementById('new-message-form');
 const messagesListDiv = document.getElementById('messages-list');
 
 
@@ -28,10 +27,8 @@ function renderChatRoom(chatRoomObject) {
     chatRoomDiv.prepend(chatRoomNameH3);
 
     // Show the new message form // NOT NEEDED
-    // newMessageForm.style = '';
-    // newMessageForm.dataset.chatRoomId = chatRoomObject.id
 
-    chatRoomObject.messages.forEach( messageObject => {
+    chatRoomObject.forEach( messageObject => {
         renderMessage(messageObject)
     })
 }
