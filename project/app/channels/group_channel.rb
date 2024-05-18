@@ -1,6 +1,5 @@
 class GroupChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
     # Broadcastea lo que sea que reciba hacia el grupo
     group = Group.find(params[:id])
     stream_for group
