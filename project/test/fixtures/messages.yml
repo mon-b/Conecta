@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  group: one
-  content: MyString
+msg_one:
+  user_id: 1 # esteban11
+  group_id: 1 # animalesaaa
+  content: Este es un mensaje de prueba
 
-two:
-  user: two
-  group: two
-  content: MyString
+msg_two:
+  user_id: 2 # esteban12
+  group_id: 2 # otakusaaa
+  content: Lorem ipsum
+
+msg_three:
+  user_id: 3 # user_that_has_no_groups
+  group_id: 2 # otakusaaa
+  content: Lorem ipsum

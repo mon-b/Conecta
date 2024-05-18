@@ -24,3 +24,10 @@ user_that_has_no_requests:
   email: "esteban2@hackers.com" 
   encrypted_password: <%= User.new.send(:password_digest, 'uwu232') %>
   birth_date: "2003-11-16 00:00:00.000000000 +0000"
+
+user_that_has_no_groups:
+  id: 4
+  name: "Esteban14"
+  email: "esteban5@hackers.co" 
+  encrypted_password: <%= User.new.send(:password_digest, 'uwu232') %>
+  birth_date: "2003-11-16 00:00:00.000000000 +0000"
