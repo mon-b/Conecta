@@ -96,5 +96,8 @@ class GroupsController < ApplicationController
   def is_group_admin
     current_user.id == @group.user_id
   end
-  helper_method :is_group_admin
+  def is_group_member(group)
+    group.users.include?(current_user)
+  end
+  helper_method [:is_group_admin, :is_group_member]
 end
