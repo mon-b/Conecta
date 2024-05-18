@@ -20,9 +20,13 @@ Rails.application.routes.draw do
   # get 'groups/show'
   # get 'groups/new'
   # get 'groups/edit'
-  resources :groups
-  get 'groups/:group_id/messages_json', to: 'groups#show_chat_json'
-  get 'groups/:group_id/chat', to: 'groups#show_chat'
+  # resources :groups
+  resources :groups do
+    get 'chat_json', to: 'groups#show_chat_json'
+    get 'chat', to: 'groups#show_chat'
+  end
+  # get 'groups/:group_id/messages_json', to: 'groups#show_chat_json'
+  # get 'groups/:group_id/chat', to: 'groups#show_chat'
   post 'groups/new', to: 'groups#new_post'
   post 'activity/new', to: 'activity#new_activity'
   get 'groups/', to: 'groups#index'
