@@ -15,9 +15,11 @@
             <%= form_with(url: { controller: "groups", action: "edit", group_id: @group.id }, method: :get, class: "d-inline") do %>
               <%= button_tag "Editar grupo", class: "btn btn-primary btn-sm" %>
             <% end %>
-          <% end %>
+          <% end %>&nbsp;
           <% if is_group_member(@group) %>
-            <%= link_to "Ver chat", "/groups/#{@group.id}/chat", class: "btn btn-secondary half-width-form" %>
+            <%= form_with(url: "/groups/#{@group.id}/chat", method: :get, class: "d-inline") do %>
+              <%= button_tag "Ver chat", class: "btn btn-secondary btn-sm" %>
+            <% end %>
           <% end %>
           
 
