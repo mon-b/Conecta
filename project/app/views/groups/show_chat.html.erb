@@ -16,7 +16,9 @@
                 <div class="group-form">
                     <div class="field">
                         <%= f.text_field :content, placeholder: "" %>
-                        <%= f.submit "Enviar mensaje", class: "btn btn-primary" %>
+                        <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>
+                            <i class="fa-regular fa-paper-plane fa-lg" aria-hidden="true"></i>
+                        <% end %>
                     </div>
                 </div>
 
@@ -27,3 +29,7 @@
 </div>
 
 <%= javascript_include_tag "chat_room.js" %>
+<%# added fontawesome, see if it is needed in all the project %>
+<script src="https://kit.fontawesome.com/eb85b70904.js" crossorigin="anonymous"></script>
+<%# hay gema fontawesome xd %>
+<%# https://stackoverflow.com/questions/39034078/add-font-awesome-icon-to-rails-submit %>
