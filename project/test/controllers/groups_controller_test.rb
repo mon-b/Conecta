@@ -126,5 +126,34 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     # puts group.rating
   end
 
+  ## tests related to chat
 
+
+  # tests related to show_chat
+  test "should get the show_chat page for a group that i belong to" do
+    sign_in users(:esteban11)
+    get group_chat_url(groups(:animalesaaa))
+    assert_response :success
+    assert_select 'h2', "Mensajes del grupo #{groups(:animalesaaa).name}"
+  end
+
+  test "should not get the show_chat page for a group that i do not belong to" do
+    sign_in users(:user_that_has_no_groups)
+    get group_chat_url(groups(:otakusaaa))
+    assert_response :forbidden
+  end
+
+  # tests related to show_chat_json
+  test "should get the show_chat_json page for a group that i belong to" do
+    sign_in users(:esteban11)
+    get group_chat_json_url(groups(:animalesaaa))
+    assert_response :success
+  end
+  # TODO: test de los mensajes que se muestran. WIP
+
+  test "should not get the show_chat_json page for a group that i do not belong to" do
+    sign_in users(:user_that_has_no_groups)
+    get group_chat_json_url(groups(:otakusaaa))
+    assert_response :forbidden
+  end
 end

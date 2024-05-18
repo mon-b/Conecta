@@ -67,6 +67,11 @@ class GroupsController < ApplicationController
   def show_chat_json
     # Returns the messages associated to the group in JSON format
     group = Group.find(params[:group_id])
+    if !group.users.include?(current_user)
+      render json: {}, status: :forbidden
+      return
+    end
+
     # https://stackoverflow.com/q/65112155/5674961
     messages = group.messages.map do |message|
       message.attributes.merge(username_raw: User.find(message.user_id).name)
@@ -76,12 +81,14 @@ class GroupsController < ApplicationController
   end
 
   def show_chat
-    # Returns the messages associated to the group in JSON format
-    # group = Group.find(params[:group_id])
-    # render json: group.messages#group, include: [:messages]
+    group = Group.find(params[:group_id])
+    if !group.users.include?(current_user)
+      render html: helpers.tag.h1('No estas autorizado para ver los chats de este grupo'), status: :forbidden
+      return
+    end
   end
 
-
+  private
   def group_params
     params.require(:group).permit(:category_id, :user_id, :name, :description, :profile_picture, :rating)
   end
