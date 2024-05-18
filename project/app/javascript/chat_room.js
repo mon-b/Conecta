@@ -19,13 +19,6 @@ const messagesListDiv = document.getElementById('messages-list');
 // Renders a specific chat room when a user joins it
 function renderChatRoom(chatRoomObject) {
     const chatRoomDiv = document.getElementById('chat-room-div');
-
-    const chatRoomNameH3 = document.createElement('h3');
-    console.log(chatRoomObject)
-    chatRoomNameH3.textContent = chatRoomObject.name;
-
-    chatRoomDiv.prepend(chatRoomNameH3);
-
     // Show the new message form // NOT NEEDED
 
     chatRoomObject.forEach( messageObject => {
@@ -112,12 +105,10 @@ document.addEventListener('DOMContentLoaded',() => {
     // console.log(currentUrl.substring(0, currentUrl.lastIndexOf('/')));
 
     const currentGroupUrl = document.URL.substring(0, document.URL.lastIndexOf('/'));
-    console.log(currentGroupUrl);
     // const tmpUrlSplit = currentGroupUrl.split('/')[-1];
     // const currentGroupId = currentGroupUrl.split('/')[tmpUrlSplit.length];
     // https://stackoverflow.com/a/53731605/5674961
     const currentGroupId = currentGroupUrl.split('/').slice(-1)[0];
-    console.log(currentGroupId);
     // fetch(`${apiUrl}/groups/${event.target.dataset.chatRoomId}/messages_json`)
     // ver q el fetch ocupe los parametros actuales
     fetch(`${currentGroupUrl}/messages_json`)
