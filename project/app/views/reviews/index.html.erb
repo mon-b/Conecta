@@ -1,0 +1,103 @@
+
+<div class="container-profile-cols">
+  <div class="card" style="width: 60%;">
+    <div class="group-profile">
+      <div class="card-body">
+        <% if @group.profile_picture.attached? %>
+          <%= image_tag @group.profile_picture, class: "card-img-top", style: "height: 30vh;"%>
+        <% else %>
+          <%= image_tag "default_group.png", alt: "Default Picture",  class: "card-img-top", style: "height: 30vh;"%>
+        <% end %>
+        <div class="next-activities d-flex align-items-center">
+          <h4 class="flex-grow-1">
+            <%= @group.name %>
+          </h4>
+          <% if is_group_admin %>
+            <%= form_with(url: { controller: "groups", action: "edit", group_id: @group.id }, method: :get, class: "d-inline") do %>
+              <%= button_tag "Editar grupo", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
+          
+
+        </div>
+        
+        <b> 
+          Sobre nosotros 
+        </b>
+        <br>
+        <p class="card-text">
+          <%= @group.description %>
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card" style="width: 45%;">
+    <div class="group-reviews">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="true" href="#">Actividades</a>
+          </li>
+          <li class="nav-item">
+            aaaaaa
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="next-activities d-flex align-items-center">
+          <h4 class="flex-grow-1">
+            Próximas Actividades
+          </h4>
+          <% if is_group_admin %>
+            <%= form_with(url: { controller: "activity", action: "new", group_id: @group.id }, method: :get, class: "d-inline") do %>
+              <%= button_tag "Crear actividad", class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %>
+
+        </div>
+        <% if @activities.any? %>
+          <% @activities.each do |activity| %>
+            <div class="list-group">
+              <a href=<%= activity_path(activity) %> class="list-group-item list-group-item-action">
+                  <small class="small-font"><%= activity.name %></small>
+                <br>
+                <span class="badge text-bg-info"> <%= activity.keywords %> </span>
+                <br>
+                <%= I18n.l(activity.date, format: :long).mb_chars.capitalize.to_s %>, <%= activity.location %>
+                <br>
+                <small class="text-muted"> Creado hace <%= time_ago_in_words(activity.created_at) %> </small>
+
+                
+              </a>
+            </div>
+          <% end %>
+        <% else %>
+          Aún no hay actividades para mostrar
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<h2>Categoría: <%= Category.find(@group.category_id).name %></h2>
+<h2>Creador: <%= User.find(@group.user_id).name %></h2>
+<h2>Descripción: <%= @group.description %></h2>
+<h2>Rating: <%= @group.rating %></h2>
+<% if is_group_admin %>
+    <h2>Opciones de administrador de grupo</h2>
+    <%= link_to "Administrar grupo", edit_group_path %>
+    <%= link_to "Crear actividad", controller: "activity", action: "new", group_id: @group.id %>
+<% else %>
+    <h2>Solicitar Unirse</h2>
+    <%= link_to "Unirse al grupo", controller: "request", action: "new", group_id: @group.id %>
+<% end %> 
+-->
