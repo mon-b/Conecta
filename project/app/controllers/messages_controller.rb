@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
     end
 
     if @message.save
+      # GroupChannel.broadcast_to(Group.find(@message.group_id), @message)
       render json: @message, status: :created, location: @message
     else
       render json: @message.errors, status: :unprocessable_entity
