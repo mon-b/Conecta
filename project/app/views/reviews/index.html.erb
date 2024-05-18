@@ -1,3 +1,4 @@
+
 <div class="container-profile-cols">
   <div class="card" style="width: 60%;">
     <div class="group-profile">
@@ -14,11 +15,6 @@
           <% if is_group_admin %>
             <%= form_with(url: { controller: "groups", action: "edit", group_id: @group.id }, method: :get, class: "d-inline") do %>
               <%= button_tag "Editar grupo", class: "btn btn-primary btn-sm" %>
-            <% end %>
-          <% end %>&nbsp;
-          <% if is_group_member(@group) %>
-            <%= form_with(url: "/groups/#{@group.id}/chat", method: :get, class: "d-inline") do %>
-              <%= button_tag "Ver chat", class: "btn btn-secondary btn-sm" %>
             <% end %>
           <% end %>
           
@@ -44,6 +40,16 @@
 
   <div class="card" style="width: 45%;">
     <div class="group-reviews">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="true" href="#">Actividades</a>
+          </li>
+          <li class="nav-item">
+            aaaaaa
+          </li>
+        </ul>
+      </div>
       <div class="card-body">
         <div class="next-activities d-flex align-items-center">
           <h4 class="flex-grow-1">
