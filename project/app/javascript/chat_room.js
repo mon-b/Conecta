@@ -38,7 +38,7 @@ function renderMessage(messageObject) {
     const messageDiv = document.createElement('div')
 
     messageDiv.innerHTML = ``
-    messageDiv.textContent = messageObject.content;
+    messageDiv.textContent = messageObject.username_raw +  ": " + messageObject.content;
     messageDiv.dataset.messageId = messageObject.id;
 
     messagesListDiv.prepend(messageDiv);

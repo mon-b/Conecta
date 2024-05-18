@@ -67,7 +67,12 @@ class GroupsController < ApplicationController
   def show_chat_json
     # Returns the messages associated to the group in JSON format
     group = Group.find(params[:group_id])
-    render json: group.messages#group, include: [:messages]
+    # https://stackoverflow.com/q/65112155/5674961
+    messages = group.messages.map do |message|
+      message.attributes.merge(username_raw: User.find(message.user_id).name)
+    end
+    render json: messages
+    # render json: group.messages#group, include: [:messages]
   end
 
   def show_chat
