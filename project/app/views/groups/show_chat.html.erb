@@ -14,15 +14,12 @@
                 <%= f.hidden_field :group_id, value: params[:group_id] %>
                 
                 <div class="group-form">
-                <div class="field">
-                    <%= f.label :content, "Mensaje", class: "special-width-form6" %>
-                    <%= f.text_field :content, class: "special-width-form5", placeholder: "" %>
-                </div>
+                    <div class="field">
+                        <%= f.text_field :content, placeholder: "" %>
+                        <%= f.submit "Enviar mensaje", class: "btn btn-primary" %>
+                    </div>
                 </div>
 
-                <div class="actions" align="center">
-                <%= f.submit "Enviar mensaje", class: "btn btn-primary full-width-form-marg2" %>
-                </div>
                 <% end %>
             </div>
         </div>
