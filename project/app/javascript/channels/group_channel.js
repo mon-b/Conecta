@@ -6,7 +6,7 @@ import {renderChatRoom, renderMessage} from "../chat_room_module"
 
 document.addEventListener('DOMContentLoaded',() => {
 
-  const currentGroupUrl = document.URL.substring(0, document.URL.lastIndexOf('/'));
+  const currentGroupUrl = document.URL.substring(0, document.URL.lastIndexOf('/')).substring(0, document.URL.indexOf('?'));
   fetch(`${currentGroupUrl}/messages_json`)
   .then(response => response.json())
   .then(chatRoomObject => {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
 function getCurrentGroupId()
 {
-  const currentGroupUrl = document.URL.substring(0, document.URL.lastIndexOf('/'));
+  const currentGroupUrl = document.URL.substring(0, document.URL.lastIndexOf('/')).substring(0, document.URL.indexOf('?'));
   const currentGroupId = currentGroupUrl.split('/').slice(-1)[0];
   return currentGroupId
 }
