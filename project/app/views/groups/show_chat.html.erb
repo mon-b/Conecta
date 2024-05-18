@@ -1,12 +1,26 @@
 <div id="chat-room-div">
-    <form id="new-message-form" style="display: none">
-        <label>New Message: </label><br>
-        <input type="text">
-        <button type="submit">Send Message</button>
-        <br><br>
-    </form>
-    <div id="messages-list">
+    <div class="new-groups">
+        <div class="fields">
+            <%= form_with(url: '/messages', model: @message, local: true, scope: :message) do |f| %>
 
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :group_id, value: params[:group_id] %>
+            
+            <div class="group-form">
+            <div class="field">
+                <%= f.label :content, "Mensaje", class: "special-width-form6" %>
+                <%= f.text_field :content, class: "special-width-form5", placeholder: "" %>
+            </div>
+            </div>
+
+            <div class="actions" align="center">
+            <%= f.submit "Enviar mensaje", class: "btn btn-primary full-width-form-marg2" %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <h2>Mensajes</h2>
+    <div id="messages-list">
     </div>
 </div>
 <%# <script src="chat_room.js"></script> javascript_include_tag "/lib/chat_room.js" %>

@@ -4,7 +4,7 @@
 const apiUrl = 'http://localhost:3000'
 const webSocketUrl = 'ws://localhost:3000/cable'
 const chatRoomListDiv = document.getElementById('chat-rooms-list');
-const newMessageForm = document.getElementById('new-message-form');
+// const newMessageForm = document.getElementById('new-message-form');
 const messagesListDiv = document.getElementById('messages-list');
 
 
@@ -27,9 +27,9 @@ function renderChatRoom(chatRoomObject) {
 
     chatRoomDiv.prepend(chatRoomNameH3);
 
-    // Show the new message form
-    newMessageForm.style = '';
-    newMessageForm.dataset.chatRoomId = chatRoomObject.id
+    // Show the new message form // NOT NEEDED
+    // newMessageForm.style = '';
+    // newMessageForm.dataset.chatRoomId = chatRoomObject.id
 
     chatRoomObject.messages.forEach( messageObject => {
         renderMessage(messageObject)
@@ -160,27 +160,4 @@ document.addEventListener('DOMContentLoaded',() => {
     //     }
     // })
 
-
-    // Consider CORS and rails safety
-    // https://guides.rubyonrails.org/working_with_javascript_in_rails.html#ajax-requests
-
-    // Allow users to submit new messages
-    newMessageForm.addEventListener('submit', event => {
-        event.preventDefault();
-        fetch(`${apiUrl}/messages`,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                content: event.target[0].value,
-                chat_room_id: event.target.dataset.chatRoomId
-            })
-        })
-        // .then(response => response.json())
-        // .then(messageObject => {renderMessage(messageObject)})
-
-        newMessageForm.reset();
-    })
 })
