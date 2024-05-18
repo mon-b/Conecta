@@ -41,7 +41,8 @@ function renderMessage(messageObject) {
     messageDiv.textContent = messageObject.username_raw +  ": " + messageObject.content;
     messageDiv.dataset.messageId = messageObject.id;
 
-    messagesListDiv.prepend(messageDiv);
+    // messagesListDiv.prepend(messageDiv);
+    messagesListDiv.append(messageDiv); // correct order of messages. maybe because they are returned in id order ascending?
 }
 
 // Opens a websocket connection to a specific Chat Room stream

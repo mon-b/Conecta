@@ -1,5 +1,10 @@
 <div id="chat-room-div">
-    <div class="new-groups">
+    <h2>Mensajes</h2>
+    <div id="messages-list">
+    </div>
+
+    <hr>
+    <div>
         <div class="fields">
             <%= form_with(url: '/messages', model: @message, local: true, scope: :message) do |f| %>
 
@@ -18,9 +23,6 @@
             </div>
             <% end %>
         </div>
-    </div>
-    <h2>Mensajes</h2>
-    <div id="messages-list">
     </div>
 </div>
 <%# <script src="chat_room.js"></script> javascript_include_tag "/lib/chat_room.js" %>
