@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # get 'groups/edit'
   # resources :groups
   resources :groups do
-    get 'chat_json', to: 'groups#show_chat_json'
+    get 'messages_json', to: 'groups#show_chat_json'
     get 'chat', to: 'groups#show_chat'
   end
   # get 'groups/:group_id/messages_json', to: 'groups#show_chat_json'
