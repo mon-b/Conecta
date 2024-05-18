@@ -1,43 +1,52 @@
-<%# <h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p> %>
-<h1>Crear grupo</h1>
 
-
-<%# code from https://stackoverflow.com/a/52470594 %>
-<% flash.each do |name, messages| %>
-  <div class="alert alert-<%= name %>">
-    <ul>
-    <% if messages.is_a?(Array) %>
-      <% messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= form_with(model: @group, local: true, scope: :group) do |f| %>
-  <%# a %>
-  <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' } %>
+<div class="new-groups">
+  <h2>Crear grupo</h2>
   
-  <div class="field">
-    <%= f.label :name, "Nombre de grupo" %><br />
-    <%= f.text_field :name %>
+  <%# code from https://stackoverflow.com/a/52470594 #%>
+  <% flash.each do |name, messages| %>
+    <div class="alert alert-<%= name %>">
+      <ul>
+      <% if messages.is_a?(Array) %>
+        <% messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="fields">
+    <%= form_with(model: @group, local: true, scope: :group) do |f| %>
+
+    <div class="group-form">
+      <%= f.label :category_id, "Categoría", class: "special-width-form6" %>
+      <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' }, {class: "special-width-form5"} %>
+    </div>
+    
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :name, "Nombre", class: "special-width-form6" %>
+        <%= f.text_field :name, class: "special-width-form5", placeholder: " Ingresa el nombre de tu grupo" %>
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :description, "Descripción", class: "special-width-form6 " %>
+        <%= f.text_area :description, class: "special-width-form5 taller-form", placeholder: " Escribe sobre tu grupo y qué lo hace especial"%>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :profile_picture, "Foto (opcional)", class: "special-width-form6 " %>
+        <%= f.file_field :profile_picture, class: "special-width-form5 " %>
+
+      </div>
+    </div>
+
+    <div class="actions" align="center">
+      <%= f.submit "Crear grupo", class: "btn btn-primary full-width-form-marg2" %>
+    </div>
+    <% end %>
   </div>
-
-  <%= f.hidden_field :user_id, value: current_user.id %>
-
-  <div class="field">
-    <%= f.label :description, "Descripción" %><br />
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile_picture, "Foto del grupo (opcional)" %><br />
-    <%= f.file_field :profile_picture %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Crear grupo" %>
-  </div>
-<% end %>
-
+</div>
