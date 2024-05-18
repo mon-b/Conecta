@@ -18,7 +18,7 @@
           <% end %>&nbsp;
           <% if is_group_member(@group) %>
             <%= form_with(url: "/groups/#{@group.id}/chat", method: :get, class: "d-inline") do %>
-              <%= button_tag "Ver chat", class: "btn btn-secondary btn-sm" %>
+              <%= button_tag "Ver chat", class: "btn btn-secondary btn-sm", data: { turbo: false } %>
             <% end %>
           <% end %>
           
