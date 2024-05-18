@@ -12,6 +12,8 @@ class Message < ApplicationRecord
     #   content: content
     # })
     # Broadcastea el mensaje en si mismo al grupo
-    GroupChannel.broadcast_to(Group.find(self.group_id), self) # send to the correct group channel the data of the current object
+    message_with_username = self.attributes.merge(username_raw: User.find(self.user_id).name)
+    GroupChannel.broadcast_to(Group.find(self.group_id), message_with_username)
+    # send to the correct group channel the data of the current object
   end
 end
