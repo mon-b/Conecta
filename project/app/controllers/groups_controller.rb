@@ -64,6 +64,31 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show_chat_json
+    # Returns the messages associated to the group in JSON format
+    group = Group.find(params[:group_id])
+    if !group.users.include?(current_user)
+      render json: {}, status: :forbidden
+      return
+    end
+
+    # https://stackoverflow.com/q/65112155/5674961
+    messages = group.messages.map do |message|
+      message.attributes.merge(username_raw: User.find(message.user_id).name)
+    end
+    render json: messages
+    # render json: group.messages#group, include: [:messages]
+  end
+
+  def show_chat
+    group = Group.find(params[:group_id])
+    if !group.users.include?(current_user)
+      render html: helpers.tag.h1('No estas autorizado para ver los chats de este grupo'), status: :forbidden
+      return
+    end
+  end
+
+  private
   def group_params
     params.require(:group).permit(:category_id, :user_id, :name, :description, :profile_picture, :rating)
   end
@@ -71,5 +96,8 @@ class GroupsController < ApplicationController
   def is_group_admin
     current_user.id == @group.user_id
   end
-  helper_method :is_group_admin
+  def is_group_member(group)
+    group.users.include?(current_user)
+  end
+  helper_method [:is_group_admin, :is_group_member]
 end

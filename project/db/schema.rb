@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_17_193709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
     t.bigint "group_id", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "group_id"
@@ -111,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
   add_foreign_key "activities", "groups"
   add_foreign_key "groups", "categories"
   add_foreign_key "groups", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
   add_foreign_key "requests", "groups"
   add_foreign_key "requests", "users"
 end

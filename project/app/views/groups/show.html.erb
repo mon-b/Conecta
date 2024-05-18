@@ -16,6 +16,9 @@
               <%= button_tag "Editar grupo", class: "btn btn-primary btn-sm" %>
             <% end %>
           <% end %>
+          <% if is_group_member(@group) %>
+            <%= link_to "Ver chat", "/groups/#{@group.id}/chat", class: "btn btn-secondary half-width-form" %>
+          <% end %>
           
 
         </div>

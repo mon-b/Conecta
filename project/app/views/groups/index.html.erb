@@ -21,7 +21,9 @@
           </div>
         <%else%>
           <div class="card-footer">
-            <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary half-width-form" %>
+            <% if !is_group_member(group) %>
+              <%= link_to "Solicitar unirse", "/groups/#{group.id}/new_request", class: "btn btn-primary half-width-form" %>
+            <% end %>
             <%= link_to "Ver grupo", "/groups/#{group.id}", class: "btn btn-secondary half-width-form" %>
           </div>        
         <%end%>
