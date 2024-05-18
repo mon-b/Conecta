@@ -64,6 +64,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show_chat_json
+    # Returns the messages associated to the group in JSON format
+    group = Group.find(params[:group_id])
+    render json: group.messages#group, include: [:messages]
+  end
+
+  def show_chat
+    # Returns the messages associated to the group in JSON format
+    # group = Group.find(params[:group_id])
+    # render json: group.messages#group, include: [:messages]
+  end
+
+
   def group_params
     params.require(:group).permit(:category_id, :user_id, :name, :description, :profile_picture, :rating)
   end
