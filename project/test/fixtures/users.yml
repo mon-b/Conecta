@@ -14,7 +14,13 @@ esteban11:
 esteban12:
   id: 2
   name: "Esteban12"
-  email: "esteban@hackers.com" 
+  email: "esteban1@hackers.com" 
   encrypted_password: <%= User.new.send(:password_digest, 'uwu232') %>
   birth_date: "2003-11-16 00:00:00.000000000 +0000"
 
+user_that_has_no_requests:
+  id: 3
+  name: "Esteban13"
+  email: "esteban2@hackers.com" 
+  encrypted_password: <%= User.new.send(:password_digest, 'uwu232') %>
+  birth_date: "2003-11-16 00:00:00.000000000 +0000"

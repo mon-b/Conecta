@@ -1,8 +1,6 @@
 
 <div class="new-groups">
   <h2>Crear grupo</h2>
-
-  
   
   <%# code from https://stackoverflow.com/a/52470594 #%>
   <% flash.each do |name, messages| %>
@@ -17,7 +15,7 @@
     </div>
   <% end %>
   <div class="fields">
-    <%= form_with(model: @group, local: true) do |f| %>
+    <%= form_with(model: @group, local: true, scope: :group) do |f| %>
 
     <div class="group-form">
       <%= f.label :category_id, "Categoría", class: "special-width-form6" %>
