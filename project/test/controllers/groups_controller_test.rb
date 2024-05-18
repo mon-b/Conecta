@@ -149,7 +149,16 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     get group_chat_json_url(groups(:animalesaaa))
     assert_response :success
   end
-  # TODO: test de los mensajes que se muestran. WIP
+  # test de los mensajes que se muestran
+  test "should show the json of a message belonging to a group" do
+    sign_in users(:esteban11)
+    group = groups(:animalesaaa)
+    message = messages(:msg_one)
+    get group_chat_json_url(group)
+    assert_response :success
+    json_response = JSON.parse(response.body)
+    assert_equal message.content, json_response[0]["content"]
+  end
 
   test "should not get the show_chat_json page for a group that i do not belong to" do
     sign_in users(:user_that_has_no_groups)
