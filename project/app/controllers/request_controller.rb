@@ -1,27 +1,20 @@
 class RequestController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
-    if user_signed_in?
-      @requests = Request.where(user_id: current_user.id)
-    else
-      redirect_to '/users/sign_in'
-    end
+    @requests = Request.where(user_id: current_user.id)
   end
 
   def show
-    if user_signed_in?
-      @request = Request.find(params[:id])
-      if (current_user.id != @request.user_id) && (current_user.id != Group.find(@request.group_id).user_id)
-        render html: helpers.tag.h1('No autorizado'), status: :forbidden
-      end
-    else
-      redirect_to '/users/sign_in'
+    @request = Request.find(params[:id])
+    if (current_user.id != @request.user_id) && (current_user.id != Group.find(@request.group_id).user_id)
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
     end
   end
 
   def new
-    if !user_signed_in?
-      redirect_to '/users/sign_in'
-    end
+    # new request view
   end
 
   def new_request
@@ -31,29 +24,30 @@ class RequestController < ApplicationController
     user = User.find(params[:user_id])
     if group.user_id == current_user.id
       flash[:danger] = ['Eres admin de este grupo, no te puedes unir']
-      redirect_to '/new'
+      # redirect_back_or_to ({ action: "new" })
+      # redirect_to controller: :request, action: :new
+      redirect_to '/'
       return
     end
     if group.users.include?(user)
       flash[:danger] = ['El usuario ya es miembro de este grupo']
-      redirect_to '/new'
+      redirect_back_or_to '/'
       return
     end
     if exist
       flash[:danger] = ['Ya tienes una solicitud pendiente para este grupo']
-      redirect_to '/new'
+      redirect_back_or_to '/'
+      return
+    end
+    @request = Request.new(group_id: params[:group_id],
+                           user_id: params[:user_id],
+                           status: params[:status],
+                           description: params[:description],)
+    if @request.save
+      redirect_to @request
     else
-
-      @request = Request.new(group_id: params[:group_id],
-                             user_id: params[:user_id],
-                             status: params[:status],
-                             description: params[:description],)
-      if @request.save
-        redirect_to @request
-      else
-        flash[:errors] = @request.errors.full_messages
-        redirect_to '/new', locals: { request: @request }
-      end
+      flash[:errors] = @request.errors.full_messages
+      redirect_back_or_to '/', locals: { request: @request }
     end
   end
 
@@ -92,24 +86,19 @@ class RequestController < ApplicationController
   end
 
   def destroy
+    # The user can destroy his own requests, if the admin destroys it then it is rejected!
     @request = Request.find(params[:id])
+
+    if @request.user_id != current_user.id
+      head :forbidden
+      return
+    end
     if @request.status == "pending"
       @request.destroy
       head :ok
     else
       flash[:warning] = ['No puedes destruir una request aceptada/denegada']
       redirect_to request_index_path
-      # head :bad_request
     end
   end
-
-  # Metodo para saber si desplegar o no boton de Solicitud
-  def is_group_admin
-    if current_user.id == @group.user_id
-      return true
-    else
-      return false
-    end
-  end
-  helper_method :is_group_admin
 end

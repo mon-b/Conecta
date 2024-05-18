@@ -15,7 +15,6 @@ class Activity < ApplicationRecord
   # Codigo sacado de: https://stackoverflow.com/a/23856331
   before_save :downcase_fields
   def downcase_fields
-    self.location.downcase!
     self.keywords.downcase!
   end
 
