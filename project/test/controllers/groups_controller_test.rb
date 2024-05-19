@@ -16,7 +16,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     get group_url(groups(:animalesaaa)), params: { id: groups(:animalesaaa).id }
     # Assertion for checking show.html.erb view
     assert_response :success
-    assert_select 'h1', groups(:animalesaaa).name
+    assert_select 'h4', groups(:animalesaaa).name
   end
 
   test "should get show with admin options" do

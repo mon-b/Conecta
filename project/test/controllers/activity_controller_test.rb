@@ -7,10 +7,13 @@ class ActivityControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
     sign_in users(:esteban12)
     # get group_url(groups(:animalesaaa))
-    get activity_url(activities(:one_activity)), params: { id: activities(:one_activity).id }
+    activity = activities(:one_activity)
+    get activity_url(activity), params: { id: activity.id }
     # Assertion for checking show.html.erb view
     assert_response :success
-    assert_select 'h1', activities(:one_activity).name
+
+    # danger: there is a span there
+    assert_select 'h3', activity.name + "  " + activity.keywords
   end
   # WIP: admin options for activities
 
