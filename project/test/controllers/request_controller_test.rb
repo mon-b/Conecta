@@ -78,7 +78,8 @@ class RequestControllerTest < ActionDispatch::IntegrationTest
       post '/request',
            params: { user_id: user.id, group_id: "a", status: "pending", description: "aaasdadasds" }
     end
-    assert_redirected_to request_path(Request.last)
+    assert_response :unprocessable_entity
+    # assert_redirected_to request_path(Request.last)
   end
 
   test "should not create new request if it has no description" do

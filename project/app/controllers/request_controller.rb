@@ -18,10 +18,16 @@ class RequestController < ApplicationController
   end
 
   def new_request
-    exist = Request.find_by(group_id: params[:group_id], user_id: params[:user_id])
-    # WIP: añadir validacion de que el usuario no sea ya de ese grupo
-    group = Group.find(params[:group_id])
-    user = User.find(params[:user_id])
+    begin
+      exist = Request.find_by(group_id: params[:group_id], user_id: params[:user_id])
+      # WIP: añadir validacion de que el usuario no sea ya de ese grupo
+      group = Group.find(params[:group_id])
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      head :unprocessable_entity
+      return
+    end
+
     if group.user_id == current_user.id
       flash[:danger] = ['Eres admin de este grupo, no te puedes unir']
       # redirect_back_or_to ({ action: "new" })
