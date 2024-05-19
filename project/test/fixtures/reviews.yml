@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  activity: one
-  user: one
-  rating: 1.5
-  body: MyString
+one_review:
+  activity: one_activity
+  user_id: 1 # esteban11 
+  rating: 2.0
+  body: Esta actividad fue pesima
 
-two:
-  activity: two
-  user: two
-  rating: 1.5
-  body: MyString
+two_review:
+  activity: two_activity
+  user_id: 2 # esteban12
+  rating: 3.5
+  body: Esta actividad fue muy mala
