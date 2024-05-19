@@ -89,10 +89,9 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-
     @group = Group.find(params[:id])
     if !is_group_admin
-        render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
         return
     end
     @group.destroy
