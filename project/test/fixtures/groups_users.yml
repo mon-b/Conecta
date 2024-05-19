@@ -7,3 +7,6 @@ two_rel:
 three_rel:
   group_id: 2
   user_id: 2
+four_rel:
+  group_id: 3
+  user_id: 2

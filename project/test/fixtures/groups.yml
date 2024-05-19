@@ -15,3 +15,12 @@ otakusaaa:
   name: Grupo Otakusaaa
   rating: 3.95
   description: Grupo 2
+
+furrosaaa:
+  category: otakus
+  id: 3
+  user_id: 2
+  name: Grupo Furrosaaa
+  rating: 3.95
+  description: Grupo Furros
+
