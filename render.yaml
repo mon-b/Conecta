@@ -22,3 +22,21 @@ services:
         sync: false
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
+      - key: REDIS_HOST
+        fromService: # Reference a property from another service (see available properties below)
+          type: redis
+          name: lightning
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: lightning
+          property: port
+  # A Redis instance
+  - type: redis
+    name: proyecto-grupo-64-redis
+    ipAllowList: # Required
+      - source: 0.0.0.0/0
+        description: everywhere
+    plan: free # Default: starter
+    maxmemoryPolicy: noeviction # Default: allkeys-lru
