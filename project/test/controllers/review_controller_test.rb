@@ -66,4 +66,13 @@ body: "Lorem ipsum"} }
   # end
 
 
+    # tests related to show
+  test "should get show review" do
+    sign_in users(:esteban12)
+    review = reviews(:one_review)
+    get review_url(review), params: { id: review.id }
+    # Assertion for checking show.html.erb view
+    assert_response :success
+    assert_select 'h1', review.title
+  end
 end
