@@ -48,9 +48,9 @@
           <br>
           <%= @activity.location %>
           <br>
-          Precio: <%= @activity.cost %>$
+          Precio: $<%= @activity.cost %>
           <br>
-          Aforo máximo:  <%= @activity.people %> 
+          Aforo:  <%= @activity.people %> personas
       
       </div>
       <div class="act-description">
@@ -64,10 +64,21 @@
       <h5>Reseñas</h5>
       <!-- We can only review the activity if it has already been done -->
       <% if activity_has_reviews? %>
-        Reseñas
+        <% @activity.reviews.each do |review| %>
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action">
+              <%= link_to review.title , review_path(review)%>
+             
+              <small class="text-muted"> Creado hace <%= time_ago_in_words(review.created_at) %> </small>
+            </div>
+
+            </a>
+          </div>
+        <% end %>
+    
 
       <% else %>
-        <p>Aún no hay reseñas. ¡Sé el primero en comentar tu experiencia!</p>
+        <p>Aún no hay reseñas. ¡Sé el primero en contar tu experiencia!</p>
       <% end %>
     <% end %>
 
