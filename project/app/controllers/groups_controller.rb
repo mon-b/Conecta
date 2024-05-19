@@ -88,6 +88,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def destroy
+
+    @group = Group.find(params[:id])
+    if !is_group_admin
+        render html: helpers.tag.h1('No autorizado'), status: :forbidden
+        return
+    end
+    @group.destroy
+    redirect_to '/groups'
+  end
+
   private
   def group_params
     params.require(:group).permit(:category_id, :user_id, :name, :description, :profile_picture, :rating)

@@ -47,6 +47,10 @@
   <div class="actions" align="center">
     <%= f.submit "Editar grupo",  class: "btn btn-primary full-width-form-marg2" %>
   </div>
+  <div class="actions" align="center">
+  <%= link_to "Eliminar grupo", group_destroy_group_path(@group), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2" %>
+
+  </div>
 <% end %>
 
 <h2>Actividades del grupo</h2>

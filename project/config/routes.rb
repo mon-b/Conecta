@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :groups do
     get 'messages_json', to: 'groups#show_chat_json'
     get 'chat', to: 'groups#show_chat'
+    delete 'destroy_group', to: 'groups#destroy'
   end
   # get 'groups/:group_id/messages_json', to: 'groups#show_chat_json'
   # get 'groups/:group_id/chat', to: 'groups#show_chat'

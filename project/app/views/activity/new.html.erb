@@ -1,9 +1,10 @@
 <%#<h1>Activity#new</h1>
 <p>Find me in app/views/activity/new.html.erb</p> %>
 
+<div class="new-groups">
 <h1>Crear Actividad</h1>
 
-<%# code from https://stackoverflow.com/a/52470594 %>
+<%# code from https://stackoverflow.com/a/52470594 #%>
 <% flash.each do |name, messages| %>
   <div class="alert alert-<%= name %>">
     <ul>
@@ -15,53 +16,65 @@
     </ul>
   </div>
 <% end %>
+<div class="fields">
 <%= form_with(model: @activity, local: true, scope: :activity,  url: '/activity/') do |f| %>
 
     <%= f.hidden_field :group_id, value: params[:group_id] %>
-
-    <div class="field">
-      <%= f.label :name, "Nombre de la actividad" %><br />
-      <%= f.text_field :name %>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :name, "Nombre la actividad", class: "special-width-form6" %>
+        <%= f.text_field :name, class: "special-width-form5" %>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :pictures, "Fotos de la actividad", class: "special-width-form6" %>
+        <%= f.file_field :pictures, multiple: true, class: "special-width-form5" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :pictures, "Fotos de la actividad" %><br />
-      <%= f.file_field :pictures, multiple: true %>
-    </div>
-
-
-    <div class="field">
-      <%= f.label :name, "Keywords"%><br />
-      <%= f.text_field :keywords %>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :name, "Keywords", class: "special-width-form6"%>
+        <%= f.text_field :keywords, class: "special-width-form5" %>
+      </div>
     </div>
 
     <%# <%= f.hidden_field :user_id, value: current_user.id %>
     <%#= f.hidden_field :group_id, value: @activity.group_id%>
 
-
-    <div class="field">
-      <%= f.label :description, "Descripción" %><br />
-      <%= f.text_field :description %>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :description, "Descripción", class: "special-width-form6 " %>
+        <%= f.text_area :description, class: "special-width-form5 taller-form", placeholder: " Escribe sobre tu grupo y qué lo hace especial"%>
+      </div>
+    </div>
+    
+    <div class="group-form">
+      <div class="field">
+          <%= f.label :date, "Fecha", class: "special-width-form6 " %>
+          <%= f.datetime_field :date, class: "special-width-form5" %>
+      </div>
     </div>
 
-    <div class="field">
-        <%= f.label :date, "Fecha" %><br />
-        <%= f.datetime_field :date %>
+    <div class="group-form">
+      <div class="field">
+          <%= f.label :location, "Ubicación", class: "special-width-form6 " %>
+          <%= f.text_field :location, class: "special-width-form5" %>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+          <%= f.label :people, "Personas", class: "special-width-form6 " %>
+          <%= f.number_field :people, min: 1, class: "special-width-form5"%>
+      </div>
     </div>
 
-    <div class="field">
-        <%= f.label :location, "Ubicación" %><br />
-        <%= f.text_field :location %>
-    </div>
-
-    <div class="field">
-        <%= f.label :people, "Personas" %><br />
-        <%= f.number_field :people, min: 1%>
-    </div>
-
-    <div class="field">
-        <%= f.label :cost, "Precio" %><br />
-        <%= f.number_field :cost, min: 0%>
+    <div class="group-form">
+      <div class="field">
+          <%= f.label :cost, "Precio", class: "special-width-form6 "%>
+          <%= f.number_field :cost, min: 0, class: "special-width-form5"%>
+      </div>
     </div>
 
 
@@ -71,3 +84,4 @@
     
 <% end %>
 
+</div>
