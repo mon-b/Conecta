@@ -93,4 +93,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  # mount actioncable
+  # config.action_cable.url = "wss://example.com/cable"
+  # Add valid requests origins for actioncable
+  config.action_cable.allowed_request_origins = ['https://proyecto-grupo-64.onrender.com:3000']
 end
