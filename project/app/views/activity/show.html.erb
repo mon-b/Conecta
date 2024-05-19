@@ -66,12 +66,9 @@
       <% if activity_has_reviews? %>
         <% @activity.reviews.each do |review| %>
           <div class="list-group">
-            <div class="list-group-item list-group-item-action">
-              <%= link_to review.title , review_path(review)%>
-             
+            <a href=<%= review_path(review) %> class="list-group-item list-group-item-action">
+              <small class="small-font"><%= review.title %></small>
               <small class="text-muted"> Creado hace <%= time_ago_in_words(review.created_at) %> </small>
-            </div>
-
             </a>
           </div>
         <% end %>
