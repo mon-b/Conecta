@@ -18,7 +18,12 @@
   <%= form_with(model: @review, local: true, scope: :review, url: '/reviews/') do |f| %>
 
     <%= f.hidden_field :activity_id, value: params[:activity_id] %>
-    
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :title, "Título", class: "special-width-form6 " %>
+        <%= f.text_field :title, class: "special-width-form5", placeholder: " Escribe una review sobre la actividad aquí "%>
+      </div>
+    </div>
     <div class="group-form">
       <div class="field">
         <%= f.label :body, "Mensaje", class: "special-width-form6 " %>
