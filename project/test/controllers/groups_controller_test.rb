@@ -25,7 +25,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     get group_url(groups(:animalesaaa)), params: { id: groups(:animalesaaa).id }
     # Assertion for checking show.html.erb view
     assert_response :success
-    assert_select 'h2', 'Opciones de administrador de grupo', "The page should have admin options"
+    # assert_select 'h2', 'Opciones de administrador de grupo', "The page should have admin options"
+    assert_select 'button', 'Editar grupo', 'Should have edit group button'
   end
 
 
@@ -37,7 +38,8 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # From https://github.com/rails/rails-dom-testing/blob/main/lib/rails/dom/testing/assertions/selector_assertions.rb
-    assert_select "h2", {count: 0, text: "Opciones de administrador de grupo"}, "Should not have admin options"
+    # assert_select "h2", {count: 0, text: "Opciones de administrador de grupo"}, "Should not have admin options"
+    assert_select "button", {count: 0, text: "Editar grupo"}, "Should have edit group button"
   end
 
   # tests related to my_groups
