@@ -22,16 +22,11 @@ services:
         sync: false
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
-      - key: REDIS_HOST
+      - key: REDIS_CONNECTION_STRING
         fromService: # Reference a property from another service (see available properties below)
           type: redis
           name: proyecto-grupo-64-redis
-          property: host
-      - key: REDIS_PORT
-        fromService:
-          type: redis
-          name: proyecto-grupo-64-redis
-          property: port
+          property: connectionString
   # A Redis instance
   - type: redis
     name: proyecto-grupo-64-redis
