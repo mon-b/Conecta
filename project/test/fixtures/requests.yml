@@ -11,3 +11,15 @@ two_request:
   group_id: 2
   status: rejected
   description: Quiero unirme por2...
+
+user_two_request_1:
+  user_id: 2
+  group_id: 2
+  status: rejected
+  description: request_esteban12
+
+user_two_request_2:
+  user_id: 2
+  group_id: 2
+  status: pending
+  description: Quiero unirme por2...

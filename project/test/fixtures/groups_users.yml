@@ -4,3 +4,9 @@ one_rel:
 two_rel:
   group_id: 2
   user_id: 1
+three_rel:
+  group_id: 2
+  user_id: 2
+four_rel:
+  group_id: 3
+  user_id: 2

@@ -32,6 +32,11 @@
               <li><%= link_to "Editar perfil", edit_user_registration_path, class:"dropdown-item" %></li>
               <li><%= link_to "Mis grupos", "/groups/mine", class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">Mis actividades</a></li>
+              
+              <% if current_user.superuser? %>
+                <li><hr class="dropdown-divider"></li>
+                <li> <%= link_to "Panel de Administración", "/admin/", class:"dropdown-item" %> </li>
+              <% end %>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to "Cerrar sesión", destroy_user_session_path, class:"dropdown-item", method: :delete %></li>
             </ul>

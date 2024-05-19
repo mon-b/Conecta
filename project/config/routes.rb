@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages, only: [:create, :show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'request/index'
   #get 'request/show'
@@ -19,12 +20,21 @@ Rails.application.routes.draw do
   # get 'groups/show'
   # get 'groups/new'
   # get 'groups/edit'
-  resources :groups
+  # resources :groups
+  resources :groups do
+    get 'messages_json', to: 'groups#show_chat_json'
+    get 'chat', to: 'groups#show_chat'
+    delete 'destroy_group', to: 'groups#destroy'
+  end
+  # get 'groups/:group_id/messages_json', to: 'groups#show_chat_json'
+  # get 'groups/:group_id/chat', to: 'groups#show_chat'
   post 'groups/new', to: 'groups#new_post'
   post 'activity/new', to: 'activity#new_activity'
   get 'groups/', to: 'groups#index'
   get 'home/index'
 
+  resources :reviews, only: [:create, :show]
+  get 'activity/:activity_id/new_review', to: 'reviews#new'
   devise_for :users
   #get 'hello_world/index'
 
@@ -40,4 +50,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  mount ActionCable.server => '/cable'
 end

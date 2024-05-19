@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_19_021029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
     t.datetime "date"
     t.string "description"
     t.string "keywords"
-    t.decimal "cost"
+    t.integer "cost"
     t.integer "people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +79,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
     t.bigint "group_id", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "group_id"
@@ -88,6 +98,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_requests_on_group_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "user_id", null: false
+    t.float "rating"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,6 +133,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_011727) do
   add_foreign_key "activities", "groups"
   add_foreign_key "groups", "categories"
   add_foreign_key "groups", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
   add_foreign_key "requests", "groups"
   add_foreign_key "requests", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "users"
 end

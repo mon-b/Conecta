@@ -8,6 +8,8 @@ class Activity < ApplicationRecord
   validates :cost, presence: true, numericality: { greater_than: 0 }
   validates :people, presence: true, numericality: { greater_than: 0 }
 
+  has_many :reviews, dependent: :destroy
+
   has_many_attached :pictures do |attachable|
     attachable.variant :small, resize_to_limit: [100, 100]
   end
@@ -15,7 +17,6 @@ class Activity < ApplicationRecord
   # Codigo sacado de: https://stackoverflow.com/a/23856331
   before_save :downcase_fields
   def downcase_fields
-    self.location.downcase!
     self.keywords.downcase!
   end
 

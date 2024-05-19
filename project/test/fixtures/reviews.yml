@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_review:
+  activity: one_activity
+  user_id: 1 # esteban11 
+  rating: 2.0
+  title: Esta actividad fue pesima
+  body: Lorem ipsum
+
+two_review:
+  activity: two_activity
+  user_id: 2 # esteban12
+  rating: 3.5
+  title: Esta actividad fue muy mala
+  body: monos
+

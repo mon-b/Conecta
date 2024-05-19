@@ -1,0 +1,35 @@
+
+<div class="container mt-2 bg-light">
+    <div id="chat-room-div">
+        <h2>Mensajes del grupo <%= Group.find(params[:group_id]).name %></h2>
+        <div id="messages-list">
+        </div>
+
+        <hr>
+        <div>
+            <div class="fields">
+                <%= form_with(url: '/messages', model: @message, local: true, scope: :message) do |f| %>
+
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :group_id, value: params[:group_id] %>
+                
+                <div class="group-form">
+                    <div class="field">
+                        <%= f.text_field :content, placeholder: "" %>
+                        <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>
+                            <i class="fa-regular fa-paper-plane fa-lg" aria-hidden="true"></i>
+                        <% end %>
+                    </div>
+                </div>
+
+                <% end %>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<%# added fontawesome, see if it is needed in all the project %>
+<%= javascript_import_module_tag "channels" %>
+<script src="https://kit.fontawesome.com/eb85b70904.js" crossorigin="anonymous"></script>
+<%# hay gema fontawesome xd %>
+<%# https://stackoverflow.com/questions/39034078/add-font-awesome-icon-to-rails-submit %>

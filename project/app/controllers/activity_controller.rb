@@ -1,4 +1,7 @@
 class ActivityController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -7,22 +10,10 @@ class ActivityController < ApplicationController
   end
 
   def new
-    if !user_signed_in?
-      redirect_to '/users/sign_in'
-    end
+    # new activity view
   end
 
   def new_activity
-    # @activity = Activity.new(group_id: params[:group_id],
-    #                 name: params[:name],
-    #                 pictures: params[:pictures],
-    #                 location: params[:location],
-    #                 date: params[:date],
-    #                 description: params[:description],
-    #                 picture: params[:picture],
-    #                 keywords: params[:keywords],
-    #                 cost: params[:cost],
-    #                 people: params[:people])
     @activity = Activity.new(activity_params)
     if @activity.save
       redirect_to @activity
@@ -32,13 +23,27 @@ class ActivityController < ApplicationController
     end
   end
 
-
-
   def edit
   end
+
   private
   def activity_params
-    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost, 
+    params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost,
                                      :people , pictures: [])
   end
+
+  def is_group_member
+    @group = Group.find(@activity.group_id)
+    @group.users.include?(current_user)
+  end
+
+  def activity_has_reviews?
+    @activity.reviews.any?
+  end
+
+  def date_has_passed?
+    @activity.date < Time.now
+  end
+
+  helper_method [:is_group_member, :activity_has_reviews?, :date_has_passed?]
 end

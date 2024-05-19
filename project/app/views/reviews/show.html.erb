@@ -1,0 +1,15 @@
+
+
+<div class="activity-container rounded border">
+  <div class="row">
+    <div class="col-md-12">
+      <h3><%= @review.title %></h3>
+      <small> Creada por: <%= @review.user.name %>, en la actividad  <%= @review.activity.name %>.</small>
+      <hr>
+      <b> Calificación: <%= @review.rating %>/5.0</b>
+      <div align="justify">
+        <p><%= @review.body %></p>
+      </div>
+    </div>
+  </div>
+</div>
