@@ -146,7 +146,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   # tests related to show_chat_json
   test "should get the show_chat_json page for a group that i belong to" do
     sign_in users(:esteban11)
-    get group_chat_json_url(groups(:animalesaaa))
+    get group_messages_json_url(groups(:animalesaaa))
     assert_response :success
   end
   # test de los mensajes que se muestran
@@ -154,7 +154,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:esteban11)
     group = groups(:animalesaaa)
     message = messages(:msg_one)
-    get group_chat_json_url(group)
+    get group_messages_json_url(group)
     assert_response :success
     json_response = JSON.parse(response.body)
     assert_equal message.content, json_response[0]["content"]
@@ -162,7 +162,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not get the show_chat_json page for a group that i do not belong to" do
     sign_in users(:user_that_has_no_groups)
-    get group_chat_json_url(groups(:otakusaaa))
+    get group_messages_json_url(groups(:otakusaaa))
     assert_response :forbidden
   end
 end
