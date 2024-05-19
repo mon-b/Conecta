@@ -4,10 +4,13 @@ one_review:
   activity: one_activity
   user_id: 1 # esteban11 
   rating: 2.0
-  body: Esta actividad fue pesima
+  title: Esta actividad fue pesima
+  body: Lorem ipsum
 
 two_review:
   activity: two_activity
   user_id: 2 # esteban12
   rating: 3.5
-  body: Esta actividad fue muy mala
+  title: Esta actividad fue muy mala
+  body: monos
+
