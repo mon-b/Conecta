@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   end
   def create
     # Find the activity
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params["review"][:activity_id])
     @review = @activity.reviews.new(review_params)
     @review.user = current_user
     if @review.save

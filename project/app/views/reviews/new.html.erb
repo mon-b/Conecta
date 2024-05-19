@@ -15,14 +15,14 @@
     </div>
   <% end %>
   <div class="fields">
-  <%= form_with(model: @reviews, local: true, scope: :reviews) do |f| %>
+  <%= form_with(model: @review, local: true, scope: :review, url: '/reviews/') do |f| %>
 
-
+    <%= f.hidden_field :activity_id, value: params[:activity_id] %>
     
     <div class="group-form">
       <div class="field">
-        <%= f.label :comment, "Comentario", class: "special-width-form6 " %>
-        <%= f.text_area :comment, class: "special-width-form5 taller-form", placeholder: " Escribe sobre tu grupo y qué lo hace especial"%>
+        <%= f.label :body, "Mensaje", class: "special-width-form6 " %>
+        <%= f.text_area :body, class: "special-width-form5 taller-form", placeholder: " Escribe una review sobre la actividad aquí "%>
       </div>
     </div>
     <div class="group-form">
