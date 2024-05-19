@@ -73,6 +73,6 @@ body: "Lorem ipsum"} }
     get review_url(review), params: { id: review.id }
     # Assertion for checking show.html.erb view
     assert_response :success
-    assert_select 'h1', review.title
+    assert_select 'h3', review.title
   end
 end
