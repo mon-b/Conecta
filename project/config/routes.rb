@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'groups/', to: 'groups#index'
   get 'home/index'
 
+  resources :reviews, only: [:create, :show]
+  get 'activity/:activity_id/new_review', to: 'reviews#new'
   devise_for :users
   #get 'hello_world/index'
 

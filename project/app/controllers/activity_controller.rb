@@ -31,4 +31,19 @@ class ActivityController < ApplicationController
     params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost,
                                      :people , pictures: [])
   end
+
+  def is_group_member
+    @group = Group.find(@activity.group_id)
+    @group.users.include?(current_user)
+  end
+
+  def activity_has_reviews?
+    @activity.reviews.any?
+  end
+
+  def date_has_passed?
+    @activity.date < Time.now
+  end
+
+  helper_method [:is_group_member, :activity_has_reviews?, :date_has_passed?]
 end

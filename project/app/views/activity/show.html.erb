@@ -1,41 +1,81 @@
 
-<div class="container">
-    <h1><%= @activity.name %></h1>
-    <h3>Grupo: <%= Group.find(@activity.group_id).name %></h3>
-    <%= link_to "Ver grupo", Group.find(@activity.group_id) %>
-    <%= link_to "Solicitar unirse", controller: :request, action: :new, group_id: @activity.group_id %>
-    <%# https://stackoverflow.com/questions/4283443/exclude-first-or-last-in-rails-each %>
+<div class="activity-container rounded border">
     <% if @activity.pictures.attached? %>
         <div id="carousel-activity-pictures" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" style="height: 400px;">
+            <div class="carousel-inner rounded" style="height: 300px;">
                 <% @activity.pictures.each_with_index do |picture, i| %>
                     <% if i == 0 %>
-                    <div class="carousel-item active w-100 h-100">
+                    <div class="carousel-item active w-100">
                     <% else %>
-                    <div class="carousel-item w-100 h-100">
+                    <div class="carousel-item w-100">
                     <% end %>
-                        <%= image_tag picture.variant(resize_to_limit: [300, 300]), size: "300x300", class:"d-block w-100 h-100", alt:"foto" %>
+                        <%= image_tag picture, class:"d-block w-100 h-100", alt:"foto" %>
                     </div>
                 <% end %>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-activity-pictures" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel-activity-pictures" data-bs-slide="next">
+            <button class="carousel-control-next" type="button"  data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     <% end %>
+    <br>
+    <h3>
+      <%= @activity.name %> <span class="badge text-bg-info"> <%= @activity.keywords %> </span>
+    </h3> 
+    <h5> Organizado por:
+      <a class="link-underline link-underline-opacity-0 link-opacity-50-hover" href="<%= group_path(@activity.group_id) %>">
+          <%= Group.find(@activity.group_id).name %>
+      </a> </h5>
+      <% if !is_group_member%>
+        <small> No perteneces a este grupo.<a class="link-underline link-underline-opacity-0 link-opacity-50-hover" href="<%= url_for(controller: :request, action: :new, group_id: @activity.group_id) %>">
+        Solicitar unirse
+    </a> </small>
+      <% end %>
+
+
+    <hr>
+
+    <div class="activity-info">
+      <div class="act-data">
+
+          <b>Información</b> <br>
+          <%= I18n.l(@activity.date, format: :long).mb_chars.capitalize.to_s %> 
+          <br>
+          <%= @activity.location %>
+          <br>
+          Precio: <%= @activity.cost %>$
+          <br>
+          Aforo máximo:  <%= @activity.people %> 
+      
+      </div>
+      <div class="act-description">
+        <b>Sobre la actividad</b> <br>
+        <%= @activity.description %>
+      </div>
+     
+    </div>
+    <hr>
+    <% if date_has_passed? %>
+      <h5>Reseñas</h5>
+      <!-- We can only review the activity if it has already been done -->
+      <% if activity_has_reviews? %>
+        Reseñas
+
+      <% else %>
+        <p>Aún no hay reseñas. ¡Sé el primero en comentar tu experiencia!</p>
+      <% end %>
+    <% end %>
+
+
+    <%# https://stackoverflow.com/questions/4283443/exclude-first-or-last-in-rails-each #%>
         
 
-    <h3>Descripción: <%= @activity.description %></h3>
-    <h3>Fecha: <%= @activity.date %></h3>
-    <h3>Ubicación: <%= @activity.location %></h3>
-    <h3>Personas: <%= @activity.people %></h3>
-    <h3>Costo: <%= @activity.cost %></h3>
-    <h3>Keywords: <%= @activity.keywords %></h3>
+
 
 </div>
 
