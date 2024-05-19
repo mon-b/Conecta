@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   post 'activity/new', to: 'activity#new_activity'
   get 'groups/', to: 'groups#index'
   get 'home/index'
+  
+  get 'activity/:activity_id/review', to: 'reviews#new_review'
+  post 'review', to: 'reviews#review'
+  get 'review/:review_id', to: 'reviews#show'
 
   devise_for :users
   #get 'hello_world/index'

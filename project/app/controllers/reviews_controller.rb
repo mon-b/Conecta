@@ -1,26 +1,20 @@
 class ReviewsController < ApplicationController
-    def index
-    end
-
     def new_review
-      # create
-      activity = Activity.find(params[:activity_id])
-      user = User.find(params[:user_id])
-      review = Review.new(review_params)
-      review.activity = activity
-      review.user = user
-
-      if review.save
-        redirect_to @activity
+      # Find the activity
+      @activity = Activity.find(params[:activity_id])
+      @review = @activity.reviews.new
+      @review.user = current_user
+      if @review.save 
+        redirect_to '/review/' + @review.id.to_s
       else
-        flash[:errors] = review.errors.full_messages
-        redirect_back_or_to '/', locals: { review: review }
+        flash[:errors] = @activity.errors.full_messages
+        redirect_to @activity
       end
-  
-        
     end
-
+  
+    private
+  
     def review_params
-      params.require(:review).permit(:rating, :comment, :user_id, :activity_id)
+      params.require(:review).permit(:rating, :body)
     end
   end

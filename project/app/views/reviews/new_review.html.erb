@@ -1,0 +1,41 @@
+
+<div class="new-groups">
+  <h2>Dejar una reseña</h2>
+  
+  <%# code from https://stackoverflow.com/a/52470594 #%>
+  <% flash.each do |name, messages| %>
+    <div class="alert alert-<%= name %>">
+      <ul>
+      <% if messages.is_a?(Array) %>
+        <% messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="fields">
+  <%= form_with(model: @reviews, local: true, scope: :reviews) do |f| %>
+
+
+    
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :comment, "Comentario", class: "special-width-form6 " %>
+        <%= f.text_area :comment, class: "special-width-form5 taller-form", placeholder: " Escribe sobre tu grupo y qué lo hace especial"%>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :body, "Rating", class: "special-width-form6 " %>
+        <%= f.text_field :body, class: "special-width-form5 " %>
+
+      </div>
+    </div>
+
+    <div class="actions" align="center">
+      <%= f.submit "Dejar reseña", class: "btn btn-primary full-width-form-marg2" %>
+    </div>
+    <% end %>
+  </div>
+</div>
