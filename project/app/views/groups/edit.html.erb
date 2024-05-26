@@ -43,16 +43,10 @@
       </div>
     </div>
 
-
-  <div class="actions" align="center">
-    <%= f.submit "Editar grupo",  class: "btn btn-primary full-width-form-marg2" %>
-  </div>
-  <div class="actions" align="center">
-  <%= link_to "Eliminar grupo", group_destroy_group_path(@group), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2" %>
-
-  </div>
+    <%= f.submit "Editar grupo", class: "btn btn-primary full-width-form-marg2", id: "edit-group-btn" %>
+    
 <% end %>
-
+<%= button_to "Eliminar grupo", group_destroy_group_path(@group), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2", id: "delete-group-btn" %>
 <h2>Actividades del grupo</h2>
 <% Activity.where(:group_id == @group.id).each do |activity| %>
   Actividad: <%= activity.name %><br>
