@@ -62,7 +62,11 @@
     </div>
     <hr>
     <% if date_has_passed? %>
-      <h5>Reseñas</h5>
+    <div class="next-activities d-flex align-items-center">
+      <h5 class="flex-grow-1">Reseñas</h5>
+      <%= link_to "Escribir reseña", "/activity/#{@activity.id}/new_review", class: "btn btn-primary d-inline" %>
+      </div>
+
       <!-- We can only review the activity if it has already been done -->
       <% if activity_has_reviews? %>
         <% @activity.reviews.each do |review| %>
