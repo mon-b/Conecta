@@ -1,26 +1,29 @@
-
-
-  <div class="groups-index">
-    <h2>Todas las actividades</h2>
-    <small>¿Quieres crear una actividad? ¡Puedes crearla en tus grupos! <%= link_to "¡Crea una nueva!", "/groups/mine" %> </small>
-
-
+<div class="groups-index">
+  <h2>Todas las actividades</h2>
+  <small> Estás viendo todas las actividades de los grupos a los que perteneces.</small> <br>
+  <small>¿Quieres crear una actividad? ¡Puedes crearla en tus grupos! <%= link_to "¡Crea una nueva!", "/groups/mine" %> </small>
   <div class="card-grid">
     <% activities = Activity.all %> 
     <% activities.each do |activity| %> 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= activity.name %></h5>
-          <p class="card-text">Grupo: <%= activity.group.name %> <br>
-            Descripción: <%= activity.description %> <br>
-            Fecha: <%= activity.date %> <br> 
+      <% if is_group_member?(activity) %>
+        <div class="card">
+          <% if activity.pictures.attached? %>
+            <%= image_tag url_for(activity.pictures.first), class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "default_group.png", size: "100x100", alt: "Default Picture",  class: "card-img-top"%>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= activity.name %></h5>
+            <%=  I18n.l(activity.date, format: :long).mb_chars.capitalize.to_s %>
+          </div>
+          <div class="card-footer">
+            <%= link_to "Ver actividad", activity_path(activity), class: "btn btn-primary half-width-form" %>
+            <%= link_to "Ver grupo", group_path(activity.group), class: "btn btn-secondary half-width-form" %>
+          </div>        
         </div>
-        <div class="card-footer">
-          <%= link_to "Ver actividad", "/activity/#{activity.id}", class: "btn btn-primary half-width-form" %>
-          <%= link_to "Ver grupo", "/groups/#{activity.group.id}", class: "btn btn-secondary half-width-form" %>
-        </div>        
-
-      </div>
+    
+        <% end %>
     <% end %>
   </div>
 </div>
+  
