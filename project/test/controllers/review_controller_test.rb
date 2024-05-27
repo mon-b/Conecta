@@ -66,6 +66,51 @@ body: "Lorem ipsum"} }
   # end
 
 
+
+  # tests related to edit
+  test "should get the edit page for a review that i created" do
+    sign_in users(:esteban11)
+    get edit_review_url(reviews(:one_review))
+    assert_response :success
+    assert_select 'h2', 'Editar reseña'
+  end
+
+  test "should not get the edit page for a review that i did not create" do
+    sign_in users(:esteban12)
+    get edit_review_url(reviews(:one_review))
+    assert_response :forbidden
+  end
+
+  # TODO: tests related to update
+  test "should update review for a review that i created" do
+    sign_in users(:esteban11)
+    review = reviews(:one_review)
+
+    patch review_url(review), params: { review: { rating: 1.5 } }
+
+    assert_redirected_to review_path(review)
+    # Reload association to fetch updated data and assert that title is updated.
+    review.reload
+    assert_equal 1.5, review.rating
+  end
+
+  test "should not update review for a review that i did not create" do
+    sign_in users(:esteban12)
+    review = reviews(:one_review)
+
+    patch review_url(review), params: { review: { rating: 3.5 } }
+    assert_response :forbidden
+  end
+
+  test "should update not update review with invalid rating" do
+    sign_in users(:esteban11)
+    review = reviews(:one_review)
+
+    patch review_url(review), params: { review: { rating: 500.5 } }
+
+    assert_response :unprocessable_entity
+  end
+
     # tests related to show
   test "should get show review" do
     sign_in users(:esteban12)

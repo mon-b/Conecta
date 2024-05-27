@@ -12,7 +12,7 @@
       <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= group.name %></h5>
-          <p class="card-text" align="left"><%= group.description %></p>
+          <p class="card-text" align="justify"><%= group.description %></p>
         </div>
         <% if group.user_id == current_user.id %>
           <div class="card-footer">

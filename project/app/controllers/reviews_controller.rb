@@ -26,6 +26,36 @@ class ReviewsController < ApplicationController
   end
 
 
+  def edit
+    @review = Review.find(params[:id])
+    # TODO: refactor if in function
+    if current_user.id != @review.user_id
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+      render :edit
+    end
+
+  def update
+    @review = Review.find(params[:id])
+    # TODO: refactor if in function
+    if current_user.id != @review.user_id
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+
+    if @review.update(review_params)
+      redirect_to @review
+    else
+      # mostrar errores aqui
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # def destroy
+  #   # TODO: destroy review feature
+  # end
+
   private
   def review_params
     params.require(:review).permit(:title, :rating, :body, :activity_id)

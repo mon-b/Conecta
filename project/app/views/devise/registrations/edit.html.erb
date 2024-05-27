@@ -50,16 +50,17 @@
       <div class="actions">
         <%= f.submit "Actualizar", class: "btn btn-primary full-width-form-marg", notice: "Se actualizo el perfil de usuario" %>
       </div>
-      <div>
+      
         <%= link_to "Cancelar", home_index_path, class: "btn btn-danger  full-width-form-marg" %>
       </div>
 
     <% end %>
     <hr>
   </div>
-  <h4>Eliminar cuenta</h4>
+
     
   <div class="cancel-account">
+    <h4 align="center">Eliminar cuenta</h4>
     ¿Estás seguro? Esta acción no se puede deshacer.
     <%= button_to "Eliminar mi cuenta", registration_path(resource_name),
     form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-danger full-width-form-marg" %>
