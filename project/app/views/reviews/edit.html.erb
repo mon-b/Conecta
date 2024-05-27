@@ -1,0 +1,43 @@
+<div class="new-groups">
+<h2>Editar grupo</h2>
+
+<%# code from https://stackoverflow.com/a/52470594 #%>
+<% flash.each do |name, messages| %>
+  <div class="alert alert-<%= name %>">
+    <ul>
+    <% if messages.is_a?(Array) %>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @review, local: true) do |f| %>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :title, "Título", class: "special-width-form6 " %>
+        <%= f.text_field :title, class: "special-width-form5", placeholder: " Escribe una review sobre la actividad aquí "%>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :body, "Mensaje", class: "special-width-form6 " %>
+        <%= f.text_area :body, class: "special-width-form5 taller-form", placeholder: " Escribe una review sobre la actividad aquí "%>
+      </div>
+    </div>
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :rating, "Rating", class: "special-width-form6 " %>
+        <%= f.number_field :rating, in: 1.0..5.0, step: 0.5, class: "special-width-form5 " %>
+
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Editar reseña", class: "btn btn-primary full-width-form-marg2", id: "edit-group-btn" %>
+    
+<% end %>
+<%#= button_to "Eliminar reseña", group_destroy_group_path(@group), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2", id: "delete-group-btn" %>
+
+</div>
