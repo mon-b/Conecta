@@ -1,5 +1,11 @@
+# Clase que se encarga de manejar los mensajes
 class MessagesController < ApplicationController
+
+  # autentificacion de usuario
   before_action :authenticate_user!
+
+  # mostrar todos los mensajes
+  # @return [void]
   def create
     @message = Message.new(message_params)
     # things to check. the user id must be the same.
@@ -18,6 +24,9 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  # parametros permitidos
+  # @return [ActionController::Parameters]
   def message_params
     params.require(:message).permit(:content, :user_id, :group_id)
   end
