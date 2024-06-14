@@ -38,29 +38,29 @@
 
   <div class="group-form">
       <div class="field">
-        <%= f.label :cost, "Costo", class: "special-width-form6 " %>
-        <%= f.text_area :cost, class: "special-width-form5", placeholder: " Escribe sobre la actividad"%>
+        <%= f.label :cost, "Precio", class: "special-width-form6 " %>
+        <%= f.text_area :cost, class: "special-width-form5", placeholder: " Precio por participante"%>
       </div>
     </div>
 
   <div class="group-form">
       <div class="field">
-        <%= f.label :people, "Personas", class: "special-width-form6 " %>
-        <%= f.text_area :people, class: "special-width-form5", placeholder: " Escribe sobre la actividad"%>
+        <%= f.label :people, "Aforo", class: "special-width-form6" %>
+        <%= f.text_area :people, class: "special-width-form5", placeholder: " Cantidad máxima de participantes"%>
       </div>
     </div>
     
     <div class="group-form">
       <div class="field">
-        <%= f.label :keywords, "Keywords", class: "special-width-form6 " %>
-        <%= f.text_area :keywords, class: "special-width-form6", placeholder: " Escribe las palabras claves para encontrar tu actividad"%>
+        <%= f.label :keywords, "Keywords", class: "special-width-form6" %>
+        <%= f.text_area :keywords, class: "special-width-form5", placeholder: " Palabras claves para encontrar tu actividad%>
       </div>
     </div>
 
     <div class="group-form">
       <div class="field">
-        <%= f.label :date, "Fecha", class: "special-width-form6 " %>
-        <%= f.datetime_field :date, class: "special-width-form6", placeholder: " Escribe las palabras claves para encontrar tu actividad"%>
+        <%= f.label :date, "Fecha", class: "special-width-form6" %>
+        <%= f.datetime_field :date, class: "special-width-form5""%>
       </div>
     </div>
 
@@ -70,7 +70,7 @@
         <%= f.label :profile_picture, "Foto (opcional)", class: "special-width-form6 " %>
         <%= f.file_field :profile_picture, class: "special-width-form5 " %>
       </div>
-    </div>
+  </div>
 
     <%= f.submit "Editar Actividad", class: "btn btn-primary full-width-form-marg2", id: "edit-group-btn" %>
     

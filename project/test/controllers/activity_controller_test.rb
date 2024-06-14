@@ -20,6 +20,7 @@ class ActivityControllerTest < ActionDispatch::IntegrationTest
 
   test "should create new activity" do
     sign_in users(:esteban11)
+    puts("Activity count: " + Activity.count.to_s)
     assert_difference("Activity.count") do
       post '/activity',
            params: { activity: { group_id: 1, name: "title" , location: "aa", date: DateTime.now, keywords: "aaa",

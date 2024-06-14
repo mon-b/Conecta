@@ -20,4 +20,13 @@ class Group < ApplicationRecord
   def set_default_rating
     self.rating ||= 0.0
   end
+
+  def calculate_average_rating
+    reviews = Review.joins(:activity).where('activities.group_id = ?', id)
+    average_rating = reviews.average(:rating)
+    self.rating = average_rating.nil? ? 0.0 : average_rating
+    save
+    rating
+  end
+
 end
