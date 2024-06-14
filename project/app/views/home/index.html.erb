@@ -18,21 +18,18 @@
 <% else %>
     <div class="unsigned-user">
         <div class="logo-and-brand">
-            <%= image_tag asset_path("logo.png"), alt: "Example Image", class: "custom-image" %>
-            CONECTA
+            <%= image_tag asset_path("logo-no-background.png"), alt: "Example Image", class: "custom-image" %>
         </div>
-        <h1>Bienvenido a Conecta</h1>
+        <br>
+        <br>
         <div class="description">
-            <div class="slogan">
-                <i> Un lugar para todos.</i>
-            </div>
             <p> 
-                Únete a grupos con intereses similares y conecta con personas como tú.
+                Únete a grupos de personas con intereses similares, y <i>conecta</i> con personas como tú.
                 <br>
                 ¡Descubre y participa de todas las actividades disponibles para ti! 
             </p>
         </div>
-        <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %> 
         <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button" %>
     </div>
 
