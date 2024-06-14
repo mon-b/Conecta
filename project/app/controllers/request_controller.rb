@@ -36,7 +36,7 @@ class RequestController < ApplicationController
       return
     end
     if group.users.include?(user)
-      flash[:danger] = ['El usuario ya es miembro de este grupo']
+      flash[:danger] = ['Ya eres miembro de este grupo']
       redirect_back_or_to '/'
       return
     end
@@ -50,7 +50,7 @@ class RequestController < ApplicationController
                            status: params[:status],
                            description: params[:description],)
     if @request.save
-      redirect_to @request
+      redirect_to '/request/index'
     else
       flash[:errors] = @request.errors.full_messages
       redirect_back_or_to '/', locals: { request: @request }

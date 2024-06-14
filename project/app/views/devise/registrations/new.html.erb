@@ -33,8 +33,11 @@
         <%= f.password_field :password, autocomplete: "new-password", class: "full-width-form" %>
       </div>
       <% if @minimum_password_length %>
-        Debe tener un máximo de <%= @minimum_password_length %> caracteres.
+        <small class="text-muted">
+          Debe tener un mínimo de <%= @minimum_password_length %> caracteres.
+        </small>
       <% end %>
+
     
       <div class="field">
         <%= f.label :password_confirmation,"Confirmar Contraseña" %><br />

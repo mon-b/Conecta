@@ -1,10 +1,10 @@
 class Activity < ApplicationRecord
   belongs_to :group
-  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
-  validates :location, presence: true, length: { maximum: 50 }, format: { with: /\A[a-zA-Z0-9 ]+\z/ }
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9. ]+\z/ }, length: { maximum: 50, minimum: 5 }
+  validates :location, presence: true, length: { maximum: 100, minimum: 5 }, format: { with: /\A[\p{L}\p{N}. ]+\z/}
   validates :date, presence: true
   validates :description, presence: true, allow_blank: false
-  validates :keywords, presence: true, length: { maximum: 15 }, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :keywords, presence: true, length: { maximum: 50 }, format: { with: /\A[\p{L}\p{N}. ]+\z/ }
   validates :cost, presence: true, numericality: { greater_than: 0 }
   validates :people, presence: true, numericality: { greater_than: 0 }
 

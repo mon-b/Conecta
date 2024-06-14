@@ -24,6 +24,40 @@ class ActivityController < ApplicationController
   end
 
   def edit
+    @activity = Activity.find(params[:id])
+    @group = Group.find(@activity.group_id)
+    if !is_group_admin_activity?
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+
+      render :edit
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    @group = Group.find(@activity.group_id)
+    if !is_group_admin_activity?
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+
+    if @activity.update(activity_params)
+      redirect_to @activity
+    else
+      # mostrar errores aqui
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @activity = Activity.find(params[:activity_id])
+    if !is_group_admin_activity?
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+    @activity.destroy
+    redirect_to '/activity'
   end
 
   private
@@ -45,5 +79,10 @@ class ActivityController < ApplicationController
     @activity.date < Time.now
   end
 
-  helper_method [:is_group_member?, :activity_has_reviews?, :date_has_passed?]
+  def is_group_admin_activity?(activity)
+    id_group = activity.group_id
+    current_user.id == Group.find(id_group).user_id
+  end
+
+  helper_method [:is_group_member?, :activity_has_reviews?, :date_has_passed?, :is_group_admin_activity?]
 end
