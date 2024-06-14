@@ -50,6 +50,16 @@ class ActivityController < ApplicationController
     end
   end
 
+  def destroy
+    @activity = Activity.find(params[:activity_id])
+    if !is_group_admin_activity?
+      render html: helpers.tag.h1('No autorizado'), status: :forbidden
+      return
+    end
+    @activity.destroy
+    redirect_to '/activity'
+  end
+
   private
   def activity_params
     params.require(:activity).permit(:group_id, :name, :location, :date, :description, :picture, :keywords, :cost,
@@ -69,10 +79,10 @@ class ActivityController < ApplicationController
     @activity.date < Time.now
   end
 
-  def is_group_admin_activity?
-    id_group = @activity.group_id
+  def is_group_admin_activity?(activity)
+    id_group = activity.group_id
     current_user.id == Group.find(id_group).user_id
   end
 
-  helper_method [:is_group_member?, :activity_has_reviews?, :date_has_passed?]
+  helper_method [:is_group_member?, :activity_has_reviews?, :date_has_passed?, :is_group_admin_activity?]
 end

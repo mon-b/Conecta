@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'groups/:group_id/new_activity', to: 'activity#new'
   post 'activity', to: 'activity#new_activity'
   patch 'activity/:activity_id/edit', to: 'activity#update'
+  #delete 'activity/:activity_id/destroy', to: 'activity#destroy'
+  delete 'activity/:activity_id/destroy', to: 'activity#destroy', as: :activity_destroy
   #patch 'activity/:id', to: 'activity#update', as: :update_activity
   #delete 'activity/:activity_id/destroy', to: 'activity#destroy'
   # get 'groups/index'
