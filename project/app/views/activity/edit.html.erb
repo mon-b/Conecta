@@ -1,2 +1,67 @@
-<h1>Activity#edit</h1>
-<p>Find me in app/views/activity/edit.html.erb</p>
+<div class="new-groups">
+<h2>Editar Actividad</h2>
+
+<%# code from https://stackoverflow.com/a/52470594 #%>
+<% flash.each do |name, messages| %>
+  <div class="alert alert-<%= name %>">
+    <ul>
+    <% if messages.is_a?(Array) %>
+      <% messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @activity, local: true) do |f| %>
+    <%# <div class="group-form">
+    <%= f.label :category_id, "Categoría", class: "special-width-form6" %>
+    <%# <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }, { include_blank: 'Seleccione una categoría' }, {class: "special-width-form5"} %>
+  <%# </div> %>
+  
+  <div class="group-form">
+      <div class="field">
+        <%= f.label :name, "Nombre la actividad", class: "special-width-form6" %>
+        <%= f.text_field :name, class: "special-width-form5", placeholder: " Ingresa el nombre de la actividad" %>
+      </div>
+    </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="group-form">
+      <div class="field">
+        <%= f.label :description, "Descripción", class: "special-width-form6 " %>
+        <%= f.text_area :description, class: "special-width-form5 taller-form", placeholder: " Escribe sobre la actividad"%>
+      </div>
+    </div>
+
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :keywords, "Keywords", class: "special-width-form6 " %>
+        <%= f.text_area :keywords, class: "special-width-form6", placeholder: " Escribe las palabras claves para encontrar tu actividad"%>
+      </div>
+    </div>
+
+    <div class="group-form">
+      <div class="field">
+        <%= f.label :date, "Fecha", class: "special-width-form6 " %>
+        <%= f.datetime_field :date, class: "special-width-form6", placeholder: " Escribe las palabras claves para encontrar tu actividad"%>
+      </div>
+    </div>
+
+  <div class="group-form">
+      <div class="field">
+        <%= f.label :profile_picture, "Foto (opcional)", class: "special-width-form6 " %>
+        <%= f.file_field :profile_picture, class: "special-width-form5 " %>
+      </div>
+    </div>
+
+    <%= f.submit "Editar Actividad", class: "btn btn-primary full-width-form-marg2", id: "edit-group-btn" %>
+    
+<% end %>
+
+<%# <%= button_to "Eliminar Actividad", group_destroy_group_path(@activity), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2", id: "delete-group-btn" %> 
+
+
+</div>
