@@ -36,7 +36,7 @@ class RequestController < ApplicationController
       return
     end
     if group.users.include?(user)
-      flash[:danger] = ['El usuario ya es miembro de este grupo']
+      flash[:danger] = ['Ya eres miembro de este grupo']
       redirect_back_or_to '/'
       return
     end
