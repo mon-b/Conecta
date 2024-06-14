@@ -50,7 +50,7 @@ class RequestController < ApplicationController
                            status: params[:status],
                            description: params[:description],)
     if @request.save
-      redirect_to @request
+      redirect_to '/request/index'
     else
       flash[:errors] = @request.errors.full_messages
       redirect_back_or_to '/', locals: { request: @request }
