@@ -1,6 +1,4 @@
-# Modelos de los mensajes
 class Message < ApplicationRecord
-  # Asociacion: Un mensaje pertenece a un usuario y a un grupo
   belongs_to :user
   belongs_to :group
 
@@ -8,8 +6,6 @@ class Message < ApplicationRecord
 
   private
 
-  # Metodo que se encarga de enviar el mensaje a todos los usuarios del grupo
-  # @return [void]
   def broadcast_message
     # ActionCable.server.broadcast([:channel], {
     #   id: id,

@@ -99,5 +99,3 @@ gem "aws-sdk-s3", require: false
 
 # Gem for image validations
 gem "active_storage_validations"
-
-gem 'yard'
