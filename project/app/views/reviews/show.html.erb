@@ -4,12 +4,17 @@
   <div class="row">
     <div class="col-md-12">
       <h3><%= @review.title %></h3>
+      
       <small> Creada por: <%= @review.user.name %>, en la actividad  <%= @review.activity.name %>.</small>
       <hr>
       <b> Calificación: <%= @review.rating %>/5.0</b>
       <div align="justify">
         <p><%= @review.body %></p>
       </div>
+      <%# nota: refactorizar y crear helper function %>
+      <% if @review.user_id == current_user.id %>
+        <%= link_to "Editar reseña", "/reviews/#{@review.id}/edit", class: "btn btn-secondary half-width-form" %>
+      <% end %>
     </div>
   </div>
 </div>
