@@ -79,8 +79,8 @@ class ActivityController < ApplicationController
     @activity.date < Time.now
   end
 
-  def is_group_admin_activity?(activity)
-    id_group = activity.group_id
+  def is_group_admin_activity?
+    id_group = @activity.group_id
     current_user.id == Group.find(id_group).user_id
   end
 

@@ -35,10 +35,10 @@
         <small> No perteneces a este grupo.<a class="link-underline link-underline-opacity-0 link-opacity-50-hover" href="<%= url_for(controller: :request, action: :new, group_id: @activity.group_id) %>">
         Solicitar unirse
     </a> </small>
+
     <% end %>
 
-    
-    <% if is_group_admin_activity?(@activity)%>
+    <% if is_group_admin_activity?() %>
     <%= link_to "Editar Actividad", "/activity/#{@activity.id}/edit", class: "btn btn-primary d-inline" %>
     <% end %>
 
