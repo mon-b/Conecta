@@ -29,9 +29,12 @@
           </div>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control full-width-form", placeholder: "Contraseña"  %>
         </div>
-        <small class="text-muted">
-          Debe tener un máximo de 16 caracteres.
+        <small >
+          <div style="color: rgba(243, 243, 243, 0.7);">
+            Debe tener un máximo de 16 caracteres.
+          </div>
         </small>
+        <br>
       </div>
         <div class="extra-login">
           <% if devise_mapping.rememberable? %>

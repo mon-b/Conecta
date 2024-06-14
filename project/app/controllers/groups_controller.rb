@@ -32,12 +32,18 @@ class GroupsController < ApplicationController
       redirect_to '/new', locals: { group: @group }
     end
   end
+  
 
 
 
   def index
-    @groups = Group.all
-    render :index
+    @categories = Category.all # helping category-based filtering
+
+    if params[:category_id].present?
+      @groups = Group.where(category_id: params[:category_id])
+    else
+      @groups = Group.all
+    end
   end
 
   def edit
