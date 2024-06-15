@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
   belongs_to :group
 
   # Validaciones
-  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9. ]+\z/ }, length: { maximum: 50, minimum: 5 }
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9. ]+\z/ }, length: { maximum: 50 }
   validates :location, presence: true, length: { maximum: 100}, format: { with: /\A[\p{L}\p{N}. ]+\z/}
   validates :date, presence: true
   validates :description, presence: true, allow_blank: false
