@@ -33,8 +33,8 @@
           <%= @group.description %>
         </p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Próximamente: contador de miembros</li>
-          <li class="list-group-item">Próximamente: calificación</li>
+          <li class="list-group-item">Miembros: <%= member_count(@group) %> </li>
+          <li class="list-group-item">Próximamente: <%= @group.calculate_average_rating %></li>
           <li class="list-group-item">Próximamente: algo cool de mostrar acá</li>
         </ul>
       </div>

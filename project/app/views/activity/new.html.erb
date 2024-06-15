@@ -26,6 +26,7 @@
         <%= f.text_field :name, class: "special-width-form5" %>
       </div>
     </div>
+
     <div class="group-form">
       <div class="field">
         <%= f.label :pictures, "Fotos de la actividad", class: "special-width-form6" %>
@@ -40,6 +41,7 @@
       </div>
     </div>
 
+
     <%# <%= f.hidden_field :user_id, value: current_user.id %>
     <%#= f.hidden_field :group_id, value: @activity.group_id%>
 
@@ -49,6 +51,7 @@
         <%= f.text_area :description, class: "special-width-form5 taller-form", placeholder: " Escribe sobre tu grupo y qué lo hace especial"%>
       </div>
     </div>
+
     
     <div class="group-form">
       <div class="field">
@@ -63,6 +66,8 @@
           <%= f.text_field :location, class: "special-width-form5" %>
       </div>
     </div>
+
+
     <div class="group-form">
       <div class="field">
           <%= f.label :people, "Personas", class: "special-width-form6 " %>
@@ -85,3 +90,4 @@
 <% end %>
 
 </div>
+<br>

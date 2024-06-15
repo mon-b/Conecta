@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
   <head>
-    <title>ProyectoGrupo64</title>
+    <title>Conecta</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag 'favicon.png' %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -14,9 +15,8 @@
   <% if user_signed_in? %>
       <%= render "/navbar" %>
   <% end %>
-  <body style="background-color: rgb(211, 242, 249); background-repeat: repeat;">
+  <body style="background-color: #121212; background-repeat: repeat; color: #f3f3f3;">
     <%= flash[:notice] %>
     <%= yield %>
   </body>
-  <%= render "/footer" %>
 </html>

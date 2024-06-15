@@ -2,6 +2,9 @@ class ReviewsController < ApplicationController
 
   def new
   end
+
+  # crear una nueva review
+  # @return [void]
   def create
     # Find the activity
     @activity = Activity.find(params["review"][:activity_id])
@@ -21,11 +24,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # mostrar una reseña
+  # @return [void]
   def show
     @review = Review.find(params[:id])
   end
 
-
+  # editar una reseña
+  # @return [void]
+  # @raise [ActiveRecord::RecordNotFound] en caso de que no se encuentre la reseña
   def edit
     @review = Review.find(params[:id])
     # TODO: refactor if in function
@@ -36,6 +43,8 @@ class ReviewsController < ApplicationController
       render :edit
     end
 
+  # modificar una reseña
+  # @return [void]
   def update
     @review = Review.find(params[:id])
     # TODO: refactor if in function
@@ -57,6 +66,9 @@ class ReviewsController < ApplicationController
   # end
 
   private
+
+  # parametros permitidos
+  # @return [ActionController::Parameters]
   def review_params
     params.require(:review).permit(:title, :rating, :body, :activity_id)
   end

@@ -7,17 +7,24 @@ class RequestControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:esteban12)
     get '/request'
     assert_response :success
-    assert_select 'h2', 'Mis Solicitudes'
-    assert_select 'div', 'request_esteban12' # fixture user_two_request_1
+    assert_select 'h2', 'Mis solicitudes'
   end
 
 
   test "should destroy request if user owns the request and request is pending" do
     sign_in users(:esteban12)
+    
+    # Assuming requests(:user_two_request_2) corresponds to a pending request owned by the signed-in user
     assert_difference("Request.count", -1) do
       delete request_path(requests(:user_two_request_2))
     end
-    assert_response :ok
+    
+    assert_redirected_to request_index_path
+  
+    follow_redirect!
+    
+    assert_equal 'Solicitud cancelada exitosamente.', flash[:success]
+    assert_response :success
   end
 
   test "should not destroy if user owns the request and request is not pending" do

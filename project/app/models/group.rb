@@ -1,3 +1,4 @@
+# Modelo de Grupos
 class Group < ApplicationRecord
   after_initialize :set_default_rating, if: :new_record?
   belongs_to :category
@@ -17,7 +18,18 @@ class Group < ApplicationRecord
     attachable.variant :small, resize_to_limit: [100, 100]
   end
 
+  # rating promedio default
   def set_default_rating
     self.rating ||= 0.0
   end
+
+  # Calcula el promedio de las reseñas de un grupo
+  def calculate_average_rating
+    reviews = Review.joins(:activity).where('activities.group_id = ?', id)
+    average_rating = reviews.average(:rating)
+    self.rating = average_rating.nil? ? 0.0 : average_rating
+    save
+    rating
+  end
+
 end

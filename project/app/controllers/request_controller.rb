@@ -1,11 +1,16 @@
 class RequestController < ApplicationController
 
+  # autentificacion de usuario
   before_action :authenticate_user!
 
+  # mostrar todas las solicitudes
+  # @return [void]
   def index
     @requests = Request.where(user_id: current_user.id)
   end
 
+  # mostrar una solicitud
+  # @return [void]
   def show
     @request = Request.find(params[:id])
     if (current_user.id != @request.user_id) && (current_user.id != Group.find(@request.group_id).user_id)
@@ -13,10 +18,14 @@ class RequestController < ApplicationController
     end
   end
 
+  # crear una nueva solicitud
+  # @return [void]
   def new
     # new request view
   end
 
+  # crear una nueva solicitud
+  # @return [void]
   def new_request
     begin
       exist = Request.find_by(group_id: params[:group_id], user_id: params[:user_id])
@@ -36,7 +45,7 @@ class RequestController < ApplicationController
       return
     end
     if group.users.include?(user)
-      flash[:danger] = ['El usuario ya es miembro de este grupo']
+      flash[:danger] = ['Ya eres miembro de este grupo']
       redirect_back_or_to '/'
       return
     end
@@ -57,7 +66,8 @@ class RequestController < ApplicationController
     end
   end
 
-
+  # editar una solicitud
+  # @return [void]
   def update
   # Esta ruta permite aceptar una request
     @request = Request.find(params[:id])
@@ -91,20 +101,26 @@ class RequestController < ApplicationController
   def edit
   end
 
+  # eliminar una solicitud
+  # @return [void]
+  # @raise [ActiveRecord::RecordNotFound] en caso de que no se encuentre la solicitud
   def destroy
-    # The user can destroy his own requests, if the admin destroys it then it is rejected!
     @request = Request.find(params[:id])
-
+  
     if @request.user_id != current_user.id
       head :forbidden
       return
     end
+  
     if @request.status == "pending"
       @request.destroy
-      head :ok
+      flash[:success] = 'Solicitud cancelada exitosamente.'
     else
-      flash[:warning] = ['No puedes destruir una request aceptada/denegada']
-      redirect_to request_index_path
+      flash[:warning] = 'No puedes destruir una solicitud aceptada/denegada'
     end
+  
+    redirect_to request_index_path
   end
+  
+  
 end

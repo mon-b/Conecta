@@ -28,7 +28,7 @@ body {
 }
 
 .custom-image {
-    width: 20vh; 
+    width: 50vh; 
     height: auto; 
     min-width: 100px;
 
@@ -40,7 +40,6 @@ body {
 
 .slogan {
     font-size: 30px;
-    color: #333;
     margin-bottom: 1.5vh;
     margin-top: 1.5vh;
 }
@@ -56,7 +55,7 @@ body {
 
 .login-container {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #f2f2f2;
+    background-color: #313131;
     margin-left: 35%;
     margin-right: 35%;
     border-radius: 0.7rem;
@@ -94,7 +93,7 @@ body {
 
 .reg-container {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #f2f2f2;
+    background-color: #313131;
     margin-left: 35%;
     margin-right: 35%;
     border-radius: 0.7rem;
@@ -166,8 +165,8 @@ body {
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 6vh;
-    margin-left: 15%;
-    margin-right: 15%; 
+    margin-left: 20%;
+    margin-right: 20%; 
 }
 
 .card-grid {
@@ -175,7 +174,6 @@ body {
     gap: 2%; 
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 4vh;
 }
 
 
@@ -345,7 +343,7 @@ body {
     margin-top: 2vh;
     margin-left: 17%;
     margin-right: 17%;
-    background-color: #fefefe;
+    background-color: #313131;
     padding: 1rem;
 }
 
@@ -364,4 +362,4 @@ body {
     text-align: justify;
     margin-right: 0.5rem;
 }
-
+ /* Ensure text remains the same color */

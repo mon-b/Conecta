@@ -13,9 +13,18 @@ Rails.application.routes.draw do
   #get 'activity/show'
   #get 'activity/new'
   #get 'activity/edit'
-  resources :activity, except: [:new, :create]
+  resources :activity, except: [:new, :create, :patch] do
+    collection do
+      get 'search', to: 'activity#search', as: 'search'
+    end
+  end
   get 'groups/:group_id/new_activity', to: 'activity#new'
   post 'activity', to: 'activity#new_activity'
+  patch 'activity/:activity_id/edit', to: 'activity#update'
+  #delete 'activity/:activity_id/destroy', to: 'activity#destroy'
+  delete 'activity/:activity_id/destroy', to: 'activity#destroy', as: :activity_destroy
+  #patch 'activity/:id', to: 'activity#update', as: :update_activity
+  #delete 'activity/:activity_id/destroy', to: 'activity#destroy'
   # get 'groups/index'
   # get 'groups/show'
   # get 'groups/new'
