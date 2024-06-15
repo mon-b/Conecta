@@ -17,6 +17,11 @@ class ActivityController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  def search
+    @activities = Activity.where('keywords LIKE ?', "%#{params[:keywords]}%")
+    render :index
+  end
+
   def new
     # new activity view
   end
