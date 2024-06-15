@@ -105,19 +105,22 @@ class RequestController < ApplicationController
   # @return [void]
   # @raise [ActiveRecord::RecordNotFound] en caso de que no se encuentre la solicitud
   def destroy
-    # The user can destroy his own requests, if the admin destroys it then it is rejected!
     @request = Request.find(params[:id])
-
+  
     if @request.user_id != current_user.id
       head :forbidden
       return
     end
+  
     if @request.status == "pending"
       @request.destroy
-      head :ok
+      flash[:success] = 'Solicitud cancelada exitosamente.'
     else
-      flash[:warning] = ['No puedes destruir una request aceptada/denegada']
-      redirect_to request_index_path
+      flash[:warning] = 'No puedes destruir una solicitud aceptada/denegada'
     end
+  
+    redirect_to request_index_path
   end
+  
+  
 end

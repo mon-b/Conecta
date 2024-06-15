@@ -3,3 +3,5 @@
 <h2>Usuario: <%= User.find(@request.user_id).name %><h2>
 <h2>Descripción: <%= @request.description %><h2>
 <h2>Estado: <%= @request.status %><h2>
+
+<%= button_to "Cancelar solicitud", request_path(@request), method: :delete, class: "btn btn-danger special-width-form2" %>
