@@ -1,4 +1,5 @@
 <div class="edit-user-data">
+  <br>
   <h4>Editar información personal</h4>
   
   
@@ -15,16 +16,16 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-    
-       <div class="field">
+      <div class="field">
         <%= f.label :profile_picture, "Foto de perfil (opcional)" %><br />
         <%= f.file_field :profile_picture, class: "full-width-form" %>
-       </div>
+      </div>
+      <br>
 
-       <div class="field">
+      <div class="field">
         <%= f.label :description, "Biografia (opcional)" %><br />
         <%= f.text_area :description, class: "full-width-form", size: "70x5" %>
-       </div>
+      </div>
       <hr>
       <div class="field">
         <%= f.label :password %> nueva<br />
@@ -55,11 +56,12 @@
       </div>
 
     <% end %>
-    <hr>
+    
   </div>
 
     
   <div class="cancel-account">
+    <hr>
     <h4 align="center">Eliminar cuenta</h4>
     ¿Estás seguro? Esta acción no se puede deshacer.
     <%= button_to "Eliminar mi cuenta", registration_path(resource_name),
@@ -67,3 +69,4 @@
   </div>
     
 </div>
+<br>

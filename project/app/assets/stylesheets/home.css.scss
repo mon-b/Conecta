@@ -362,4 +362,13 @@ body {
     text-align: justify;
     margin-right: 0.5rem;
 }
- /* Ensure text remains the same color */
+
+ .navbar-logo-text {
+    width: 90px; 
+    height: auto; 
+  }
+
+  .navbar-logo-img {
+    width: 25px; 
+    height: auto; 
+  }
