@@ -70,8 +70,8 @@ class RequestController < ApplicationController
   # @return [void]
   def update
   # Esta ruta permite aceptar una request
-    @request = Request.find(params[:id])
-  @group = @request.group
+  @request = Request.find(params[:id])
+  @user = @request.user
   if current_user.id != @group.user_id
     head :forbidden
     return

@@ -14,6 +14,9 @@
             <%= link_to "Inicio", home_index_path, class:"nav-link active", aria: { current: "page"  } %>
           </li>
           <li class="nav-item">
+            <%= link_to "Actividades", activity_index_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Grupos", groups_path, class:"nav-link" %>
           </li>
         </ul>
@@ -31,7 +34,6 @@
               <li><%= link_to "Mis solicitudes", request_index_path, class:"dropdown-item" %></li>
               <li><%= link_to "Editar perfil", edit_user_registration_path, class:"dropdown-item" %></li>
               <li><%= link_to "Mis grupos", "/groups/mine", class:"dropdown-item" %></li>
-              <li><a class="dropdown-item" href="#">Mis actividades</a></li>
               
               <% if current_user.superuser? %>
                 <li><hr class="dropdown-divider"></li>
