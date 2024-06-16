@@ -2,19 +2,18 @@
   <h2>Todas las actividades</h2>
   <small> Estás viendo todas las actividades de los grupos a los que perteneces.</small> <br>
   <small>¿Quieres crear una actividad? ¡Puedes crearla en tus grupos! <%= link_to "¡Crea una nueva!", "/groups/mine" %> </small>
-  <br>
-  <br>
+  
   <div class="search-bar">
     <%= form_with url: search_activity_index_path(), method: :get, local: true do |form| %>
-      <%= form.text_field :keywords, placeholder: "Buscar actividades por tags", class: "form-control" %>
-      <br>
+    <div class="container d-flex" style="width: 50%; margin-top:2vh;">
+      <%= form.text_field :keywords, placeholder: "Buscar actividades", class: "form-control" %>
       <%= form.submit "Buscar", class: "btn btn-primary" %>
+    </div>
     <% end %>
   </div>
-  <br>
   
   <div class="card-grid">
-    <%# <% activities = Activity.all %>
+    <% # <% activities = Activity.all %>
     <% activities = @activities.present? ? @activities : Activity.all %>
     <% activities.each do |activity| %> 
       <% if is_group_member?(activity) %>
