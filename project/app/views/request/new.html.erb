@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="check-requests">
   <h1>Solicita unirte al grupo: <%= Group.find(params[:group_id]).name %> </h1>
 
   <% # code from https://stackoverflow.com/a/52470594 %>
@@ -22,8 +22,7 @@
 
       <div class="field">
           <%= f.label :description, "Detalla porque desearías unirte al grupo" %><br />
-          <%= f.text_field :description %><br />
-          <i>Por ejemplo: "Me gustaría unirme a este grupo porque me interesa la temática y me gustaría conocer a más personas con intereses similares"</i>
+          <%= f.text_area :description, placeholder: "Me gustaría unirme a este grupo porque me interesa la temática y me gustaría conocer a más personas con intereses similares" %><br />
       </div>
 
       <div class="actions">

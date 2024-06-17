@@ -34,8 +34,22 @@
         </p>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Miembros: <%= member_count(@group) %> </li>
-          <li class="list-group-item">Próximamente: <%= @group.calculate_average_rating %></li>
-          <li class="list-group-item">Próximamente: algo cool de mostrar acá</li>
+          <% full_stars = @group.calculate_average_rating.floor %>
+          <% half_star = (@group.calculate_average_rating - full_stars) >= 0.5 ? 1 : 0 %>
+          <% empty_stars = 5 - full_stars - half_star %>
+
+          <li class="list-group-item d-flex align-items-center">Calificación: &nbsp; <% full_stars.times do %>
+            <%= image_tag("star-full.png", alt: "Full Star", class: "star-icon") %> &nbsp;
+          <% end %>
+          
+          <% if half_star == 1 %>
+            <%= image_tag("star-half.png", alt: "Half Star", class: "star-icon") %> &nbsp;
+          <% end %>
+          
+          <% empty_stars.times do %>
+            <%= image_tag("star-empty.png", alt: "Empty Star", class: "star-icon") %>&nbsp;
+          <% end %> 
+          (<%= @group.calculate_average_rating %>)</li>
         </ul>
       </div>
     </div>
