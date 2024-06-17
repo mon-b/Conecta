@@ -1,15 +1,28 @@
 <%if user_signed_in? %>
 
-    <div class="welcome">
+    
+    <div class= "check-requests">
+        <div class="logo-and-brand" >
+            <%= image_tag asset_path("logo-no-background2.png"), alt: "Example Image", class: "custom-image"  %>
+        </div>
+    <div class="card" style="width: 100%;">
+        <div class="welcome">
         <% if current_user.profile_picture.attached? %>
            <%= image_tag current_user.profile_picture.variant(:small) %>
         <% else %>
             <%= image_tag "default_profile.png", size: "100x100", alt: "Default Picture"%>
         <% end %>
         <h2>¡Bienvenido/a <%= current_user.name %>!</h2>
-        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> <br>
-        
-
+        <p class="text-muted">Explora nuevas actividades y conecta con personas afines.</p>
+        <%= link_to "Editar perfil", edit_user_registration_path, class:"btn btn-primary" %>
+        <br>
+        <br>
+        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> 
+        <br>
+        <br>
+        <br>
+        </div>
+    </div>
     </div>
 
 
