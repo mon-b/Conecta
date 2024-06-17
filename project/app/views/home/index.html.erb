@@ -2,9 +2,7 @@
 
     
     <div class= "check-requests">
-        <div class="logo-and-brand" style="margin: 0 auto" >
-            <%= image_tag asset_path("logo-no-background2.png"), alt: "Example Image", class: "custom-image"  %>
-        </div>
+
     <div class="card" style="width: 100%;">
         <div class="welcome">
         <% if current_user.profile_picture.attached? %>
@@ -25,14 +23,14 @@
             <div class="card">
                 <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;" >
                     <br>
-                    <h4>Sobre Nuestra Página</h4>
-                    <small>¡Nuestra plataforma está diseñada para ayudarte a encontrar grupos de personas tus gustos y pasiones!</small>
+                    <h6>Sobre nuestra página</h6>
+                    <small>¡Nuestra plataforma está diseñada para ayudarte a encontrar grupos de personas que tengan tus gustos y pasiones!</small>
                 </div>
             </div>
             <div class="card">
                 <div class="footer" style="text-align: left; padding-left: 15px;  padding-right: 15px;">
                     <br>
-                    <h4>¡Integrate en distintos Grupos!</h4>
+                    <h6>¡Integrate en distintos grupos!</h6>
                         <small>Explora los grupos disponibles en nuestra sección de grupos.</small>
                         <small>Únete a los grupos que te interesen y participa en sus actividades.</small>
                         <br>
@@ -42,15 +40,15 @@
             <div class="card">
                 <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;">
                     <br>
-                    <h4>¡Crea tus Actividades!</h4>
+                    <h6>¡Crea tus actividades!</h6>
                     <small>Crea grupos y actividades que te apasionen.</small>
-                    <small>Conécta con otros miembros y empieza a compartir experiencias.</small>
+                    <small>Conecta con otros miembros y empieza a compartir experiencias.</small>
                 </div>
             </div>
         </div>
         
     </div>
-
+<br>
 
 
     
@@ -61,17 +59,21 @@
         </div>
         <br>
         <br>
-        <div class="description">
-    <p>
+        <div class="description" style="margin-left:30%;margin-right:30%;">
+        <p style="text-align: left;">
         Únete a grupos de personas con intereses similares, y <i>conecta</i> con personas como tú.
         <br>
         ¡Descubre y participa de todas las actividades disponibles para ti!
-    </p>
+        </p>
     </div>
         <div style="text-align: center;">
-            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary btn-lg" %> 
-            <p style="margin: 10px 0;">¿No tienes una cuenta? ¡Regístrate!</p>
-            <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button btn-lg" %>
+            <div style="margin-left:30%;margin-right:30%;">
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary full-width-form" %> 
+            <br>
+            <hr>
+            <p style="text-align: left;">¿No tienes una cuenta? ¡Regístrate!</p>
+            <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button full-width-form" %>
+        </div>
         </div>
 
 <% end %>

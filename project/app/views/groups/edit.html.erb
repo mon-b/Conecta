@@ -1,4 +1,5 @@
 <div class="new-groups">
+<div class="card" style="width: 100%; padding-bottom:2vh;" >
 <h2>Editar grupo</h2>
 
 <%# code from https://stackoverflow.com/a/52470594 #%>
@@ -47,10 +48,5 @@
     
 <% end %>
 <%= button_to "Eliminar grupo", group_destroy_group_path(@group), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar este grupo?" }, class: "btn btn-danger full-width-form-marg2", id: "delete-group-btn" %>
-<h2>Actividades del grupo</h2>
-<% Activity.where(:group_id == @group.id).each do |activity| %>
-  Actividad: <%= activity.name %><br>
-  <%= link_to "Abrir actividad", activity %>
-  <%# opciones de admin aqui, quizas crear tarjeta reutilizable %>
-<% end %>
 </div>
+<br>
