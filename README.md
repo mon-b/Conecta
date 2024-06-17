@@ -1,13 +1,20 @@
-# Proyecto - Grupo 64:
+# Conecta
 
-- Ruta Proyecto: /project/
-- Ruta Historias de usuario: /docs/
-- Ruta Modelo ER: /docs/
+Conecta es una aplicación web dedicada a conectar personas a través de grupos y actividades. Facilitamos la interacción entre individuos con intereses comunes, promoviendo la participación en eventos y proyectos que enriquecen la vida social y comunitaria de nuestros usuarios.
 
-<hr>
-Nuestra página se accede en la url: https://proyecto-grupo-64.onrender.com/
-Además para facilitar la revisión hemos creado grupos y algunas actividades desde el usuario con credenciales email: monse@mail.cl contraseña: 111111 , estos se pueden utilizar para testear las funcionalidades pero también puedes crear tu propio usuario y grupos/actividades/solicitudes. 
+![image](https://github.com/IIC2143/2024-1-grupo-64/assets/125843723/3ca61686-b55d-4824-8c14-14570f14d921)
 
-Hay vistas cuyo frontend no está actualizado al 100%, pero las funcionalidades del sprint fueron implementadas en su totalidad. 
-<br>
-<i> Pueden haber algunos comportamientos no intencionales que serán corregidos en el siguiente sprint, pero <b> ninguno de estos afecta ninguna de las historias de usuarios pedidas para esta entrega.</i></b>
+
+## Descripción
+
+El proyecto fue desarrollado con Ruby on Rails y el framework Bootstrap.
+
+
+### Dependencias
+
+* Ruby
+* Ruby on Rails
+* Postgres SQL
+
+
+
