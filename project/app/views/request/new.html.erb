@@ -1,6 +1,8 @@
-<div class="check-requests">
-  <h1>Solicita unirte al grupo: <%= Group.find(params[:group_id]).name %> </h1>
-
+<div class="check-requests" style="text-align: left; ">
+  <div class="card" style="width:100%; ">
+  <br>
+  <h2 style="text-align: center;">Solicita unirte al grupo <%= Group.find(params[:group_id]).name %> </h2>
+  
   <% # code from https://stackoverflow.com/a/52470594 %>
   <% flash.each do |name, messages| %>
     <div class=alert alert-<%= name %>>
@@ -13,7 +15,7 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="card-body">
   <%= form_with(model: @request, local: true,  url: '/request/') do |f| %>
       <%= f.hidden_field :group_id, value: params[:group_id] %>
       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -21,15 +23,18 @@
       <% # STATUS: 3 status = 1. pending, 2.accept, 3.rejected %>
 
       <div class="field">
-          <%= f.label :description, "Detalla porque desearías unirte al grupo" %><br />
-          <%= f.text_area :description, placeholder: "Me gustaría unirme a este grupo porque me interesa la temática y me gustaría conocer a más personas con intereses similares" %><br />
+          <%= f.label :description, "Explica por qué deseas unirte al grupo" %><br />
+          <br>
+          <%= f.text_area :description, placeholder: "Ejemplo: Me gustaría unirme a este grupo porque me interesa la temática y me gustaría conocer a más personas con intereses similares", class: "full-width-form" %><br />
       </div>
-
+      <br>
       <div class="actions">
         <%= f.submit "Enviar Solicitud", class: "btn btn-primary" %>
       </div>
       
   <% end %>
+</div>
+</div>
 </div>
 
 
