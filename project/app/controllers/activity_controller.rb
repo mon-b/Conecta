@@ -17,8 +17,11 @@ class ActivityController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  # buscar actividades por nombre y palabras clave
+  # @return [void]
   def search
-    @activities = Activity.where('keywords LIKE ?', "%#{params[:keywords]}%")
+    #@activities = Activity.where('keywords LIKE ?', "%#{params[:keywords]}%")
+    @activities = Activity.where('keywords ILIKE ? OR name ILIKE ?', "%#{params[:keywords]}%", "%#{params[:keywords]}%")
     render :index
   end
 

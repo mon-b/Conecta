@@ -1,7 +1,78 @@
+<div class="check-requests" style="text-align: left;">
+  <div class="card" style="width: 100%;">
+    <% if @request.user_id == current_user.id %>
+      <% # vista para el usuario que hizo la solicitud %>
+      <div class="card-header">
+        Solicitud para unirse a: <b> <%= @request.group.name %> </b>
+      </div>
+      <div class="card-body" style="padding: 0.5rem;">
+      <% if @request.status == "pending" %>
+        <span class="badge text-bg-warning ml-auto">Pendiente</span> <br> <br> 
+        <b>Descripción</b>
+        <br>
+        <%= @request.description %> 
+        <br><br>
+        </div>
+        <div class="card-footer">
+          <small>¿Ya no quieres unirte a este grupo?</small>
+          <%= button_to "Cancelar solicitud", request_path(@request), method: :delete, class: "btn btn-danger full-width-form" %>
+        </div>
+      <% elsif @request.status == "accepted" %>
+        <span class="badge text-bg-success ml-auto">Aceptado</span> <br> <br> 
+        <b>Descripción</b>
+        <br>
+        <%= @request.description %> 
+        <br><br>
 
-<h1>Grupo: <%= Group.find(@request.group_id).name %><h1>
-<h2>Usuario: <%= User.find(@request.user_id).name %><h2>
-<h2>Descripción: <%= @request.description %><h2>
-<h2>Estado: <%= @request.status %><h2>
+        </div>
+      <% elsif @request.status == "rejected" %>
+        <span class="badge text-bg-danger ml-auto">Rechazado</span> <br> <br> 
+        <b>Descripción</b>
+        <br>
+        <%= @request.description %> 
+        <br><br>
+        </div>
+      <% end %>
+      </div>
 
-<%= button_to "Cancelar solicitud", request_path(@request), method: :delete, class: "btn btn-danger special-width-form2" %>
+  
+    <% elsif current_user.id == @request.group.user_id %>
+        <% # vista para el administrador del grupo de la solicitud :s TODO: validar %>
+        <div class="card-header">
+          Solicitud de <b> <%= @request.user.name %></b> para unirse a: <b> <%= @request.group.name %> </b>
+        </div>
+        <div class="card-body" style="padding: 0.5rem;">
+        <% if @request.status == "pending" %>
+          <span class="badge text-bg-warning ml-auto">Pendiente</span> <br> <br> 
+          <b>Descripción</b>
+          <br>
+          <%= @request.description %> 
+        <br><br>
+          </div>
+          <div class="card-footer">
+          <%= button_to "Aceptar", request_path(@request), method: :patch, params:{ status:"accepted"}, class: "btn btn-success half-width-form" %>
+          <%= button_to "Rechazar", request_path(@request), method: :patch, params:{ status:"accepted"}, class: "btn btn-danger half-width-form" %>
+          </div>
+        <% elsif @request.status == "accepted" %>
+           <span class="badge text-bg-success ml-auto">Aceptado</span> <small> Ya aceptaste esta solicitud</small><br> <br> 
+        <b>Descripción</b>
+           <br>
+           <%= @request.description %> 
+           <br><br>
+
+        </div>
+        <% elsif @request.status == "rejected" %>
+           <span class="badge text-bg-danger ml-auto">Rechazado</span> <small> Ya rechazaste esta solicitud</small><br> <br> 
+        <b>Descripción</b>
+           <br>
+           <%= @request.description %> 
+           <br><br>
+
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  
+  </div>
+
+</div>

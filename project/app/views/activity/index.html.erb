@@ -2,19 +2,25 @@
   <h2>Todas las actividades</h2>
   <small> Estás viendo todas las actividades de los grupos a los que perteneces.</small> <br>
   <small>¿Quieres crear una actividad? ¡Puedes crearla en tus grupos! <%= link_to "¡Crea una nueva!", "/groups/mine" %> </small>
-  <br>
-  <br>
-  <div class="search-bar">
+  
+  <div class="form-group">
     <%= form_with url: search_activity_index_path(), method: :get, local: true do |form| %>
-      <%= form.text_field :keywords, placeholder: "Buscar actividades por tags", class: "form-control" %>
-      <br>
+    <div class="container d-flex" style="width: 50%; margin-top:2vh;">
+      <div class="input-group-prepend">
+        <div class="input-group-text" style="height: 100%;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg>
+        </div>
+      </div>
+      <%= form.text_field :keywords, placeholder: "Buscar actividades", class: "form-control" %>
       <%= form.submit "Buscar", class: "btn btn-primary" %>
+    </div>
     <% end %>
   </div>
-  <br>
   
   <div class="card-grid">
-    <%# <% activities = Activity.all %>
+    <% # <% activities = Activity.all %>
     <% activities = @activities.present? ? @activities : Activity.all %>
     <% activities.each do |activity| %> 
       <% if is_group_member?(activity) %>

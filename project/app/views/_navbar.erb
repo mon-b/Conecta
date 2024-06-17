@@ -1,7 +1,10 @@
 <div class="container-fixed">
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Conecta</a>
+      <a class="navbar-brand" href="#">
+        <%= image_tag "image-logo.png", alt: "Logo", class: "navbar-logo-img" %> &nbsp;
+        <%= image_tag "text-logo.png", alt: "Logo", class: "navbar-logo-text" %>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,7 +34,6 @@
               <li><%= link_to "Mis solicitudes", request_index_path, class:"dropdown-item" %></li>
               <li><%= link_to "Editar perfil", edit_user_registration_path, class:"dropdown-item" %></li>
               <li><%= link_to "Mis grupos", "/groups/mine", class:"dropdown-item" %></li>
-              <li><a class="dropdown-item" href="#">Mis actividades</a></li>
               
               <% if current_user.superuser? %>
                 <li><hr class="dropdown-divider"></li>

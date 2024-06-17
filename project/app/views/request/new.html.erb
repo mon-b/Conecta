@@ -1,9 +1,9 @@
 <div class="container mt-3">
   <h1>Solicita unirte al grupo: <%= Group.find(params[:group_id]).name %> </h1>
 
-  <%# code from https://stackoverflow.com/a/52470594 %>
+  <% # code from https://stackoverflow.com/a/52470594 %>
   <% flash.each do |name, messages| %>
-    <div class="alert alert-<%= name %>">
+    <div class=alert alert-<%= name %>>
       <ul>
       <% if messages.is_a?(Array) %>
         <% messages.each do |message| %>
@@ -18,7 +18,7 @@
       <%= f.hidden_field :group_id, value: params[:group_id] %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :status, value: "pending" %>
-      <%# STATUS: 3 status = 1. pending, 2.accept, 3.rejected %>
+      <% # STATUS: 3 status = 1. pending, 2.accept, 3.rejected %>
 
       <div class="field">
           <%= f.label :description, "Detalla porque desearías unirte al grupo" %><br />
@@ -27,7 +27,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Enviar Solicitud" %>
+        <%= f.submit "Enviar Solicitud", class: "btn btn-primary" %>
       </div>
       
   <% end %>

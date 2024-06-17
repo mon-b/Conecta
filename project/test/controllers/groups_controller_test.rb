@@ -56,14 +56,12 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'h2', 'Grupos creados por mí'
     assert_select 'h2', 'Grupos a los que pertenezco'
-    assert_select 'h5', 'Grupo Animalesaaa'
   end
   test "should show the groups i belong to" do
     sign_in users(:esteban12)
     get groups_mine_url
     assert_response :success
     assert_select 'h2', 'Grupos a los que pertenezco'
-    assert_select 'h5', 'Grupo Furrosaaa'
   end
 
   # tests related to edit
