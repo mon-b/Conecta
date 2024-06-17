@@ -2,7 +2,7 @@
 
     
     <div class= "check-requests">
-        <div class="logo-and-brand" >
+        <div class="logo-and-brand" style="margin: 0 auto" >
             <%= image_tag asset_path("logo-no-background2.png"), alt: "Example Image", class: "custom-image"  %>
         </div>
     <div class="card" style="width: 100%;">
@@ -17,12 +17,38 @@
         <%= link_to "Editar perfil", edit_user_registration_path, class:"btn btn-primary" %>
         <br>
         <br>
-        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> 
-        <br>
-        <br>
-        <br>
+        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> <br><br><br>
         </div>
     </div>
+
+         <div class="card-grid">
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;" >
+                    <br>
+                    <h4>Sobre Nuestra Página</h4>
+                    <small>¡Nuestra plataforma está diseñada para ayudarte a encontrar grupos de personas tus gustos y pasiones!</small>
+                </div>
+            </div>
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px;  padding-right: 15px;">
+                    <br>
+                    <h4>¡Integrate en distintos Grupos!</h4>
+                        <small>Explora los grupos disponibles en nuestra sección de grupos.</small>
+                        <small>Únete a los grupos que te interesen y participa en sus actividades.</small>
+                        <br>
+                        <br>
+                </div>
+            </div>
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;">
+                    <br>
+                    <h4>¡Crea tus Actividades!</h4>
+                    <small>Crea grupos y actividades que te apasionen.</small>
+                    <small>Conécta con otros miembros y empieza a compartir experiencias.</small>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
 
