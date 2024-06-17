@@ -2,9 +2,7 @@
 
     
     <div class= "check-requests">
-        <div class="logo-and-brand" >
-            <%= image_tag asset_path("logo-no-background2.png"), alt: "Example Image", class: "custom-image"  %>
-        </div>
+
     <div class="card" style="width: 100%;">
         <div class="welcome">
         <% if current_user.profile_picture.attached? %>
@@ -17,33 +15,65 @@
         <%= link_to "Editar perfil", edit_user_registration_path, class:"btn btn-primary" %>
         <br>
         <br>
-        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> 
-        <br>
-        <br>
-        <br>
+        <small>¿No eres tú? <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %></small> <br><br><br>
         </div>
     </div>
-    </div>
 
+         <div class="card-grid">
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;" >
+                    <br>
+                    <h6>Sobre nuestra página</h6>
+                    <small>¡Nuestra plataforma está diseñada para ayudarte a encontrar grupos de personas que tengan tus gustos y pasiones!</small>
+                </div>
+            </div>
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px;  padding-right: 15px;">
+                    <br>
+                    <h6>¡Integrate en distintos grupos!</h6>
+                        <small>Explora los grupos disponibles en nuestra sección de grupos.</small>
+                        <small>Únete a los grupos que te interesen y participa en sus actividades.</small>
+                        <br>
+                        <br>
+                </div>
+            </div>
+            <div class="card">
+                <div class="footer" style="text-align: left; padding-left: 15px; padding-right: 15px;">
+                    <br>
+                    <h6>¡Crea tus actividades!</h6>
+                    <small>Crea grupos y actividades que te apasionen.</small>
+                    <small>Conecta con otros miembros y empieza a compartir experiencias.</small>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+<br>
 
 
     
 <% else %>
-    <div class="unsigned-user">
+    <div class="unsigned-user"  >
         <div class="logo-and-brand">
             <%= image_tag asset_path("logo-no-background.png"), alt: "Example Image", class: "custom-image" %>
         </div>
         <br>
         <br>
-        <div class="description">
-            <p> 
-                Únete a grupos de personas con intereses similares, y <i>conecta</i> con personas como tú.
-                <br>
-                ¡Descubre y participa de todas las actividades disponibles para ti! 
-            </p>
-        </div>
-        <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary" %> 
-        <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button" %>
+        <div class="description" style="margin-left:30%;margin-right:30%;">
+        <p style="text-align: left;">
+        Únete a grupos de personas con intereses similares, y <i>conecta</i> con personas como tú.
+        <br>
+        ¡Descubre y participa de todas las actividades disponibles para ti!
+        </p>
     </div>
+        <div style="text-align: center;">
+            <div style="margin-left:30%;margin-right:30%;">
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-primary full-width-form" %> 
+            <br>
+            <hr>
+            <p style="text-align: left;">¿No tienes una cuenta? ¡Regístrate!</p>
+            <%= link_to "Registrarse", new_user_registration_path, class: "btn btn-success light-green-button full-width-form" %>
+        </div>
+        </div>
 
 <% end %>

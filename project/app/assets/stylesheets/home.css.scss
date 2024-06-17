@@ -377,5 +377,34 @@ body {
     width: 100px; /* Ancho de la imagen */
     height: 100px; /* Altura de la imagen */
     object-fit: cover; /* Ajuste de la imagen */
-    margin-bottom: 15px; /* Margen inferior */
 }
+
+.star-icon {
+    width: 25px;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #e061d5 !important; /* Color primario del botón */
+    border-color: #e061d5 !important; /* Color del borde del botón */
+    color: white !important; /* Color del texto */
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active,
+  .btn-primary.active,
+  .open > .dropdown-toggle.btn-primary {
+    background-color: #c755b8 !important; /* Color al pasar el mouse, al enfocar, al activar y al abrir el dropdown */
+    border-color: #b34da3 !important; /* Color del borde en estos estados */
+    color: white !important; /* Asegura que el texto siga siendo blanco */
+  }
+  
+  .btn-primary:disabled,
+  .btn-primary.disabled,
+  fieldset:disabled .btn-primary {
+    background-color: #e061d5 !important; /* Color del botón deshabilitado */
+    border-color: #e061d5 !important; /* Color del borde del botón deshabilitado */
+    color: white !important; /* Asegura que el texto siga siendo blanco */
+    opacity: 0.65; /* Transparencia del botón deshabilitado */
+  }

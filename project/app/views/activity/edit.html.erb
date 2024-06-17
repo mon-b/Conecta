@@ -1,4 +1,5 @@
-<div class="new-groups">
+<div class="check-requests">
+<div class="card" style="width: 100%; padding:2vh;" >
 <h2>Editar Actividad</h2>
 
 <%# code from https://stackoverflow.com/a/52470594 #%>
@@ -79,4 +80,5 @@
 <%= button_to "Eliminar Actividad", activity_destroy_path(@activity.id), method: :delete, data: { confirm: "¿Estás seguro de que quieres eliminar esta Actividad?" }, class: "btn btn-danger full-width-form-marg2", id: "delete-group-btn" %> 
 
 
+</div>
 </div>
